@@ -1,0 +1,1 @@
+export { partners } from './masterBrief'

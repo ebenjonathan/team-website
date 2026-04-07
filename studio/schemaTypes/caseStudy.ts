@@ -1,0 +1,20 @@
+export const caseStudyType = {
+  name: 'caseStudy',
+  title: 'Case Study',
+  type: 'document',
+  fields: [
+    { name: 'title', type: 'string' },
+    { name: 'slug', type: 'slug', options: { source: 'title' } },
+    { name: 'category', type: 'string' },
+    { name: 'client', type: 'string' },
+    { name: 'duration', type: 'string' },
+    { name: 'coverImage', type: 'image', options: { hotspot: true } },
+    { name: 'summary', type: 'text' },
+    { name: 'challenge', type: 'text' },
+    { name: 'approach', type: 'text' },
+    { name: 'tags', type: 'array', of: [{ type: 'string' }] },
+    { name: 'metrics', type: 'array', of: [{ type: 'object', fields: [{ name: 'label', type: 'string' }, { name: 'value', type: 'string' }] }] },
+    { name: 'services', type: 'array', of: [{ type: 'string' }] },
+    { name: 'publishedAt', type: 'datetime' },
+  ],
+}
