@@ -10,15 +10,20 @@ interface SubmissionLogEntry {
 }
 
 export async function writeLocalSubmissionLog(entry: SubmissionLogEntry) {
-  const logsDir = path.join(process.cwd(), 'logs')
-  const logFile = path.join(logsDir, 'local-submissions.ndjson')
+  // Vercel and other read-only filesystems: skip silently
+  try {
+    const logsDir = path.join(process.cwd(), 'logs')
+    const logFile = path.join(logsDir, 'local-submissions.ndjson')
 
-  await mkdir(logsDir, { recursive: true })
+    await mkdir(logsDir, { recursive: true })
 
-  const line = JSON.stringify({
-    timestamp: new Date().toISOString(),
-    ...entry,
-  })
+    const line = JSON.stringify({
+      timestamp: new Date().toISOString(),
+      ...entry,
+    })
 
-  await appendFile(logFile, `${line}\n`, 'utf8')
+    await appendFile(logFile, `${line}\n`, 'utf8')
+  } catch {
+    // read-only filesystem (Vercel) — email delivery already completed above
+  }
 }
