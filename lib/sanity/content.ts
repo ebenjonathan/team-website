@@ -1,5 +1,5 @@
 import type { BusinessUnit, CaseStudy, ClientLogo, Event, FAQ, Partner, Service, TeamMember } from '@/types'
-import faqSeed from '@/lib/data/faq-seed.json'
+import { faqItems as faqSeed } from '@/lib/data/faqs'
 import {
   businessUnits,
   caseStudies,
@@ -163,6 +163,7 @@ export async function getFaqItems(): Promise<FAQ[]> {
     id: item._id ?? item.id,
     question: item.question,
     answer: item.answer,
+    category: item.category,
     keywords: item.keywords,
   }))
 }

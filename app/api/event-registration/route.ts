@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { writeLocalSubmissionLog } from '@/lib/server/localSubmissionLog'
 import { deliverSubmission } from '@/lib/server/submissionTransport'
+import { checkRateLimit } from '@/lib/server/rateLimit'
 
 // Event registration schema
 const eventRegistrationSchema = z.object({
@@ -17,6 +18,9 @@ const eventRegistrationSchema = z.object({
 })
 
 export async function POST(request: NextRequest) {
+  const limited = checkRateLimit(request, { limit: 5, windowSeconds: 60 })
+  if (limited) return limited
+
   try {
     const body = await request.json()
 

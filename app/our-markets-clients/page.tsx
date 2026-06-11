@@ -1,6 +1,20 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { clientHallOfFame, footprintCountries, sectors } from '@/lib/data'
 import { getClients } from '@/lib/sanity/content'
+
+const countryFlagCodes: Record<string, string> = {
+  Zimbabwe: 'zw',
+  Zambia: 'zm',
+  Namibia: 'na',
+  Botswana: 'bw',
+  Mozambique: 'mz',
+  Uganda: 'ug',
+  Tanzania: 'tz',
+  Malawi: 'mw',
+  'South Africa': 'za',
+  Lesotho: 'ls',
+}
 
 export const metadata: Metadata = {
   title: 'Our Markets & Clients',
@@ -13,7 +27,7 @@ export default async function OurMarketsClientsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 py-20 text-white">
+      <section className="bg-primary-deeper py-20 text-white">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold">Our Markets & Clients</h1>
           <p className="mt-4 max-w-3xl text-lg text-slate-200">
@@ -37,12 +51,29 @@ export default async function OurMarketsClientsPage() {
       <section className="bg-slate-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-900">Geographic Footprint</h2>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {footprintCountries.map((country) => (
-              <span key={country} className="rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-700">
-                {country}
-              </span>
-            ))}
+          <div className="mt-6 flex flex-wrap gap-4">
+            {footprintCountries.map((country) => {
+              const code = countryFlagCodes[country]
+              return (
+                <div
+                  key={country}
+                  className="flex items-center justify-center rounded-full bg-white px-3 py-2 shadow-sm border border-slate-100"
+                  title={country}
+                  aria-label={country}
+                >
+                  {code && (
+                    <Image
+                      src={`https://flagcdn.com/w40/${code}.png`}
+                      alt={`${country} flag`}
+                      width={28}
+                      height={20}
+                      className="rounded-sm flex-shrink-0"
+                      unoptimized
+                    />
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -54,12 +85,14 @@ export default async function OurMarketsClientsPage() {
           manufacturing, mining, energy, health, and development agencies.
         </p>
 
+        {/* Live Client Dataset (commented out by request)
         {!!clientsData.length && (
           <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">Live Client Dataset</p>
             <p className="mt-2 text-slate-700">{clientsData.length} client records loaded from CMS/fallback adapter.</p>
           </div>
         )}
+        */}
 
         <div className="mt-8 space-y-8">
           {Object.entries(clientHallOfFame).map(([category, names]) => (

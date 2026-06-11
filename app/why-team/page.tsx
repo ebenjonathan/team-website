@@ -1,19 +1,20 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Target, Users, Zap, Handshake, Lightbulb, TrendingUp, Briefcase, Building2, Trophy } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'Why Team Advisory',
-  description: 'Discover what makes Team Advisory the trusted partner for digital transformation.',
+  title: 'Why TEAM Consulting',
+  description: 'Discover what makes TEAM Consulting the trusted partner for digital transformation.',
 }
 
 export default function WhyTeamPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+      <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Why Team Advisory</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Why TEAM Consulting</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
             Discover what makes us the trusted partner for digital transformation and business growth.
           </p>
@@ -25,13 +26,13 @@ export default function WhyTeamPage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="What Clients Say About Us"
-            subtitle="Why organizations choose Team Advisory"
+            subtitle="Why organizations choose TEAM Consulting"
             centered
           />
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🎯</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Target className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Results-Driven</h3>
               <p className="text-slate-600">
                 We focus on measurable outcomes and business impact, not deliverables. Your success is our success.
@@ -39,7 +40,7 @@ export default function WhyTeamPage() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">👥</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Users className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Expert Team</h3>
               <p className="text-slate-600">
                 Industry veterans with global experience and deep expertise across all disciplines.
@@ -47,7 +48,7 @@ export default function WhyTeamPage() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🚀</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Zap className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Fast Execution</h3>
               <p className="text-slate-600">
                 Agile methodologies and proven processes enable rapid delivery without compromising quality.
@@ -55,7 +56,7 @@ export default function WhyTeamPage() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🤝</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Handshake className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">True Partnership</h3>
               <p className="text-slate-600">
                 We&apos;re invested in your success, working closely with your team as an extension of your organization.
@@ -63,7 +64,7 @@ export default function WhyTeamPage() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">💡</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Lightbulb className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Innovation</h3>
               <p className="text-slate-600">
                 We stay ahead of the curve, constantly researching and implementing cutting-edge solutions.
@@ -71,7 +72,7 @@ export default function WhyTeamPage() {
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">📈</div>
+              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><TrendingUp className="w-6 h-6" /></div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Proven Track Record</h3>
               <p className="text-slate-600">
                 200+ successful projects with measurable ROI across diverse industries and markets.
@@ -93,64 +94,64 @@ export default function WhyTeamPage() {
               href="/why-team/our-team"
               className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">👨‍💼</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Briefcase className="w-7 h-7" /></span>
+              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
                 Our Team
-              </h3>
-              <p className="text-slate-600">
-                Meet the talented individuals driving innovation and transformation at Team Advisory.
-              </p>
-              <div className="mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
+              </span>
+              <span className="block text-slate-600">
+                Meet the talented individuals driving innovation and transformation at TEAM Consulting.
+              </span>
+              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
                 Explore →
-              </div>
+              </span>
             </Link>
 
             <Link
               href="/why-team/our-partners"
               className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🤝</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Handshake className="w-7 h-7" /></span>
+              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
                 Our Partners
-              </h3>
-              <p className="text-slate-600">
+              </span>
+              <span className="block text-slate-600">
                 Strategic partnerships with leading technology providers and consulting firms.
-              </p>
-              <div className="mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
+              </span>
+              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
                 Learn More →
-              </div>
+              </span>
             </Link>
 
             <Link
               href="/why-team/our-clients"
               className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🏢</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Building2 className="w-7 h-7" /></span>
+              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
                 Our Clients
-              </h3>
-              <p className="text-slate-600">
+              </span>
+              <span className="block text-slate-600">
                 Trusted by Fortune 500 companies and ambitious startups across Africa and beyond.
-              </p>
-              <div className="mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
+              </span>
+              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
                 See Portfolio →
-              </div>
+              </span>
             </Link>
 
             <Link
               href="/why-team/our-success-stories"
               className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
             >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🏆</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Trophy className="w-7 h-7" /></span>
+              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
                 Success Stories
-              </h3>
-              <p className="text-slate-600">
+              </span>
+              <span className="block text-slate-600">
                 Measurable outcomes and real impact stories from our transformational engagements.
-              </p>
-              <div className="mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
+              </span>
+              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
                 Discover →
-              </div>
+              </span>
             </Link>
           </div>
         </div>
@@ -158,3 +159,4 @@ export default function WhyTeamPage() {
     </div>
   )
 }
+

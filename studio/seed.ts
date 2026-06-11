@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import { faqItems } from '../lib/data/faqs'
 import {
   businessUnits,
   caseStudies,
@@ -7,7 +8,6 @@ import {
   contacts,
   downloads,
   events,
-  faqBotQuestions,
   ideasAtWorkArticles,
   partners,
   serviceAreas,
@@ -62,7 +62,7 @@ async function seed() {
     await client.createOrReplace({ _id: `event-${item.id}`, _type: 'event', ...item })
   }
 
-  for (const [index, item] of faqBotQuestions.entries()) {
+  for (const [index, item] of faqItems.entries()) {
     await client.createOrReplace({ _id: `faq-${item.id}`, _type: 'faq', order: index + 1, ...item })
   }
 

@@ -58,13 +58,13 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
             <Image
               src="/images/logo.png"
-              alt="Team Advisory"
+              alt="TEAM Consulting"
               width={40}
               height={40}
               className="w-10 h-10"
             />
             <span className="font-bold font-heading text-primary-deeper text-lg hidden sm:block">
-              Team Advisory
+              TEAM Consulting
             </span>
           </Link>
 
@@ -92,3 +92,4 @@ export function Header() {
     </>
   )
 }
+

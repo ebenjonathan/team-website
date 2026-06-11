@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { CaseStudyCard } from '@/components/cards/CaseStudyCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { caseStudies, ideasAtWorkArticles } from '@/lib/data'
+import { ideasAtWorkArticles } from '@/lib/data'
 import { getCaseStudies, getBlogPosts } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
@@ -17,11 +17,11 @@ export default async function IdeasAtWorkPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+      <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Ideas at Work</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
-            Discover how Team Advisory transforms ideas into successful business outcomes.
+            Discover how TEAM Consulting transforms ideas into successful business outcomes.
           </p>
         </div>
       </section>
@@ -37,9 +37,7 @@ export default async function IdeasAtWorkPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mt-16">
             {caseStudiesData.map((study) => (
-              <Link key={study.id} href={`/ideas-at-work/${study.slug}`}>
-                <CaseStudyCard caseStudy={study} />
-              </Link>
+              <CaseStudyCard key={study.id} caseStudy={study} />
             ))}
           </div>
         </div>
@@ -83,15 +81,22 @@ export default async function IdeasAtWorkPage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {(Array.isArray(blogPosts) && blogPosts.length ? blogPosts : ideasAtWorkArticles).map((article: any) => (
-              <article key={article.id} className="rounded-xl border border-slate-200 p-6">
+              <article key={article.id} className="rounded-xl border border-slate-200 p-6 flex flex-col">
                 <h3 className="text-xl font-bold text-slate-900">{article.title}</h3>
-                <p className="mt-3 text-slate-600">{article.excerpt}</p>
+                <p className="mt-3 text-slate-600 flex-1">{article.excerpt}</p>
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">
-                  {(article.tags ?? []).join(' • ')}
+                  {(article.tags ?? []).join(' * ')}
                 </p>
-                <a href={article.downloadUrl} download className="mt-4 inline-block text-sm font-semibold text-primary">
-                  Download Article
-                </a>
+                <div className="mt-4 flex items-center gap-4">
+                  <Link href={`/ideas-at-work/articles/${article.slug}`} className="text-sm font-semibold text-primary hover:text-primary-dark">
+                    Read Article →
+                  </Link>
+                  {article.downloadUrl && (
+                    <a href={article.downloadUrl} download className="text-sm font-semibold text-slate-500 hover:text-slate-700">
+                      Download PDF
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>
@@ -100,3 +105,4 @@ export default async function IdeasAtWorkPage() {
     </div>
   )
 }
+

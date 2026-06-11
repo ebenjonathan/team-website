@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Twitter, Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
-import { NewsletterForm } from '@/components/forms/NewsletterForm'
+import { Twitter, Facebook, Instagram, Linkedin, Phone, Clock } from 'lucide-react'
 
 const footerLinks = {
   company: [
@@ -43,12 +42,12 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
                 src="/images/logo.png"
-                alt="Team Advisory"
+                alt="TEAM Consulting"
                 width={40}
                 height={40}
                 className="w-10 h-10"
               />
-              <span className="font-bold font-heading text-xl">Team Advisory</span>
+              <span className="font-bold font-heading text-xl">TEAM Consulting</span>
             </Link>
             <p className="text-sm text-white/70 leading-relaxed mb-6">
               Transforming ideas into strategic business solutions. Your trusted partner for digital
@@ -106,32 +105,65 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter + Contact */}
+          {/* Contact */}
           <div>
             <h4 className="font-bold font-heading text-xs uppercase tracking-widest mb-6 text-white/50">
-              Stay Informed
+              Contact
             </h4>
-            <p className="text-sm text-white/70 mb-4">
-              Subscribe for insights, updates, and event invitations.
-            </p>
-            <NewsletterForm />
-            <div className="mt-6 space-y-3 text-sm text-white/70">
-              <a
-                href="mailto:info@team.co.zw"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Mail className="w-4 h-4 flex-shrink-0" /> info@team.co.zw
-              </a>
+            <div className="space-y-4 text-sm text-white/70">
+              {/* Phone */}
               <a
                 href="tel:+263772202290"
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                <Phone className="w-4 h-4 flex-shrink-0" /> +263 77 220 2290
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                +263 77 220 2290
               </a>
-              <p className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                Harare, Zimbabwe
-              </p>
+              {/* Zimbabwe office */}
+              <div className="flex items-start gap-2">
+                <Image
+                  src="https://flagcdn.com/w20/zw.png"
+                  alt="Zimbabwe"
+                  width={20}
+                  height={14}
+                  className="mt-0.5 flex-shrink-0 rounded-sm"
+                  unoptimized
+                />
+                <div>
+                  <span className="text-white/50 block text-xs mb-1">Harare, Zimbabwe</span>
+                  <a href="mailto:ZW@teamadvisoryservices.com" className="hover:text-white transition-colors block">
+                    ZW@teamadvisoryservices.com
+                  </a>
+                  <a href="mailto:info@team.co.zw" className="hover:text-white transition-colors block">
+                    info@team.co.zw
+                  </a>
+                </div>
+              </div>
+              {/* Zambia office */}
+              <div className="flex items-start gap-2">
+                <Image
+                  src="https://flagcdn.com/w20/zm.png"
+                  alt="Zambia"
+                  width={20}
+                  height={14}
+                  className="mt-0.5 flex-shrink-0 rounded-sm"
+                  unoptimized
+                />
+                <div>
+                  <span className="text-white/50 block text-xs mb-1">Lusaka, Zambia</span>
+                  <a href="mailto:ZM@teamadvisoryservices.com" className="hover:text-white transition-colors block">
+                    ZM@teamadvisoryservices.com
+                  </a>
+                </div>
+              </div>
+              {/* Business Hours */}
+              <div className="flex items-start gap-2">
+                <Clock className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-white/50 block text-xs mb-1">Business Hours</span>
+                  <span>Monday - Friday, 08:00 - 16:30 CAT</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -139,7 +171,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container mx-auto py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-          <p>&copy; {new Date().getFullYear()} Team Advisory. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} TEAM Consulting. All rights reserved.</p>
           <div className="flex gap-4">
             {footerLinks.legal.map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
@@ -152,3 +184,4 @@ export function Footer() {
     </footer>
   )
 }
+

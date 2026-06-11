@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { CheckCircle } from 'lucide-react'
 import { ideasAtWorkArticles } from '@/lib/data'
 import { getBlogPosts, getServiceBySlug, getServiceOfferings } from '@/lib/sanity/content'
 
@@ -38,14 +40,12 @@ export default async function ServiceDetailPage(
     getBlogPosts(),
   ])
 
-  if (!service) {
-    return <div>Service not found</div>
-  }
+  if (!service) notFound()
 
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+      <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold mb-6">{service.title}</h1>
           <p className="text-xl text-slate-200 max-w-2xl">{service.description}</p>
@@ -80,7 +80,7 @@ export default async function ServiceDetailPage(
               <ul className="space-y-4">
                 {(service.deliverables ?? service.features).map((deliverable, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="text-primary font-bold mr-4">📋</span>
+                    <CheckCircle className="w-5 h-5 text-primary shrink-0 mr-3 mt-0.5" />
                     <span className="text-slate-600 text-lg">{deliverable}</span>
                   </li>
                 ))}

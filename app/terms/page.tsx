@@ -2,17 +2,17 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Read the terms governing use of the Team Advisory website and related services.',
+  description: 'Read the terms governing use of the TEAM Consulting website and related services.',
 }
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 py-20 text-white">
+      <section className="bg-primary-deeper py-20 text-white">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold">Terms of Service</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-200">
-            These terms govern access to and use of the Team Advisory website, content, and digital services.
+            These terms govern access to and use of the TEAM Consulting website, content, and digital services.
           </p>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold text-slate-900">Intellectual Property</h2>
             <p className="mt-4 text-slate-600 leading-relaxed">
               Unless otherwise stated, website content, branding, interface components, and published materials
-              are owned by or licensed to Team Advisory and may not be reused without permission.
+              are owned by or licensed to TEAM Consulting and may not be reused without permission.
             </p>
           </article>
 
@@ -46,7 +46,7 @@ export default function TermsPage() {
           <article>
             <h2 className="text-2xl font-bold text-slate-900">Limitation of Liability</h2>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Team Advisory is not liable for indirect or consequential loss arising from website use, subject
+              TEAM Consulting is not liable for indirect or consequential loss arising from website use, subject
               to applicable law and any written contractual commitments.
             </p>
           </article>

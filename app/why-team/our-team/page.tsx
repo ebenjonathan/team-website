@@ -5,7 +5,7 @@ import { getTeamMembers } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
   title: 'Our Team',
-  description: 'Meet the talented team who drive innovation at Team Advisory.',
+  description: 'Meet the talented team who drive innovation at TEAM Consulting.',
 }
 
 export default async function OurTeamPage() {
@@ -14,7 +14,7 @@ export default async function OurTeamPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+      <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Team</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
@@ -28,7 +28,7 @@ export default async function OurTeamPage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Meet Our Team"
-            subtitle="The talented people behind Team Advisory"
+            subtitle="The talented people behind TEAM Consulting"
             centered
           />
 
@@ -98,11 +98,12 @@ export default async function OurTeamPage() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             We&apos;re always looking for talented individuals passionate about digital transformation.
           </p>
-          <button className="bg-white text-primary hover:bg-slate-100 font-bold py-3 px-8 rounded-lg transition-colors">
+          <a href="/careers" className="inline-block bg-white text-primary hover:bg-slate-100 font-bold py-3 px-8 rounded-lg transition-colors">
             View Career Opportunities
-          </button>
+          </a>
         </div>
       </section>
     </div>
   )
 }
+

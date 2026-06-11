@@ -7,7 +7,7 @@ export function buildMetadata(override: Partial<Metadata>): Metadata {
     ...override,
     openGraph: {
       type: 'website',
-      siteName: 'Team Advisory',
+      siteName: 'TEAM Consulting',
       url: BASE_URL,
       images: [{ url: `${BASE_URL}/images/og-image.png`, width: 1200, height: 630 }],
       ...(override.openGraph ?? {}),
@@ -18,3 +18,4 @@ export function buildMetadata(override: Partial<Metadata>): Metadata {
     },
   }
 }
+

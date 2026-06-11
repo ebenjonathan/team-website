@@ -2,17 +2,17 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Review how Team Advisory collects, uses, and protects your information.',
+  description: 'Review how TEAM Consulting collects, uses, and protects your information.',
 }
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 py-20 text-white">
+      <section className="bg-primary-deeper py-20 text-white">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold">Privacy Policy</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-200">
-            This policy explains how Team Advisory handles personal information across our website,
+            This policy explains how TEAM Consulting handles personal information across our website,
             forms, newsletters, and client interactions.
           </p>
         </div>

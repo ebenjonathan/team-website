@@ -99,7 +99,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         </nav>
 
         <div className="p-6 border-t border-gray-100 space-y-1 text-sm text-body">
-          <p className="font-medium text-primary-deeper">Team Advisory</p>
+          <p className="font-medium text-primary-deeper">TEAM Consulting</p>
           <p>info@team.co.zw</p>
           <p>+263 77 220 2290</p>
         </div>
@@ -107,3 +107,4 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     </div>
   )
 }
+

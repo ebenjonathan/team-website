@@ -1,4 +1,4 @@
-TEAM CONSULTING
+﻿TEAM CONSULTING
 We Are Greater Than Me
 WEBSITE DEVELOPMENT MASTER BRIEF
 Company Profile | Website Content | Technical Specifications
@@ -10,9 +10,9 @@ www.teamconsulting.co.zw | info@team.co.zw
 How to Use This Document
 This document is the single source of truth for the TEAM Consulting website build. It is divided into two
 main parts:
-• PART A, COMPANY PROFILE: All content about who TEAM Consulting is, what we do, our
+â€¢ PART A, COMPANY PROFILE: All content about who TEAM Consulting is, what we do, our
 team, our clients, and our values. This is the content that will populate the website pages.
-• PART B, WEBSITE BRIEF: Technical specifications, page structure, functional requirements,
+â€¢ PART B, WEBSITE BRIEF: Technical specifications, page structure, functional requirements,
 and design guidance for the developer building the website.
 The developer should read both parts. The web content writer or marketing team should focus on Part
 A. Both parts must be read together when building any specific page.
@@ -29,7 +29,7 @@ organisational significance.
 Founded in Zimbabwe in 2004, TEAM has spent over two decades providing strategy-based business
 advisory services to a wide range of private, public, and non-profit organisations across the Sub-
 Saharan African region. What began as TEAM Consulting has evolved into a truly African business
-advisory firm, TEAM Advisory Services, with registered offices in Zimbabwe and Zambia, and partner-
+advisory firm, TEAM Consulting Team Consulting team consulting TEAM consulting Services, with registered offices in Zimbabwe and Zambia, and partner-
 based arrangements across various other African countries.
 The practice operates on a cost-effective associate model: tailored engagement teams assembled from
 a network of specialists across strategy, process, culture, governance, technology, and wellness. This
@@ -44,7 +44,7 @@ Repeat & Referral Clients
 Sectors Served
 Our Philosophy
 Our philosophy is derived from our name, TEAM, as we recognise and embrace the notion of
-excellence through collaboration: the belief that together, “we are greater than me.”
+excellence through collaboration: the belief that together, â€œwe are greater than me.â€
 At TEAM, we build teams with our clients, bringing together the best possible people to undertake any
 strategic business intervention anywhere in the world. We believe that providing simple value is not
 enough; the value created must move the organisation to a new level of significance and positive
@@ -60,8 +60,8 @@ of our culture:
 SEEK FIRST
 We establish our foundation through humility and spiritual grounding, prioritising truth
 and significance over mere success. We pursue understanding before prescribing
-solutions. “But seek first the kingdom of God and his righteousness, and all these things
-will be added to you.”, Matthew 6:33
+solutions. â€œBut seek first the kingdom of God and his righteousness, and all these things
+will be added to you.â€, Matthew 6:33
 SERVE
 DILIGENTLY
 We expand our reach with excellence and compassion, honouring the trust of our
@@ -77,12 +77,12 @@ FIRM
 We uphold principled conduct in truth, trust, and transparency, choosing courage over
 convenience in every communication and solution. We always uphold what is right.
 Our Strategic Evolution: Unlocking Synergy
-TEAM Consulting has evolved from a “Quantum Leap Value” positioning to a more human-centric,
-collaborative theme: “We Are Greater Than Me.” This reflects a shift from focusing on the magnitude of
+TEAM Consulting has evolved from a â€œQuantum Leap Valueâ€ positioning to a more human-centric,
+collaborative theme: â€œWe Are Greater Than Me.â€ This reflects a shift from focusing on the magnitude of
 change to the synergy of change, building organisations more capable than the sum of their individual
 parts.
 This evolution underpins our outcome-based consulting model, in which we no longer sell standalone
-services but packaged outcomes, assembling our expertise to solve each client’s most pressing needs.
+services but packaged outcomes, assembling our expertise to solve each clientâ€™s most pressing needs.
 
 -- 4 of 24 --
 
@@ -90,12 +90,12 @@ A2. What We Deliver
 The GREATER Framework
 Every engagement is scoped against seven measurable outcomes, captured in the acronym
 GREATER. Every engagement begins with a GREATER Diagnostic: a structured assessment of the
-client’s position across all seven dimensions. It surfaces gaps, identifies quick wins, and provides the
+clientâ€™s position across all seven dimensions. It surfaces gaps, identifies quick wins, and provides the
 basis for a precisely scoped solution.
 Outcome Description
 G Growth Expansion of revenue, market share, and strategic reach through disciplined
 planning and execution.
-R Resilience Structural and operational fortification against shocks, critical in Zimbabwe’s
+R Resilience Structural and operational fortification against shocks, critical in Zimbabweâ€™s
 dynamic operating environment.
 E Efficiency Systematic elimination of waste. Measurable improvement in resource utilisation
 and throughput.
@@ -107,13 +107,13 @@ attrition.
 R Results Quantifiable impact across financial and operational indicators. The ultimate
 accountability measure.
 Our Approach: Find. Get. Keep.
-The firm’s delivery follows a three-phase cycle, ensuring value is not just created but sustained:
+The firmâ€™s delivery follows a three-phase cycle, ensuring value is not just created but sustained:
 Find the Value
 DISCOVERY & DIAGNOSTICS
 Discovery and diagnostics.
 Quantify the return. Establish what
-is at stake. Identify the “size of the
-prize” and root causes of friction.
+is at stake. Identify the â€œsize of the
+prizeâ€ and root causes of friction.
 Get the Value
 EXECUTION & IMPLEMENTATION
 Heavy lifting: process redesign,
@@ -132,7 +132,7 @@ Transparency as Method
 The firm practises vulnerability-based consulting: the willingness to name difficult issues candidly, to
 ask the questions others avoid, and to transfer tools and methods so clients can sustain the work
 independently. This is not a philosophy of comfort. It is a philosophy of trust.
-The commercial evidence speaks for itself. Over 80% of the firm’s clients come from referrals and
+The commercial evidence speaks for itself. Over 80% of the firmâ€™s clients come from referrals and
 repeat engagements.
 
 -- 5 of 24 --
@@ -152,102 +152,102 @@ Human Capital, and TEAM Wellness. These map onto four broad service categories:
 Providing clients with management consulting support across business insights, human capital, and
 business operations.
 Strategy & Design
-• Development of short- and long-term strategic and operational plans
-• Design of business models for new and existing entities needing a refresh
-• End-of-term evaluation of strategic plans and regular reviews of running strategies
-• Establishing and implementing strategy monitoring mechanisms
+â€¢ Development of short- and long-term strategic and operational plans
+â€¢ Design of business models for new and existing entities needing a refresh
+â€¢ End-of-term evaluation of strategic plans and regular reviews of running strategies
+â€¢ Establishing and implementing strategy monitoring mechanisms
 Notable Assignments:
-• Development of Government strategic plans for various ministries and local authorities in
+â€¢ Development of Government strategic plans for various ministries and local authorities in
 Zimbabwe and Namibia
-• Development of business model for a women’s microfinance bank as part of the start-up and
+â€¢ Development of business model for a womenâ€™s microfinance bank as part of the start-up and
 licensing process
-• Development and review of strategy for large private sector players in Financial Services,
+â€¢ Development and review of strategy for large private sector players in Financial Services,
 FMCG, Construction, Health, Energy, and Retail
 Governance & Policy
-• Board inductions and training on governance matters
-• Developing strategic direction and accountability mechanisms
-• Board performance evaluations and contracts
-• Board–management teambuilding
+â€¢ Board inductions and training on governance matters
+â€¢ Developing strategic direction and accountability mechanisms
+â€¢ Board performance evaluations and contracts
+â€¢ Boardâ€“management teambuilding
 Notable Assignments:
-• Facilitation of Board Inductions for various State-Owned Enterprises and private sector
+â€¢ Facilitation of Board Inductions for various State-Owned Enterprises and private sector
 companies
-• Evaluation of Board Performance for various multi-sector institutions
-• Development of Board Performance Contracts for various state-owned enterprises
+â€¢ Evaluation of Board Performance for various multi-sector institutions
+â€¢ Development of Board Performance Contracts for various state-owned enterprises
 Operations
-• Supply chain optimisation
+â€¢ Supply chain optimisation
 
 -- 7 of 24 --
 
-• Business process management and reengineering
-• Cost transformation initiatives
-• Development of best operating policies and procedures
+â€¢ Business process management and reengineering
+â€¢ Cost transformation initiatives
+â€¢ Development of best operating policies and procedures
 Notable Assignments:
-• Redesign and implementation of new procurement models for large mining operations, saving
+â€¢ Redesign and implementation of new procurement models for large mining operations, saving
 USD 4M
-• Business Process Reengineering for players in Manufacturing, IT, Education, Financial
+â€¢ Business Process Reengineering for players in Manufacturing, IT, Education, Financial
 Services, and Construction
-• Review and redesign of manufacturing and distribution operations for consumer goods and
+â€¢ Review and redesign of manufacturing and distribution operations for consumer goods and
 industrial products companies
 Sales, Marketing & Customer Relationship Management
-• Customer strategy and CRM programme development
-• New product design facilitation
-• Customer engagement analysis
+â€¢ Customer strategy and CRM programme development
+â€¢ New product design facilitation
+â€¢ Customer engagement analysis
 Notable Assignments:
-• Analysis and development of CRM programmes for various retail players
-• Facilitation of new product design processes for players in manufacturing, professional services,
+â€¢ Analysis and development of CRM programmes for various retail players
+â€¢ Facilitation of new product design processes for players in manufacturing, professional services,
 and agriculture
 Implementation
-• Strategy and operations implementation planning
-• Implementation monitoring and evaluation
-• Implementation coaching and project management
+â€¢ Strategy and operations implementation planning
+â€¢ Implementation monitoring and evaluation
+â€¢ Implementation coaching and project management
 Notable Assignments:
-• Project Management and Coaching support for implementation of key strategy reforms across
+â€¢ Project Management and Coaching support for implementation of key strategy reforms across
 the entire Government of Zimbabwe, supporting all ministries
-• Coaching and implementation support for ease-of-doing-business reforms in Zimbabwe
+â€¢ Coaching and implementation support for ease-of-doing-business reforms in Zimbabwe
 2. Insights (TEAM Insights)
 Using benchmarking, surveys, research, data analytics, and diagnostic tools to evaluate the operations
 of organisations and market activities, establishing insights to drive improvement and better decision-
 making.
 Analytics & Research
-• Conducting organisation-wide internal surveys and culture assessments
-• Establishing and running benchmarks across companies
-• Conducting market and community engagement surveys
+â€¢ Conducting organisation-wide internal surveys and culture assessments
+â€¢ Establishing and running benchmarks across companies
+â€¢ Conducting market and community engagement surveys
 
 -- 8 of 24 --
 
 Notable Assignments:
-• Large-scale culture and employee engagement surveys for various private and public sector
+â€¢ Large-scale culture and employee engagement surveys for various private and public sector
 players
-• Customer satisfaction and engagement surveys for the retail sector
-• Benchmarking survey and analysis for the education sector
+â€¢ Customer satisfaction and engagement surveys for the retail sector
+â€¢ Benchmarking survey and analysis for the education sector
 3. Human Capital (TEAM Human Capital)
 Supporting organisations by building and strengthening the capacity of leaders and staff, managing
 change, and facilitating culture transformation initiatives.
 Organisation & Culture
-• Leadership development and coaching
-• Culture transformation
-• Change management
-• Teambuilding and facilitation
-• Staff development and capacity building
+â€¢ Leadership development and coaching
+â€¢ Culture transformation
+â€¢ Change management
+â€¢ Teambuilding and facilitation
+â€¢ Staff development and capacity building
 Notable Assignments:
-• Facilitation of leadership development programmes for key players in financial services, health,
+â€¢ Facilitation of leadership development programmes for key players in financial services, health,
 and mining
-• Driving culture transformation processes in financial services, health, and manufacturing
-• Implementing and supporting change initiatives across multiple sectors in public and private
+â€¢ Driving culture transformation processes in financial services, health, and manufacturing
+â€¢ Implementing and supporting change initiatives across multiple sectors in public and private
 entities
 Technology & Digital
-• Developing technology strategies and roadmaps
-• Supporting digital transformation programmes
-• Software business design, including custom software for performance management and
+â€¢ Developing technology strategies and roadmaps
+â€¢ Supporting digital transformation programmes
+â€¢ Software business design, including custom software for performance management and
 implementation tracking
 Notable Assignments:
-• Development of IT Strategy for players in mining and financial services
-• Development of software for performance management (Balanced Scorecard) and
+â€¢ Development of IT Strategy for players in mining and financial services
+â€¢ Development of software for performance management (Balanced Scorecard) and
 implementation tracking (Rapid Results)
 Recruitment & Talent Advisory
-• Organisational staffing support
-• Talent management and job classification
-• Human capital programme design
+â€¢ Organisational staffing support
+â€¢ Talent management and job classification
+â€¢ Human capital programme design
 4. Wellness (TEAM Wellness)
 
 -- 9 of 24 --
@@ -255,25 +255,25 @@ Recruitment & Talent Advisory
 Supporting individuals within organisations to ensure they bring their Head, Heart, and Hands to their
 work, ensuring people are in the correct state and space to give their best.
 Workplace Wellness Support
-• Reviewing and developing customised Staff Wellness Policy and intervention models
-• Conducting Health Culture Baseline Assessments
-• Promoting staff awareness on wellness matters through training and seminars
-• Equipping staff as first-line responders in addressing wellness issues at work
-• Providing individual and group counselling services
-• Monitoring and evaluation of the impact of wellness interventions
-• Supporting organisational staff redeployment or retrenchment processes
+â€¢ Reviewing and developing customised Staff Wellness Policy and intervention models
+â€¢ Conducting Health Culture Baseline Assessments
+â€¢ Promoting staff awareness on wellness matters through training and seminars
+â€¢ Equipping staff as first-line responders in addressing wellness issues at work
+â€¢ Providing individual and group counselling services
+â€¢ Monitoring and evaluation of the impact of wellness interventions
+â€¢ Supporting organisational staff redeployment or retrenchment processes
 Coaching (Five Areas)
-• Life Coaching, dealing with personal life issues
-• Grief Coaching, dealing with personal issues related to loss and grief
-• Business / Work Coaching, supporting the individual with work-specific issues
-• Leadership Coaching, supporting the leader to be more effective
-• Implementation Coaching, supporting teams to effectively implement their goals sustainably
+â€¢ Life Coaching, dealing with personal life issues
+â€¢ Grief Coaching, dealing with personal issues related to loss and grief
+â€¢ Business / Work Coaching, supporting the individual with work-specific issues
+â€¢ Leadership Coaching, supporting the leader to be more effective
+â€¢ Implementation Coaching, supporting teams to effectively implement their goals sustainably
 Notable Assignments:
-• Implemented workplace wellness programmes (training, transitioning, and talking) to support
+â€¢ Implemented workplace wellness programmes (training, transitioning, and talking) to support
 staff in financial services and manufacturing sectors
-• Counselling services for individuals from various corporate organisations, both on their own
+â€¢ Counselling services for individuals from various corporate organisations, both on their own
 behalf and as part of company-wide programmes
-• End-of-life support for staff during organisation restructuring
+â€¢ End-of-life support for staff during organisation restructuring
 
 -- 10 of 24 --
 
@@ -378,7 +378,7 @@ and Manufacturing
 -- 13 of 24 --
 
 A5. Our Partners
-In line with our philosophy that “we are greater than me,” TEAM has established strategic partnerships
+In line with our philosophy that â€œwe are greater than me,â€ TEAM has established strategic partnerships
 to enhance the value delivered to our clients:
 Kippy KPI
 Management Ltd
@@ -399,21 +399,21 @@ diverse organisations realise their full potential. Our footprint covers the Sub
 including Zimbabwe, Zambia, Namibia, Botswana, Mozambique, Uganda, Tanzania, Malawi, South
 Africa, and Lesotho.
 Markets Served
-• Financial Services (Banking, Insurance, Microfinance, and Asset Management)
-• Public Sector and Local Government
-• Manufacturing (Consumer Goods and Industrial Products)
-• Mining, Energy, Oil, and Gas
-• Health and Pharmaceuticals
-• Development Agencies and NGOs
-• Retail
-• Tourism and Hospitality
-• Education and Training
-• Information, Communications, and Technology
-• Automotive and Logistics
-• Construction and Real Estate
-• Agriculture
-• Sports, Media, and Entertainment
-• Professional Services and Independent Representative Bodies
+â€¢ Financial Services (Banking, Insurance, Microfinance, and Asset Management)
+â€¢ Public Sector and Local Government
+â€¢ Manufacturing (Consumer Goods and Industrial Products)
+â€¢ Mining, Energy, Oil, and Gas
+â€¢ Health and Pharmaceuticals
+â€¢ Development Agencies and NGOs
+â€¢ Retail
+â€¢ Tourism and Hospitality
+â€¢ Education and Training
+â€¢ Information, Communications, and Technology
+â€¢ Automotive and Logistics
+â€¢ Construction and Real Estate
+â€¢ Agriculture
+â€¢ Sports, Media, and Entertainment
+â€¢ Professional Services and Independent Representative Bodies
 
 -- 15 of 24 --
 
@@ -431,15 +431,15 @@ Empowerment (ZW), Office of the Prime Minister (ZW), Office of the President and
 Cabinet (ZW), Zimbabwe Investment Development Authority (ZIDA)
 Local Government City of Harare (ZW), Tsumeb Municipality (NM), Omaheke Regional Town Council
 (NM), Gobabis Municipality (NM), Witvlei Rural Council (NM)
-Financial Services –
+Financial Services â€“
 Banking
 Nedbank Namibia, Kingdom Financial Holdings, NMB Bank, BancABC, POSB, First
 Capital Bank, Agribank, Central African Building Society, ZB Financial Holdings
-Financial Services –
+Financial Services â€“
 Microfinance
-Getbucks, MicroKing, Empower Bank, Zimbabwe Women’s Bank Limited, Success
+Getbucks, MicroKing, Empower Bank, Zimbabwe Womenâ€™s Bank Limited, Success
 Microfinance
-Financial Services –
+Financial Services â€“
 Insurance
 Old Mutual Life Assurance Zimbabwe, ZB Reinsurance, Altfin Holdings, Nicoz
 Diamond Insurance, Diamond Seguros (Mozambique), Fidelity Life Assurance,
@@ -448,7 +448,7 @@ Insurance Company (Uganda), Diamond General Insurance (Zambia), Sovereign
 Health, ZB Life Assurance, First Mutual Health, First Mutual Life Assurance, Sanlam
 Insurance (Tanzania), Zimnat Life, Old Mutual Holdings
 Manufacturing
-Proplastics, Zimplow, Adelogue Holdings, Allied Timbers, Décor Design Group, Beta
+Proplastics, Zimplow, Adelogue Holdings, Allied Timbers, DÃ©cor Design Group, Beta
 Holdings, African Distillers, Schweppes Zimbabwe, Beitbridge Juicers, United
 Refineries Limited
 Mining
@@ -503,128 +503,128 @@ Objective
 The website is intended to provide a clean, professional, no-frills representation of who TEAM
 Consulting is, with specific interactive features to engage visitors, generate leads, and support client
 service delivery.
-The website should feel credible, warm, and African. It should reflect TEAM’s faith-rooted philosophy
+The website should feel credible, warm, and African. It should reflect TEAMâ€™s faith-rooted philosophy
 and demonstrate depth of expertise without being overwhelming.
 Domain & Redirects
-• Primary domain: www.teamadvisoryservices.com (or equivalent)
-• Redirect teamqlv.com to this site
-• Redirect team.co.zw to this site
-• Country email addresses to be set up: ZW@teamadvisoryservices.com,
+â€¢ Primary domain: www.teamadvisoryservices.com (or equivalent)
+â€¢ Redirect teamqlv.com to this site
+â€¢ Redirect team.co.zw to this site
+â€¢ Country email addresses to be set up: ZW@teamadvisoryservices.com,
 ZM@teamadvisoryservices.com
 Technical Stack Guidance
-• CMS: Must support easy article/blog posting by non-technical staff
-• Email Integration: MailChimp (or equivalent) for mailing list and automated article notifications
-• Chatbot: Basic FAQ bot triggered by keywords (e.g., “How much is a Strategy Workshop”, “How
-long is a counselling session”). TEAM will supply FAQs and answers.
-• Event Registration: Ability for visitors to register for events and receive automated confirmation
+â€¢ CMS: Must support easy article/blog posting by non-technical staff
+â€¢ Email Integration: MailChimp (or equivalent) for mailing list and automated article notifications
+â€¢ Chatbot: Basic FAQ bot triggered by keywords (e.g., â€œHow much is a Strategy Workshopâ€, â€œHow
+long is a counselling sessionâ€). TEAM will supply FAQs and answers.
+â€¢ Event Registration: Ability for visitors to register for events and receive automated confirmation
 emails; TEAM receives notification of registrations
-• Client Login: Phase 2, redirect to Plutio for project access or training portal for paid training
-• Analytics: Standard web analytics to track traffic and page performance
-• SEO: All pages to be SEO-optimised
+â€¢ Client Login: Phase 2, redirect to Plutio for project access or training portal for paid training
+â€¢ Analytics: Standard web analytics to track traffic and page performance
+â€¢ SEO: All pages to be SEO-optimised
 
 -- 18 of 24 --
 
 B2. Site Structure & Page Specifications
 The website should have the following key pages accessible from the main navigation menu:
 Main Navigation Menu
-• Who Are We, Company overview, philosophy, and values
-• Our Service Offerings, Service areas with sub-pages (dropdown or from the main page)
-• Our Markets & Clients, Sectors served and client hall of fame
-• Why TEAM?, Sub-pages: Our Team, Our Partners, Our Success Stories / Case Studies
-• Ideas @ Work, Blog / Viewpoint, articles and thought leadership
-• Upcoming Events, Training sessions, webinars, events with registration
-• Contact Us, Contact form, FAQ bot, country office details
+â€¢ Who Are We, Company overview, philosophy, and values
+â€¢ Our Service Offerings, Service areas with sub-pages (dropdown or from the main page)
+â€¢ Our Markets & Clients, Sectors served and client hall of fame
+â€¢ Why TEAM?, Sub-pages: Our Team, Our Partners, Our Success Stories / Case Studies
+â€¢ Ideas @ Work, Blog / Viewpoint, articles and thought leadership
+â€¢ Upcoming Events, Training sessions, webinars, events with registration
+â€¢ Contact Us, Contact form, FAQ bot, country office details
 Page-by-Page Specifications
 1. Home / Landing Page
-• Hero section with TEAM tagline: “We Are Greater Than Me”
-• Brief firm introduction (2–3 sentences)
-• Latest 2–3 blog articles from Ideas @ Work, dynamically updated
-• Key statistics (20+ years, 80%+ repeat clients, etc.)
-• Call to action: “Contact Us” and “Explore Our Services”
-• Mailing list subscription widget
+â€¢ Hero section with TEAM tagline: â€œWe Are Greater Than Meâ€
+â€¢ Brief firm introduction (2â€“3 sentences)
+â€¢ Latest 2â€“3 blog articles from Ideas @ Work, dynamically updated
+â€¢ Key statistics (20+ years, 80%+ repeat clients, etc.)
+â€¢ Call to action: â€œContact Usâ€ and â€œExplore Our Servicesâ€
+â€¢ Mailing list subscription widget
 2. Who Are We
-• Full company profile: founding story, philosophy, evolution
-• The Four Strands (Seek, Serve, Steward, Stand)
-• The GREATER Framework
-• Find. Get. Keep. approach
-• Downloadable Company Profile (PDF)
+â€¢ Full company profile: founding story, philosophy, evolution
+â€¢ The Four Strands (Seek, Serve, Steward, Stand)
+â€¢ The GREATER Framework
+â€¢ Find. Get. Keep. approach
+â€¢ Downloadable Company Profile (PDF)
 3. Our Service Offerings
-• Overview page explaining the four business units (Consulting, Insights, Human Capital,
+â€¢ Overview page explaining the four business units (Consulting, Insights, Human Capital,
 Wellness)
-• Drop-down or sub-page for each service area:
-◦ Strategy & Design
-◦ Analytics & Research
-◦ Organisation & Culture
-◦ Technology & Digital
-◦ Operations
-◦ Sales & Marketing
-◦ Implementation
+â€¢ Drop-down or sub-page for each service area:
+â—¦ Strategy & Design
+â—¦ Analytics & Research
+â—¦ Organisation & Culture
+â—¦ Technology & Digital
+â—¦ Operations
+â—¦ Sales & Marketing
+â—¦ Implementation
 
 -- 19 of 24 --
 
-◦ Governance & Policy
-◦ Wellness & Coaching
-• Each sub-page to include: high-level description of the service, key interventions, notable
+â—¦ Governance & Policy
+â—¦ Wellness & Coaching
+â€¢ Each sub-page to include: high-level description of the service, key interventions, notable
 assignments, and a downloadable service profile PDF
-• Related blog articles from Ideas @ Work should appear on each service sub-page
-• Online diagnostic questionnaire (see Free Diagnostic section below)
+â€¢ Related blog articles from Ideas @ Work should appear on each service sub-page
+â€¢ Online diagnostic questionnaire (see Free Diagnostic section below)
 4. Our Markets & Clients
-• List of sectors and markets served
-• Geographic footprint across Sub-Saharan Africa
-• Client Hall of Fame, categorised by sector
-• Named partnerships section (Kippy KPI, eLearning Solutions)
+â€¢ List of sectors and markets served
+â€¢ Geographic footprint across Sub-Saharan Africa
+â€¢ Client Hall of Fame, categorised by sector
+â€¢ Named partnerships section (Kippy KPI, eLearning Solutions)
 5. Why TEAM?
 Sub-pages:
-• Our Team, Consultant profiles (name, role, experience, qualifications, focus areas)
-• Our Partners, Strategic partner profiles with links to partner websites
-• Our Success Stories, At least one case study per service offering area
+â€¢ Our Team, Consultant profiles (name, role, experience, qualifications, focus areas)
+â€¢ Our Partners, Strategic partner profiles with links to partner websites
+â€¢ Our Success Stories, At least one case study per service offering area
 6. Business Unit Pages
 A dedicated page for each business unit is required. Each unit page should:
-• Introduce the unit and its head
-• Describe the related service offerings (same content as service offering pages)
-• Units: TEAM Consulting, TEAM Insights, TEAM Human Capital, TEAM Wellness
-• Country sub-pages to be added in a later phase; for now, Contact Us page must include details
+â€¢ Introduce the unit and its head
+â€¢ Describe the related service offerings (same content as service offering pages)
+â€¢ Units: TEAM Consulting, TEAM Insights, TEAM Human Capital, TEAM Wellness
+â€¢ Country sub-pages to be added in a later phase; for now, Contact Us page must include details
 for each country (Zimbabwe and Zambia)
 7. Ideas @ Work (Blog / Viewpoint)
-• Section for downloadable articles and excerpts from TEAM’s work
-• Must be linkable: articles tagged to service areas, so they appear on the relevant service sub-
+â€¢ Section for downloadable articles and excerpts from TEAMâ€™s work
+â€¢ Must be linkable: articles tagged to service areas, so they appear on the relevant service sub-
 page
-• Landing page should surface latest articles
-• When a new article is posted, it should automatically be emailed to all mailing list subscribers
+â€¢ Landing page should surface latest articles
+â€¢ When a new article is posted, it should automatically be emailed to all mailing list subscribers
 (MailChimp integration)
 8. Upcoming Events
-• List of upcoming training sessions, webinars, and events
-• Each event to have a registration form
-• Upon registration: visitor receives automated confirmation email; TEAM receives notification
-• Events to be managed and updated by non-technical TEAM staff via CMS
+â€¢ List of upcoming training sessions, webinars, and events
+â€¢ Each event to have a registration form
+â€¢ Upon registration: visitor receives automated confirmation email; TEAM receives notification
+â€¢ Events to be managed and updated by non-technical TEAM staff via CMS
 
 -- 20 of 24 --
 
 9. Contact Us
-• Contact form with fields for: name, email, organisation, country, nature of request
-• FAQ chatbot / bot triggered by keywords to answer simple queries
-• Contact details for each country:
-◦ Zimbabwe: ZW@teamadvisoryservices.com
-◦ Zambia: ZM@teamadvisoryservices.com
-• Physical address: Harare, Zimbabwe
-• Phone: +263 XX XXX XXXX
-• Social media links
+â€¢ Contact form with fields for: name, email, organisation, country, nature of request
+â€¢ FAQ chatbot / bot triggered by keywords to answer simple queries
+â€¢ Contact details for each country:
+â—¦ Zimbabwe: ZW@teamadvisoryservices.com
+â—¦ Zambia: ZM@teamadvisoryservices.com
+â€¢ Physical address: Harare, Zimbabwe
+â€¢ Phone: +263 XX XXX XXXX
+â€¢ Social media links
 10. Free Diagnostic (Phase 1 Feature)
-• A section where users input information about their organisation
-• System generates an automated high-level report identifying areas of organisational weakness
-• Linked to the GREATER Framework (Growth, Resilience, Efficiency, Agility, Thrivability,
+â€¢ A section where users input information about their organisation
+â€¢ System generates an automated high-level report identifying areas of organisational weakness
+â€¢ Linked to the GREATER Framework (Growth, Resilience, Efficiency, Agility, Thrivability,
 Engagement, Results)
-• This section will grow over time and should eventually be linked to the Service Offerings pages
-• Downloadable report output to be provided
+â€¢ This section will grow over time and should eventually be linked to the Service Offerings pages
+â€¢ Downloadable report output to be provided
 11. Internal Staff Login (Phase 2)
-• Button for client/staff logins
-• Redirects to Plutio for project access, or to training portal for clients who have paid for training
-• Not required for Phase 1
+â€¢ Button for client/staff logins
+â€¢ Redirects to Plutio for project access, or to training portal for clients who have paid for training
+â€¢ Not required for Phase 1
 12. Journey to Significance (Phase 2)
-• A page dedicated to TEAM’s pro bono and community work
-• Covers the People Leadership Programme (free initiative for primary school learners)
-• Strategic advisory to churches and community organisations
-• Not required for Phase 1
+â€¢ A page dedicated to TEAMâ€™s pro bono and community work
+â€¢ Covers the People Leadership Programme (free initiative for primary school learners)
+â€¢ Strategic advisory to churches and community organisations
+â€¢ Not required for Phase 1
 
 -- 21 of 24 --
 
@@ -635,16 +635,16 @@ Document Where to Feature Status
 Company Profile (full) Who Are We page, Contact Us To be finalised from this
 document
 Service Area Profiles (one per area) Each service sub-page To be created per area
-Training Programme Overview Service Offerings – Wellness & Human
+Training Programme Overview Service Offerings â€“ Wellness & Human
 Capital
 To be provided by TEAM
-Case Studies (one per service area) Why TEAM? – Success Stories To be developed by TEAM
+Case Studies (one per service area) Why TEAM? â€“ Success Stories To be developed by TEAM
 Online Questionnaire / Diagnostic Form Service Offerings page, Free Diagnostic
 page
 To be developed
 Blog Articles / Excerpts Ideas @ Work, relevant service sub-
 pages
-Ongoing – posted by
+Ongoing â€“ posted by
 TEAM staff
 
 -- 22 of 24 --
@@ -666,17 +666,18 @@ work showcase, advanced diagnostics and reporting.
 
 B5. TEAM Consulting Contact Information
 The following contact details should be used on the website and in all digital communications:
-Organisation TEAM Advisory Services / TEAM Consulting
+Organisation TEAM Consulting Team Consulting team consulting TEAM consulting Services / TEAM Consulting
 Headquarters Harare, Zimbabwe
 Website www.teamconsulting.co.zw (to be updated)
 General Email info@team.co.zw
 Zimbabwe Office ZW@teamadvisoryservices.com
 Zambia Office ZM@teamadvisoryservices.com
 Phone +263 77 220 2290
-Redirect from teamqlv.com → main site | team.co.zw → main site
-TEAM CONSULTING · We Are Greater Than Me
+Redirect from teamqlv.com â†’ main site | team.co.zw â†’ main site
+TEAM CONSULTING Â· We Are Greater Than Me
 This document is confidential and intended solely for internal use and website development purposes.
-© TEAM Advisory Services 2026
+Â© TEAM Consulting Team Consulting team consulting TEAM consulting Services 2026
 
 -- 24 of 24 --
+
 

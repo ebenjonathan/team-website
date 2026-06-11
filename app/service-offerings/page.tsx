@@ -16,10 +16,32 @@ export default async function ServiceOfferingsPage() {
     getServiceOfferings(),
   ])
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
+  const servicesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'TEAM Consulting Service Offerings',
+    itemListElement: services.map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.description,
+        url: `${siteUrl}/service-offerings/${service.slug}`,
+        provider: { '@type': 'Organization', name: 'TEAM Consulting' },
+      },
+    })),
+  }
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+      <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Service Offerings</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
@@ -63,9 +85,7 @@ export default async function ServiceOfferingsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
             {services.map((service) => (
-              <Link key={service.id} href={`/service-offerings/${service.slug}`}>
-                <ServiceCard service={service} />
-              </Link>
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>
@@ -97,3 +117,4 @@ export default async function ServiceOfferingsPage() {
     </div>
   )
 }
+

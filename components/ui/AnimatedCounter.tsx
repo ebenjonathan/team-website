@@ -41,9 +41,9 @@ export function AnimatedCounter({
   }, [isInView, target, duration])
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} suppressHydrationWarning>
       {prefix}
-      {count.toLocaleString()}
+      {count.toLocaleString('en-US')}
       {suffix}
     </span>
   )

@@ -4,7 +4,7 @@ import { schemaTypes } from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'TEAM Advisory Studio',
+  title: 'TEAM Consulting Studio',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'local-project-id',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   plugins: [deskTool()],
@@ -12,3 +12,4 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
+

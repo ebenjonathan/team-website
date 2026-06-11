@@ -93,6 +93,7 @@ export const FAQ_QUERY = `
     _id,
     question,
     answer,
+    category,
     keywords,
   }
 `

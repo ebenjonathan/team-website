@@ -1,7 +1,7 @@
 import { mkdir, appendFile } from 'fs/promises'
 import path from 'path'
 
-export type SubmissionChannel = 'contact' | 'event-registration' | 'newsletter'
+export type SubmissionChannel = 'contact' | 'event-registration' | 'newsletter' | 'diagnostic'
 
 interface SubmissionLogEntry {
   channel: SubmissionChannel

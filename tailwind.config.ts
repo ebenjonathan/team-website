@@ -19,8 +19,12 @@ const config: Config = {
         body: '#444444',
       },
       fontFamily: {
-        sans: ['var(--font-roboto)', 'Roboto', 'sans-serif'],
+        // Open Sans is the primary body font across all elements
+        sans: ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
+        // Montserrat used only for display headings (font-heading class)
         heading: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        // Roboto available as utility class font-roboto if needed
+        roboto: ['var(--font-roboto)', 'Roboto', 'sans-serif'],
         nav: ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
       },
       container: {

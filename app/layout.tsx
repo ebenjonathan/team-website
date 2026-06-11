@@ -30,11 +30,11 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    template: '%s | Team Advisory',
-    default: 'Team Advisory — Transforming Ideas Into Strategic Business Solutions',
+    template: '%s | TEAM Consulting',
+    default: 'TEAM Consulting - Transforming Ideas Into Strategic Business Solutions',
   },
   description:
-    'Team Advisory is a premier business consultancy and digital solutions firm. We partner with organisations to design, build, and scale digital experiences that drive measurable impact.',
+    'TEAM Consulting is a premier business consultancy and digital solutions firm. We partner with organisations to design, build, and scale digital experiences that drive measurable impact.',
   keywords: [
     'business consulting',
     'digital solutions',
@@ -43,24 +43,51 @@ export const metadata: Metadata = {
     'Africa',
     'Zimbabwe',
   ],
-  authors: [{ name: 'Team Advisory' }],
-  creator: 'Team Advisory',
+  authors: [{ name: 'TEAM Consulting' }],
+  creator: 'TEAM Consulting',
   openGraph: {
     type: 'website',
     url: siteUrl,
     locale: 'en_ZW',
-    siteName: 'Team Advisory',
-    title: 'Team Advisory — Transforming Ideas Into Strategic Business Solutions',
+    siteName: 'TEAM Consulting',
+    title: 'TEAM Consulting - Transforming Ideas Into Strategic Business Solutions',
     description:
       'Premier business consultancy and digital solutions firm serving clients across Africa and beyond.',
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@teamadvisory',
-    title: 'Team Advisory',
+    title: 'TEAM Consulting',
     description: 'Transforming Ideas Into Strategic Business Solutions',
   },
   robots: { index: true, follow: true },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'TEAM Consulting',
+  alternateName: 'TEAM Consulting',
+  url: siteUrl,
+  logo: `${siteUrl}/images/logo.png`,
+  foundingDate: '2004',
+  description:
+    'TEAM Consulting is a premier business consultancy and digital solutions firm serving clients across Sub-Saharan Africa.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Harare',
+    addressCountry: 'ZW',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+263-77-220-2290',
+    contactType: 'customer service',
+    email: 'info@team.co.zw',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/team-advisory',
+    'https://twitter.com/teamadvisory',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -69,7 +96,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${montserrat.variable} ${roboto.variable} ${openSans.variable}`}
     >
-      <body className="min-h-screen flex flex-col">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
@@ -77,3 +110,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+

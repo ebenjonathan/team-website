@@ -96,10 +96,13 @@ export interface PricingPlan {
   ctaLabel: string
 }
 
+export type FAQCategory = 'General' | 'Services' | 'Approach' | 'Impact' | 'Community'
+
 export interface FAQ {
   id: string
   question: string
   answer: string
+  category?: FAQCategory
   keywords?: string[]
 }
 
@@ -128,6 +131,13 @@ export interface BusinessUnit {
   services: string[]
   head?: string
   image?: string
+  narrative?: string[]
+  salesNarrative?: { heading: string; body: string }[]
+  valueLifecycle?: {
+    find: string
+    get: string
+    keep: string
+  }
 }
 
 export interface NavItem {

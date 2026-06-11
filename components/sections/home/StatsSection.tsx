@@ -1,10 +1,10 @@
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 
 const stats = [
-  { target: 15, suffix: 'k+', label: 'Global Partners' },
-  { target: 89, suffix: '%', label: 'Success Rate' },
-  { display: '2.8M+', label: 'Users Served' },
-  { display: '24/7', label: 'Support Availability' },
+  { target: 20, suffix: '+', label: 'Years in Practice' },
+  { target: 13, suffix: '+', label: 'Consultants and Associates' },
+  { display: '80%+', label: 'Repeat and Referral Clients' },
+  { target: 6, suffix: '+', label: 'Sectors Served' },
 ] as const
 
 export function StatsSection() {

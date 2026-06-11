@@ -20,7 +20,7 @@ export function AboutSection() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden">
               <Image
                 src="/images/about/about-8.webp"
-                alt="About Team Advisory"
+                alt="About TEAM Consulting"
                 fill
                 className="object-cover"
               />
@@ -53,13 +53,13 @@ export function AboutSection() {
               <span className="text-primary">Sustainable Growth</span>
             </h2>
             <p className="text-body leading-relaxed mb-6">
-              Team Advisory is a premier business consultancy and digital solutions firm. We work
+              TEAM Consulting is a premier business consultancy and digital solutions firm. We work
               at the intersection of strategy, technology, and design to help organisations navigate
               complexity and unlock their full potential.
             </p>
             <p className="text-body leading-relaxed mb-8">
               From early-stage startups to established enterprises, we bring clarity, expertise,
-              and execution capability to every engagement — delivering solutions that are as
+              and execution capability to every engagement - delivering solutions that are as
               practical as they are transformative.
             </p>
 
@@ -84,3 +84,4 @@ export function AboutSection() {
     </section>
   )
 }
+

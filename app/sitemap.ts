@@ -1,45 +1,49 @@
 import type { MetadataRoute } from 'next'
-import { businessUnits, caseStudies, events, services } from '@/lib/data'
+import { businessUnits, caseStudies, services } from '@/lib/data'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
-    '',
-    '/who-we-are',
-    '/service-offerings',
-    '/ideas-at-work',
-    '/upcoming-events',
-    '/why-team',
-    '/why-team/our-team',
-    '/why-team/our-partners',
-    '/why-team/our-clients',
-    '/why-team/our-success-stories',
-    '/contact-us',
-  ].map((route) => ({
-    url: `${siteUrl}${route}`,
-    lastModified: new Date(),
-  }))
+  const now = new Date()
 
-  const serviceRoutes = services.map((service) => ({
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: siteUrl, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${siteUrl}/who-we-are`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/service-offerings`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${siteUrl}/ideas-at-work`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${siteUrl}/our-markets-clients`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${siteUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/why-team`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${siteUrl}/why-team/our-team`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/why-team/our-partners`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/why-team/our-clients`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/why-team/our-success-stories`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/free-diagnostic`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/contact-us`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },
+    { url: `${siteUrl}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${siteUrl}/terms`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+  ]
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${siteUrl}/service-offerings/${service.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.7,
   }))
 
-  const caseStudyRoutes = caseStudies.map((study) => ({
+  const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${siteUrl}/ideas-at-work/${study.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.6,
   }))
 
-  const eventRoutes = events.map((event) => ({
-    url: `${siteUrl}/upcoming-events/${event.slug}`,
-    lastModified: new Date(),
-  }))
-
-  const businessUnitRoutes = businessUnits.map((unit) => ({
+  const businessUnitRoutes: MetadataRoute.Sitemap = businessUnits.map((unit) => ({
     url: `${siteUrl}/business-units/${unit.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.6,
   }))
 
-  return [...staticRoutes, ...serviceRoutes, ...caseStudyRoutes, ...eventRoutes, ...businessUnitRoutes]
+  return [...staticRoutes, ...serviceRoutes, ...caseStudyRoutes, ...businessUnitRoutes]
 }

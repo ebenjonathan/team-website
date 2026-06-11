@@ -1,17 +1,29 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, ChevronDown } from 'lucide-react'
+
+const TEAM_LABELS = ['TEAM Consulting', 'TEAM Wellness', 'TEAM Insights', 'TEAM RPA']
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay },
+  transition: { duration: 0.7, delay },
 })
 
 export function HeroSection() {
+  const [labelIndex, setLabelIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLabelIndex((i) => (i + 1) % TEAM_LABELS.length)
+    }, 2500)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-primary-deeper">
       <div className="absolute inset-0">
@@ -19,72 +31,69 @@ export function HeroSection() {
           src="/images/bg/abstract-bg-1.webp"
           alt=""
           fill
-          className="object-cover opacity-15"
+          className="object-cover opacity-10"
           priority
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-deeper via-primary-deeper/90 to-primary/30" />
-
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-deeper via-primary-deeper/95 to-primary/20" />
       <div className="container mx-auto relative z-10 py-24">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <motion.div {...fadeUp(0)}>
-            <span className="inline-flex items-center gap-2 text-primary text-sm font-semibold uppercase tracking-widest mb-6 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full">
+            <span className="inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Strategic Business Solutions
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={labelIndex}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  {TEAM_LABELS[labelIndex]}
+                </motion.span>
+              </AnimatePresence>
             </span>
           </motion.div>
-
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white leading-tight mb-6"
-            {...fadeUp(0.1)}
+            {...fadeUp(0.15)}
           >
-            Transforming Ideas Into{' '}
-            <span className="text-primary">Strategic Business</span> Solutions
+            We Are <span className="text-primary">Greater</span> Than Me
           </motion.h1>
-
           <motion.p
-            className="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl"
-            {...fadeUp(0.2)}
+            className="text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-2xl"
+            {...fadeUp(0.28)}
           >
-            We partner with forward-thinking organisations to design, build, and scale digital
-            experiences that drive measurable impact and lasting growth across Africa and beyond.
+            TEAM Consulting is a dynamic professional services and management advisory group
+            focused on helping organisations unlock full value in people, processes, and products
+            to realise organisational significance.
           </motion.p>
-
-          <motion.div className="flex flex-wrap items-center gap-4" {...fadeUp(0.3)}>
+          <motion.div className="flex flex-wrap items-center gap-4" {...fadeUp(0.4)}>
             <Link
-              href="/contact-us"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-base"
+              href="/free-diagnostic"
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors text-base shadow-lg shadow-primary/30"
             >
-              Start Your Journey <ArrowRight className="w-5 h-5" />
+              Get Free Diagnostic <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/ideas-at-work"
+              href="/service-offerings"
               className="inline-flex items-center gap-2 text-white border border-white/30 px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors text-base"
             >
-              <Play className="w-5 h-5" /> View Our Work
+              Explore Our Services
             </Link>
           </motion.div>
 
-          <motion.div
-            className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-white/10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            {[
-              { value: '15+', label: 'Years Experience' },
-              { value: '500+', label: 'Clients Served' },
-              { value: '1,200+', label: 'Projects Delivered' },
-              { value: '89%', label: 'Client Retention' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-bold font-heading text-primary">{stat.value}</p>
-                <p className="text-sm text-white/60 mt-0.5">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </div>
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 flex flex-col items-center gap-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <ChevronDown className="w-4 h-4 animate-bounce" />
+      </motion.div>
     </section>
   )
 }

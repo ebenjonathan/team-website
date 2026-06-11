@@ -48,3 +48,43 @@
     @apply py-16 md:py-20 lg:py-24;
   }
 }
+
+/* ===== Scroll animations ===== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-in-section.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Infinite horizontal scroll */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.flags-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.logos-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.logos-track-reverse {
+  animation: marquee-reverse 22s linear infinite;
+}
+
+.flags-track:hover,
+.logos-track:hover {
+  animation-play-state: paused;
+}

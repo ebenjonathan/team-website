@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import faqSeed from '@/lib/data/faq-seed.json'
+import { faqItems as faqSeed } from '@/lib/data/faqs'
 import type { FAQ } from '@/types'
 
 interface FaqBotProps {
@@ -19,11 +19,38 @@ export function FaqBot({ items = faqSeed as FAQ[] }: FaqBotProps) {
       return null
     }
 
-    return (
-      items.find((item) =>
-        (item.keywords ?? []).some((keyword) => normalized.includes(keyword.toLowerCase())),
-      ) ?? null
-    )
+    const terms = normalized.split(/\s+/).filter(Boolean)
+
+    const bestMatch = items
+      .map((item) => {
+        const question = item.question.toLowerCase()
+        const answer = item.answer.toLowerCase()
+        const category = item.category?.toLowerCase() ?? ''
+        const keywords = (item.keywords ?? []).map((keyword) => keyword.toLowerCase())
+
+        let score = 0
+
+        if (question.includes(normalized)) score += 10
+        if (answer.includes(normalized)) score += 4
+        if (category.includes(normalized)) score += 6
+
+        for (const keyword of keywords) {
+          if (normalized.includes(keyword) || keyword.includes(normalized)) {
+            score += 12
+          }
+          if (terms.some((term) => keyword.includes(term))) {
+            score += 3
+          }
+        }
+
+        if (terms.some((term) => question.includes(term))) score += 2
+        if (terms.some((term) => answer.includes(term))) score += 1
+
+        return { item, score }
+      })
+      .sort((left, right) => right.score - left.score)[0]
+
+    return bestMatch && bestMatch.score > 0 ? bestMatch.item : null
   }, [items, query])
 
   return (
@@ -56,6 +83,11 @@ export function FaqBot({ items = faqSeed as FAQ[] }: FaqBotProps) {
 
       {match && (
         <div className="mt-4 rounded-md bg-primary-light p-4">
+          {match.category && (
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              {match.category}
+            </p>
+          )}
           <p className="font-semibold text-slate-900">{match.question}</p>
           <p className="mt-2 text-sm text-slate-700">{match.answer}</p>
         </div>
