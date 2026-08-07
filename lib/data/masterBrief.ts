@@ -390,7 +390,97 @@ export const businessUnits: BusinessUnit[] = [
   },
 ]
 
-export const teamMembers: TeamMember[] = []
+export const teamMembers: TeamMember[] = [
+  {
+    id: 'eric-zinyengere',
+    name: 'Dr. Eric D Zinyengere',
+    role: 'Managing Consultant',
+    bio: 'Focus Areas: Strategy, Business Design, Processes, Coaching, Implementation, and Analytics. Sectors: Public Sector, Mining, Development, Financial Services, Professional Services, Manufacturing, Oil & Gas.',
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/eric-d-zinyengere-profile' },
+    yearsConsulting: 23,
+    overallExperience: 25,
+    qualifications: [
+      'PhD in Business Management',
+      'MSc Strategic Management',
+      'BSc (Hons) Applied Mathematics',
+      'Certified Management Consultant (SA)',
+      'Certified KPI Professional (UAE)',
+    ],
+  },
+  {
+    id: 'abigail-zinyengere',
+    name: 'Abigail C Zinyengere',
+    role: 'Wellness & Coaching Lead',
+    bio: 'Focus Areas: Wellness, Coaching, Organisational Development, Change Management, and Culture. Sectors: Public Sector, Manufacturing, Health & Insurance.',
+    image: '/images/female-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/abigail-c-zinyengere-profile' },
+    yearsConsulting: 19,
+    overallExperience: 24,
+    qualifications: [
+      'MSc Strategic Management',
+      'BCom (Hons) Management',
+      'Associate Certified Coach (ICF)',
+      'Certified End of Life Coach',
+    ],
+  },
+  {
+    id: 'tatenda-chikondo',
+    name: 'Tatenda Chikondo',
+    role: 'Senior Consultant',
+    bio: 'Focus Areas: Strategy, Training, Customer Engagement, Organisational Development, and Coaching.',
+    image: '/images/female-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/tatenda-chikondo-profile' },
+    yearsConsulting: 8,
+    overallExperience: 10,
+    qualifications: [
+      'BSc Governance and Leadership',
+      'Certified Management Consultant (SA)',
+    ],
+  },
+  {
+    id: 'fungai-chikwete',
+    name: 'Fungai Chikwete',
+    role: 'Data Analytics & Research Lead',
+    bio: 'Focus Areas: Data Analytics, Research, Benchmarking, Market Intelligence, and Evidence-Led Decision Making.',
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/fungai-chikwete-profile' },
+    yearsConsulting: 11,
+    overallExperience: 13,
+    qualifications: [
+      'MSc Data Analytics',
+      'BSc Statistics',
+      'Certified Market Research Analyst',
+    ],
+  },
+  {
+    id: 'munya-takawira',
+    name: 'Munya Takawira',
+    role: 'Senior Consultant (Engagement)',
+    bio: 'Focus Areas: Organisational Development, Teambuilding, Implementation, and Coaching.',
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/munya-takawira-profile' },
+    yearsConsulting: 6,
+    overallExperience: 20,
+    qualifications: [
+      'BSc Development Studies',
+      'Diploma in Systemic Therapy',
+      'Certified Life Coach',
+      'Certified Counsellor',
+    ],
+  },
+  {
+    id: 'taurai-nyatsanza',
+    name: 'Taurai F Nyatsanza',
+    role: 'Senior Consultant (Business Development & Projects)',
+    bio: 'Focus Areas: Project Management, Strategy, Performance Management, Implementation, and Coaching.',
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/taurai-f-nyatsanza-profile' },
+    yearsConsulting: 7,
+    overallExperience: 20,
+    qualifications: ['MBA Banking & Finance Management', 'BComm (Hons) Finance', 'Diploma in Banking'],
+  },
+]
 
 export const partners: Partner[] = [
   {
