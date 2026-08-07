@@ -25,7 +25,7 @@ export const testimonials: Testimonial[] = [
     id: '3',
     name: 'Naledi Dlamini',
     role: 'Founder',
-    company: 'FreshMart Africa',
+    company: 'FreshMart International',
     quote:
       'Working with TEAM Consulting on our e-commerce platform was a game changer. Sales increased by 180% after launch, and customer feedback has been overwhelmingly positive.',
     image: '/images/person/person-f-6.webp',
@@ -45,7 +45,7 @@ export const testimonials: Testimonial[] = [
     id: '5',
     name: 'Sipho Ndlovu',
     role: 'Entrepreneur',
-    company: 'TechVentures Africa',
+    company: 'TechVentures Group',
     quote:
       'TEAM Consulting are truly world-class. Their attention to detail, proactive communication, and commitment to excellence sets them apart from every other agency we have worked with.',
     image: '/images/person/person-m-12.webp',

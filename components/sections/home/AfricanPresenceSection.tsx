@@ -5,17 +5,17 @@ import { ArrowRight } from 'lucide-react'
 const tiles = [
   {
     src: '/images/corporate/corp-1.webp',
-    alt: 'African leadership team in strategic discussion',
+    alt: 'Leadership team in strategic discussion',
     label: 'Strategic Advisory',
   },
   {
     src: '/images/corporate/corp-2.webp',
-    alt: 'African executives at a corporate boardroom',
+    alt: 'Executives in a corporate boardroom',
     label: 'Human Capital',
   },
   {
     src: '/images/corporate/corp-3.webp',
-    alt: 'African professionals collaborating',
+    alt: 'Professionals collaborating',
     label: 'Governance & Risk',
   },
   {
@@ -25,7 +25,7 @@ const tiles = [
   },
   {
     src: '/images/corporate/corp-5.webp',
-    alt: 'African business executives at a summit',
+    alt: 'Business executives at a summit',
     label: 'Digital Transformation',
   },
 ]
@@ -56,12 +56,12 @@ export function AfricanPresenceSection() {
           Our Footprint
         </p>
         <h2 className="text-3xl md:text-5xl font-bold font-heading text-white leading-tight">
-          Built Across Africa.{' '}
-          <span className="text-primary">Built for African Scale.</span>
+          Working across markets with{' '}
+          <span className="text-primary">practical, people-centred insight.</span>
         </h2>
         <p className="mt-5 max-w-xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed">
-          Two decades of on-the-ground experience across 13+ Sub-Saharan markets — delivering
-          strategy, talent, and technology solutions that last.
+          Our consulting practice is grounded in local realities and shaped by experience in
+          environments where adaptability, trust, and execution matter most.
         </p>
       </div>
 

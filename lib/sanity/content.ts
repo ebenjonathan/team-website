@@ -30,21 +30,23 @@ import { fetchWithFallback } from './fetchWithFallback'
 
 export async function getServiceOfferings(): Promise<Service[]> {
   const data = await fetchWithFallback<any[]>(SERVICES_QUERY, serviceAreas)
-  return data.map((item) => ({
-    id: item._id ?? item.id,
-    slug: item.slug,
-    title: item.title,
-    description: item.description,
-    icon: item.icon ?? 'Briefcase',
-    features: item.features ?? [],
-    notableAssignments: item.notableAssignments ?? [],
-    downloadableProfile: item.downloadableProfile,
-    businessUnit: item.businessUnit,
-    fullDescription: item.fullDescription,
-    benefits: item.benefits,
-    deliverables: item.deliverables,
-    image: item.image,
-  }))
+  return data
+    .filter((item) => item.slug !== 'technology-digital')
+    .map((item) => ({
+      id: item._id ?? item.id,
+      slug: item.slug,
+      title: item.slug === 'strategy-design' ? 'Strategy' : item.title,
+      description: item.description,
+      icon: item.icon ?? 'Briefcase',
+      features: item.features ?? [],
+      notableAssignments: item.notableAssignments ?? [],
+      downloadableProfile: item.downloadableProfile,
+      businessUnit: item.businessUnit,
+      fullDescription: item.fullDescription,
+      benefits: item.benefits,
+      deliverables: item.deliverables,
+      image: item.image,
+    }))
 }
 
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {

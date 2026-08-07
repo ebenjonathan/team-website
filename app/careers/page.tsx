@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Careers',
-  description: 'Join TEAM Consulting Services and build a meaningful consulting career across Africa.',
+  description: 'Join TEAM Consulting Services and build a meaningful consulting career across dynamic international markets.',
 }
 
 export default function CareersPage() {
@@ -34,7 +34,7 @@ export default function CareersPage() {
             TEAM&apos;s long-term, sustainable growth. For young graduates who join us we nurture their talent through a
             well-structured Graduate Trainee Programme. For experienced professionals we offer a fulfilling career where they
             can clearly see their efforts culminating in our team&apos;s success and grow with the group. If you are looking for an
-            exciting career in one of the most grounded firms in Africa, come and speak with us.
+            exciting career with a grounded advisory practice operating across international markets, come and speak with us.
           </p>
         </div>
       </section>

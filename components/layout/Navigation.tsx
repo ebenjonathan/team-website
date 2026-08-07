@@ -10,8 +10,6 @@ export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Who We Are', href: '/who-we-are' },
   { label: 'Service Offerings', href: '/service-offerings' },
-  // { label: 'Our Markets & Clients', href: '/our-markets-clients' },
-  { label: 'Ideas at Work', href: '/ideas-at-work' },
   { label: 'FAQ', href: '/faq' },
   {
     label: 'Why Team?',
@@ -19,8 +17,6 @@ export const navItems: NavItem[] = [
     children: [
       { label: 'Our Team', href: '/why-team/our-team' },
       { label: 'Our Partners', href: '/why-team/our-partners' },
-      { label: 'Our Clients', href: '/why-team/our-clients' },
-      { label: 'Our Success Stories', href: '/why-team/our-success-stories' },
     ],
   },
   { label: 'Free Diagnostic', href: '/free-diagnostic' },

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import type { ClientLogoGroup } from '@/lib/images'
 
 interface ClientLogoGridProps {
@@ -22,9 +23,11 @@ export function ClientLogoGrid({ groups }: ClientLogoGridProps) {
                 key={index}
                 className="flex items-center justify-center bg-white rounded-lg border border-slate-100 p-4 h-20"
               >
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.alt}
+                  width={160}
+                  height={48}
                   loading="lazy"
                   className="h-12 w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
                   onError={(e) => {

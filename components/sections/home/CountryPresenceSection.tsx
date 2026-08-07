@@ -40,7 +40,7 @@ export function CountryPresenceSection() {
           Geographic Footprint
         </p>
         <h2 className="text-2xl font-bold font-heading text-white">
-          Our Presence Across Africa &amp; Beyond
+          A regional footprint with a local lens
         </h2>
       </div>
       <div className="relative">

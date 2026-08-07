@@ -7,7 +7,7 @@ import { getBusinessUnits, getServiceOfferings } from '@/lib/sanity/content'
 export const metadata: Metadata = {
   title: 'Service Offerings',
   description:
-    'Integrated advisory delivered through TEAM Consulting, TEAM Insights, TEAM Human Capital, and TEAM Wellness.',
+    'Integrated advisory support spanning strategy, governance, people, performance, and implementation.',
 }
 
 export default async function ServiceOfferingsPage() {
@@ -54,22 +54,26 @@ export default async function ServiceOfferingsPage() {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Business Units"
-            subtitle="Delivered through four interconnected units"
+            title="Integrated Practice"
+            subtitle="We connect strategy, governance, performance, and implementation through one trusted partner"
             centered
           />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {businessUnits.map((unit) => (
-              <article key={unit.id} className="rounded-xl border border-slate-200 bg-white p-6">
-                <h3 className="text-2xl font-bold text-slate-900">{unit.name}</h3>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">{unit.tagline}</p>
-                <p className="mt-3 text-slate-600">{unit.description}</p>
-                <Link className="mt-4 inline-block text-primary font-semibold" href={`/business-units/${unit.slug}`}>
-                  View Unit Details
-                </Link>
-              </article>
-            ))}
+          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <div className="grid gap-8 md:grid-cols-3">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Practical advisory</h3>
+                <p className="mt-2 text-slate-600">We focus on the issues that matter most to your leadership team and the people who must carry the change forward.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Measured outcomes</h3>
+                <p className="mt-2 text-slate-600">Every engagement is shaped around clarity, accountability, and the conditions needed for sustainable performance.</p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Flexible delivery</h3>
+                <p className="mt-2 text-slate-600">Our associate model brings specialist depth without unnecessary overhead, keeping delivery responsive and cost-conscious.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -79,7 +83,7 @@ export default async function ServiceOfferingsPage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="What We Offer"
-            subtitle="End-to-end solutions for digital transformation"
+            subtitle="End-to-end support for organisations navigating change with confidence"
             centered
           />
 
@@ -96,7 +100,7 @@ export default async function ServiceOfferingsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6">Need Help Prioritising?</h2>
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Start with a GREATER diagnostic to identify quick wins and map the right service pathway.
+            Start with a practical diagnostic to identify quick wins and map the right service pathway.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

@@ -4,10 +4,10 @@ import { CheckCircle } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 
 const highlights = [
-  'Pan-African market expertise and deep local insights',
-  'Agile delivery focused on measurable, real-world outcomes',
-  'Senior consultants with 15+ years of cross-industry experience',
-  'End-to-end execution from strategy through to deployment',
+  'Founded in 2004 and rooted in Harare, Zimbabwe',
+  'Associate-led model that brings specialist depth without unnecessary overhead',
+  '20+ years of advisory experience and 80%+ repeat client relationships',
+  'Practical delivery from strategy through implementation and culture',
 ]
 
 export function AboutSection() {
@@ -34,11 +34,11 @@ export function AboutSection() {
               />
             </div>
             <div className="absolute top-6 -right-6 bg-primary text-white rounded-xl p-4 text-center shadow-xl hidden lg:block">
-              <p className="text-3xl font-bold font-heading leading-none">15+</p>
+              <p className="text-3xl font-bold font-heading leading-none">20+</p>
               <p className="text-xs text-white/80 uppercase tracking-wide mt-1">
                 Years of
                 <br />
-                Excellence
+                Advisory Experience
               </p>
             </div>
           </div>
@@ -49,18 +49,17 @@ export function AboutSection() {
               About Us
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary-deeper mb-6 leading-tight">
-              Your Strategic Partner for{' '}
-              <span className="text-primary">Sustainable Growth</span>
+              Strategic support for organisations that want to{' '}
+              <span className="text-primary">perform with purpose</span>
             </h2>
             <p className="text-body leading-relaxed mb-6">
-              TEAM Consulting is a premier business consultancy and digital solutions firm. We work
-              at the intersection of strategy, technology, and design to help organisations navigate
-              complexity and unlock their full potential.
+              TEAM Consulting is a boutique advisory practice headquartered in Harare, Zimbabwe. We
+              help leaders strengthen governance, sharpen performance, and nurture the people and
+              culture needed to sustain change.
             </p>
             <p className="text-body leading-relaxed mb-8">
-              From early-stage startups to established enterprises, we bring clarity, expertise,
-              and execution capability to every engagement - delivering solutions that are as
-              practical as they are transformative.
+              Our work is grounded in collaboration, stewardship, and practical execution. We bring
+              clarity to complexity and stay close to the people who must carry the result forward.
             </p>
 
             <ul className="space-y-3 mb-10">

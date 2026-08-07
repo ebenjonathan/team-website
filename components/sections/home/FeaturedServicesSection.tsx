@@ -10,8 +10,8 @@ export function FeaturedServicesSection() {
       <div className="container mx-auto">
         <SectionHeader
           eyebrow="What We Do"
-          title="Comprehensive Solutions for Modern Business"
-          subtitle="From strategy to execution, we deliver end-to-end services that transform how you operate and compete."
+          title="Integrated support for growth, governance and performance"
+          subtitle="From strategy and transformation to people, culture and practical implementation, we help organisations move forward with confidence."
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredServices.map((service) => (

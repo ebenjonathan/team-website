@@ -38,8 +38,8 @@ export function TeamToolsSection() {
       <div className="container mx-auto">
         <SectionHeader
           eyebrow="TEAM Tools"
-          title="Purpose-Built Tools for High-Performing Teams"
-          subtitle="A growing suite of digital tools designed to help organisations diagnose, develop, and sustain exceptional team culture."
+          title="Purpose-built tools for organisations that must perform with clarity"
+          subtitle="A growing suite of practical instruments designed to help teams assess health, align effort, and strengthen the habits that sustain change."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

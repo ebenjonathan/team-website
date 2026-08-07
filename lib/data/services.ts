@@ -1,4 +1,4 @@
 import { serviceAreas } from './masterBrief'
 
 export const services = serviceAreas
-export const featuredServices = services.slice(0, 4)
+export const featuredServices = services.filter((service) => service.id !== 'sales-marketing-crm')

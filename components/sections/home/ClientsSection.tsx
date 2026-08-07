@@ -9,7 +9,7 @@ export function ClientsSection() {
         <SectionHeader
           eyebrow="Trusted By"
           title="Organisations That Trust Us"
-          subtitle="We are proud to partner with leading companies across Africa and beyond."
+          subtitle="We are proud to partner with leading companies across diverse markets and beyond."
         />
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {clients.map((client) => (

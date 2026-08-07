@@ -17,9 +17,9 @@ const countryFlagCodes: Record<string, string> = {
 }
 
 export const metadata: Metadata = {
-  title: 'Our Markets & Clients',
+  title: 'Markets & Clients',
   description:
-    'Sectors served, geographic footprint, and TEAM Consulting client hall of fame across Sub-Saharan Africa.',
+    'Sectors served, geographic footprint, and client experience across international markets and beyond.',
 }
 
 export default async function OurMarketsClientsPage() {
@@ -29,10 +29,10 @@ export default async function OurMarketsClientsPage() {
     <div className="min-h-screen bg-white">
       <section className="bg-primary-deeper py-20 text-white">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold">Our Markets & Clients</h1>
+          <h1 className="text-5xl font-bold">Markets & Clients</h1>
           <p className="mt-4 max-w-3xl text-lg text-slate-200">
-            TEAM has supported private, public, and development organisations across Sub-Saharan Africa
-            since 2004, with repeat engagements across multiple sectors.
+            TEAM has worked with private, public, and development organisations across international markets since 2004,
+            building long-term relationships through practical advisory support.
           </p>
         </div>
       </section>

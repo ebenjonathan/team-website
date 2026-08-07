@@ -12,8 +12,8 @@ export function NewsletterSection() {
             Stay Updated with TEAM
           </h2>
           <p className="text-white/65 leading-relaxed max-w-md">
-            Subscribe for new Ideas at Work articles, event announcements, and
-            insight updates from TEAM Consulting.
+            Subscribe for practice notes, advisory updates, and event announcements from TEAM
+            Consulting.
           </p>
         </div>
         <div className="bg-white/5 border border-white/10 rounded-2xl p-8">

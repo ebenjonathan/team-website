@@ -5,15 +5,14 @@ import { Twitter, Facebook, Instagram, Linkedin, Phone, Clock } from 'lucide-rea
 const footerLinks = {
   company: [
     { label: 'Who We Are', href: '/who-we-are' },
-    { label: 'Our Markets & Clients', href: '/our-markets-clients' },
+    { label: 'Service Offerings', href: '/service-offerings' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Why Team?', href: '/why-team' },
     { label: 'Our Team', href: '/why-team/our-team' },
     { label: 'Our Partners', href: '/why-team/our-partners' },
-    { label: 'Success Stories', href: '/why-team/our-success-stories' },
   ],
   services: [
-    { label: 'Strategy & Design', href: '/service-offerings/strategy-design' },
+    { label: 'Strategy', href: '/service-offerings/strategy-design' },
     { label: 'Governance & Policy', href: '/service-offerings/governance-policy' },
     { label: 'Operations', href: '/service-offerings/operations' },
     { label: 'Analytics & Research', href: '/service-offerings/analytics-research' },
@@ -50,8 +49,8 @@ export function Footer() {
               <span className="font-bold font-heading text-xl">TEAM Consulting</span>
             </Link>
             <p className="text-sm text-white/70 leading-relaxed mb-6">
-              Transforming ideas into strategic business solutions. Your trusted partner for digital
-              growth across Africa and beyond.
+              Helping organisations strengthen performance, stewardship, and purpose through practical
+              advisory support.
             </p>
             <div className="flex gap-3">
               {socialLinks.map(({ Icon, label }) => (

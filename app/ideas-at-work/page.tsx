@@ -6,9 +6,9 @@ import { ideasAtWorkArticles } from '@/lib/data'
 import { getCaseStudies, getBlogPosts } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
-  title: 'Ideas at Work',
+  title: 'Practice Notes',
   description:
-    'Explore our case studies showcasing successful projects and measurable business outcomes.',
+    'Explore our case stories, thought leadership, and practical insights from advisory engagements.',
 }
 
 export default async function IdeasAtWorkPage() {
@@ -19,9 +19,9 @@ export default async function IdeasAtWorkPage() {
       {/* Hero */}
       <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Ideas at Work</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Practice Notes</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
-            Discover how TEAM Consulting transforms ideas into successful business outcomes.
+            Discover how TEAM Consulting turns insight into practical outcomes for organisations facing change.
           </p>
         </div>
       </section>
@@ -30,8 +30,8 @@ export default async function IdeasAtWorkPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Our Success Stories"
-            subtitle="Real projects, real results, real impact"
+            title="Selected Case Stories"
+            subtitle="Real projects, real outcomes, and the lessons that stayed with us"
             centered
           />
 

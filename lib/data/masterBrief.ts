@@ -7,7 +7,7 @@ export const companyProfile = {
   foundedIn: 'Zimbabwe',
   overview: [
     'TEAM Consulting is a dynamic professional services and management advisory group focused on helping organisations unlock full value in people, processes, and products to realise organisational significance.',
-    'What began as TEAM Consulting has evolved into TEAM Consulting Services with registered offices in Zimbabwe and Zambia and partner-based arrangements across other African countries.',
+    'What began as TEAM Consulting has evolved into TEAM Consulting Services with registered offices in Zimbabwe and Zambia and partner-based arrangements across other international markets.',
     'The firm runs a cost-effective associate model that combines specialist depth with the responsiveness of a focused boutique practice.',
   ],
   stats: [
@@ -80,7 +80,7 @@ export const serviceAreas: Service[] = [
   {
     id: 'strategy-design',
     slug: 'strategy-design',
-    title: 'Strategy & Design',
+    title: 'Strategy',
     description: 'Strategic and operational planning, business model design, and monitoring mechanisms.',
     icon: 'Briefcase',
     features: [
@@ -143,24 +143,6 @@ export const serviceAreas: Service[] = [
     businessUnit: 'TEAM Consulting',
   },
   {
-    id: 'sales-marketing-crm',
-    slug: 'sales-marketing-crm',
-    title: 'Sales, Marketing & CRM',
-    description: 'Customer strategy, product design facilitation, and customer engagement analytics.',
-    icon: 'TrendingUp',
-    features: [
-      'Customer strategy and CRM programme development',
-      'New product design facilitation',
-      'Customer engagement analysis',
-    ],
-    notableAssignments: [
-      'CRM programme design for retail institutions.',
-      'New product design processes in manufacturing and agriculture.',
-    ],
-    downloadableProfile: '/downloads/service-profile-sales-marketing-crm.pdf',
-    businessUnit: 'TEAM Consulting',
-  },
-  {
     id: 'implementation',
     slug: 'implementation',
     title: 'Implementation',
@@ -213,24 +195,6 @@ export const serviceAreas: Service[] = [
     businessUnit: 'TEAM Human Capital',
   },
   {
-    id: 'technology-digital',
-    slug: 'technology-digital',
-    title: 'Technology & Digital',
-    description: 'Technology strategies, digital transformation programmes, and custom software.',
-    icon: 'Smartphone',
-    features: [
-      'Technology strategy and roadmaps',
-      'Digital transformation programmes',
-      'Custom software for performance tracking',
-    ],
-    notableAssignments: [
-      'IT strategy development for mining and financial services institutions.',
-      'Development of Balanced Scorecard and rapid-results tracking software.',
-    ],
-    downloadableProfile: '/downloads/service-profile-technology-digital.pdf',
-    businessUnit: 'TEAM Human Capital',
-  },
-  {
     id: 'wellness-coaching',
     slug: 'wellness-coaching',
     title: 'Wellness & Coaching',
@@ -279,7 +243,7 @@ export const businessUnits: BusinessUnit[] = [
       },
       {
         heading: 'Beyond the Consultant Cliché: Practical Diagnostics That Bite',
-        body: "You have likely met the typical consultant: heavy on theory, light on grease. TEAM Consulting flips that model. Our unit is structured around five non-negotiable focus areas — Strategy & Design, Governance & Policy, Operations, Sales/Marketing/CRM, and Implementation — but the magic isn't the list; it is the linkage. We do not silo your people problems from your process failures. If your CRM is underutilised, we look at your governance. If your operations are sluggish, we redesign your sales incentives. This is cross-unit collaboration applied as a scalpel, not a sledgehammer. We deliver GREATER outcomes because we refuse to treat insights, human capital, and operations as separate workstreams. To us, they are the same problem viewed from different angles.",
+        body: "You have likely met the typical consultant: heavy on theory, light on grease. TEAM Consulting flips that model. Our unit is structured around four non-negotiable focus areas — Strategy, Governance & Policy, Operations, and Implementation — but the magic isn't the list; it is the linkage. We do not silo your people problems from your process failures. If your operating model is underperforming, we look at your governance. If your operations are sluggish, we redesign the underlying systems. This is cross-unit collaboration applied as a scalpel, not a sledgehammer. We deliver GREATER outcomes because we refuse to treat insights, human capital, and operations as separate workstreams. To us, they are the same problem viewed from different angles.",
       },
       {
         heading: 'The Governance That Saves You From Yourself',
@@ -303,12 +267,12 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Benchmarking, surveys, diagnostics, and data-led insight to improve organisational and market performance.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Insights').map((s) => s.title),
-    head: 'Teddy Tatenda Chikondo',
+    head: 'Fungai Chikwete',
     narrative: [
-      'The most dangerous decisions in business are made on assumptions dressed up as data. Leaders act on outdated benchmarks, incomplete surveys, or anecdotal evidence — and wonder why their interventions miss the mark. TEAM Insights exists to replace guesswork with evidence, giving organisations across Africa the reliable, contextualised intelligence they need to act with confidence.',
+      'The most dangerous decisions in business are made on assumptions dressed up as data. Leaders act on outdated benchmarks, incomplete surveys, or anecdotal evidence — and wonder why their interventions miss the mark. TEAM Insights exists to replace guesswork with evidence, giving organisations across international markets the reliable, contextualised intelligence they need to act with confidence.',
       'We design and deploy large-scale surveys, culture and engagement diagnostics, benchmarking studies, and market research that go beyond surface-level metrics. Our methodology is built to surface the real story — what employees actually experience, how your organisation compares to peers, where market opportunities are underserved, and which interventions are most likely to move the needle. We have run enterprise-wide diagnostics for mining operations, benchmarking studies for the education sector, and community engagement surveys for development agencies.',
       'The insights we generate are not produced for reports that gather dust. Every engagement is designed to produce decision-ready outputs: clear findings, prioritised recommendations, and a line of sight to action. We work closely with leadership teams to interpret the data, challenge comfortable assumptions, and translate evidence into a practical improvement agenda.',
-      'In a continent where quality data is scarce and context matters enormously, TEAM Insights brings African-market intelligence combined with world-class research rigour. When you know your true baseline, you can set meaningful targets, invest in the right places, and demonstrate impact to boards, funders, and regulators.',
+      'In markets where quality data is scarce and context matters enormously, TEAM Insights brings market intelligence combined with world-class research rigour. When you know your true baseline, you can set meaningful targets, invest in the right places, and demonstrate impact to boards, funders, and regulators.',
     ],
     valueLifecycle: {
       find: 'We baseline the current state through surveys, assessments, and benchmarking — establishing a clear, evidence-based picture of where your organisation or market stands.',
@@ -318,15 +282,15 @@ export const businessUnits: BusinessUnit[] = [
     salesNarrative: [
       {
         heading: 'The Decisions You Are Making on Bad Data',
-        body: "Here is an uncomfortable truth: most strategic decisions in African organisations are made on assumptions dressed up as data. A survey from three years ago. Benchmarks borrowed from a different market. An engagement score that nobody interrogated. The result? Interventions that miss the real problem, investments that miss the real opportunity, and boards that receive reports full of numbers that explain nothing. TEAM Insights exists to replace guesswork with evidence — giving your leadership team the reliable, contextualised intelligence it needs to act with genuine confidence.",
+        body: "Here is an uncomfortable truth: most strategic decisions in organisations are made on assumptions dressed up as data. A survey from three years ago. Benchmarks borrowed from a different market. An engagement score that nobody interrogated. The result? Interventions that miss the real problem, investments that miss the real opportunity, and boards that receive reports full of numbers that explain nothing. TEAM Insights exists to replace guesswork with evidence — giving your leadership team the reliable, contextualised intelligence it needs to act with genuine confidence.",
       },
       {
         heading: 'Surveys That Actually Mean Something',
         body: "Not all research is created equal. The difference between a survey that produces a slide deck and a survey that changes how an organisation operates lies entirely in the methodology, the questions, and the interpretive courage of the analyst. Our team designs large-scale diagnostic tools — culture and engagement surveys, benchmarking studies, market intelligence instruments — that are built to surface the real story, not the comfortable one. We have run enterprise-wide diagnostics for mining operations with thousands of employees, sector-wide benchmarking studies that shifted government education policy, and community engagement surveys for some of the world's largest development agencies. We know how to ask the question behind the question.",
       },
       {
-        heading: 'Intelligence That Is African by Design',
-        body: "Generic research frameworks produce generic insights. The dynamics of an organisation operating in Harare, Lusaka, or Nairobi are not the same as one operating in London or New York — and yet most research tools are built on assumptions that do not travel. TEAM Insights brings African-market intelligence combined with world-class research rigour. We understand the cultural dynamics that skew survey responses. We know which benchmarks are locally meaningful and which are borrowed vanity metrics. We design instruments that produce data your leadership team can actually use — and we interpret that data with the contextual depth that offshore providers simply cannot match.",
+        heading: 'Intelligence That Is Designed for Context',
+        body: "Generic research frameworks produce generic insights. The dynamics of an organisation operating in Harare, Lusaka, or Nairobi are not the same as one operating in London or New York — and yet most research tools are built on assumptions that do not travel. TEAM Insights brings market intelligence combined with world-class research rigour. We understand the cultural dynamics that skew survey responses. We know which benchmarks are locally meaningful and which are borrowed vanity metrics. We design instruments that produce data your leadership team can actually use — and we interpret that data with the contextual depth that offshore providers simply cannot match.",
       },
       {
         heading: 'The Unit Lead Driving Evidence-Led Change',
@@ -389,10 +353,10 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Workplace wellness interventions, counselling services, and coaching across life, leadership, and implementation.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Wellness').map((s) => s.title),
-    head: 'Dr Leonard Makoni',
+    head: 'Abigail C Zinyengere',
     narrative: [
       'For years, workplace wellness was treated as a nice-to-have — a benefit programme bolted onto a performance culture that never changed. The evidence is now unambiguous: organisations that invest in the holistic wellbeing of their people outperform those that do not, across every measurable dimension. TEAM Wellness was built on this conviction. We help organisations move from reactive, compliance-driven wellness policies to proactive, culture-embedded wellbeing strategies that improve performance, reduce attrition, and build organisational resilience.',
-      'Our team brings together clinical expertise, coaching depth, and organisational understanding that very few wellness providers in the region can match. We understand that wellness challenges in African workplaces are specific — they involve financial stress, family system pressures, grief, loss, organisational restructuring trauma, and cultural dynamics that generic wellness programmes overlook entirely. We design interventions that are contextually appropriate, clinically sound, and practically sustainable.',
+      'Our team brings together clinical expertise, coaching depth, and organisational understanding that very few wellness providers in the region can match. We understand that wellness challenges in diverse workplaces are specific — they involve financial stress, family system pressures, grief, loss, organisational restructuring trauma, and cultural dynamics that generic wellness programmes overlook entirely. We design interventions that are contextually appropriate, clinically sound, and practically sustainable.',
       'We work across three dimensions of workplace wellness. At the individual level, we provide counselling, coaching, and end-of-life support for employees facing personal and professional crises. At the team level, we design psychological safety interventions, facilitate grief and change processing workshops, and build the relational health that enables high performance. At the organisational level, we develop wellness policies, health culture baselines, and Employee Assistance Programme frameworks that give organisations a structured, measurable approach to employee wellbeing.',
       'Wellness is also an ESG imperative. Investors, funders, and regulators increasingly scrutinise how organisations treat their people. A comprehensive wellness strategy is not just the right thing to do — it is a governance requirement, a talent retention strategy, and a competitive differentiator. TEAM Wellness helps you build both the human case and the business case for a thriving workforce.',
     ],
@@ -407,7 +371,7 @@ export const businessUnits: BusinessUnit[] = [
         body: "There is a number missing from most financial reports: the cost of a workforce that is present but not performing. Burnout, unresolved grief, financial anxiety, unspoken workplace conflict — these do not appear as line items, but they show up everywhere else. In the missed deadline. In the brilliant employee who quietly resigned. In the team that produces technically acceptable work but has stopped caring about excellence. The research is unambiguous: organisations that invest meaningfully in employee wellbeing outperform those that do not, across productivity, retention, innovation, and client satisfaction. TEAM Wellness was built to help organisations capture that return — systematically, sustainably, and with clinical rigour.",
       },
       {
-        heading: 'Wellness That Understands the African Context',
+        heading: 'Wellness That Understands the Local Context',
         body: "Generic wellness programmes are designed for generic workplaces. But an employee in Harare, Lusaka, or Dar es Salaam is navigating a set of pressures — financial volatility, family system obligations, grief, community trauma, the weight of being the first in one's family to hold a professional position — that most off-the-shelf EAP providers have never encountered. TEAM Wellness brings clinical depth and cultural fluency in equal measure. Our practitioners understand the dynamics that shape employee experience in African organisations, and they design interventions that meet people where they actually are, not where a Western wellness template assumes them to be.",
       },
       {
@@ -432,11 +396,12 @@ export const teamMembers: TeamMember[] = [
     name: 'Eric D Zinyengere',
     role: 'Managing Consultant',
     bio: 'Focus Areas: Strategy, Business Design, Processes, Coaching, Implementation, and Analytics. Sectors: Public Sector, Mining, Development, Financial Services, Professional Services, Manufacturing, Oil & Gas.',
-    image: '/images/person/person-m-2.webp',
-    socialLinks: { linkedin: '#' },
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/eric-d-zinyengere-profile' },
     yearsConsulting: 23,
     overallExperience: 25,
     qualifications: [
+      'PhD in Business Management',
       'MSc Strategic Management',
       'BSc (Hons) Applied Mathematics',
       'Certified Management Consultant (SA)',
@@ -446,10 +411,10 @@ export const teamMembers: TeamMember[] = [
   {
     id: 'abigail-zinyengere',
     name: 'Abigail C Zinyengere',
-    role: 'Operating Consultant',
-    bio: 'Focus Areas: Organisational Development, Process Re-engineering, Performance Management, and Coaching. Sectors: Public Sector, Manufacturing, Health & Insurance.',
-    image: '/images/person/person-f-1.webp',
-    socialLinks: { linkedin: '#' },
+    role: 'Wellness & Coaching Lead',
+    bio: 'Focus Areas: Wellness, Coaching, Organisational Development, Change Management, and Culture. Sectors: Public Sector, Manufacturing, Health & Insurance.',
+    image: '/images/female-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/abigail-c-zinyengere-profile' },
     yearsConsulting: 19,
     overallExperience: 24,
     qualifications: [
@@ -460,34 +425,32 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: 'dr-leonard-makoni',
-    name: 'Dr Leonard Makoni',
-    role: 'Principal Consultant (Workplace Wellness)',
-    bio: 'Focus Areas: Workplace Wellness, Counselling, Culture Transformation, Change Management, and Coaching.',
-    image: '/images/person/person-m-4.webp',
-    socialLinks: { linkedin: '#' },
-    yearsConsulting: 7,
-    overallExperience: 28,
+    id: 'tatenda-chikondo',
+    name: 'Tatenda Chikondo',
+    role: 'Senior Consultant',
+    bio: 'Focus Areas: Strategy, Training, Customer Engagement, Organisational Development, and Coaching.',
+    image: '/images/female-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/tatenda-chikondo-profile' },
+    yearsConsulting: 8,
+    overallExperience: 10,
     qualifications: [
-      'Master of Philosophy in Veterinary Medicine',
-      'Advanced Certificate in Counselling',
-      'Certified Grief & End of Life Coach',
-      'Diploma in General Management',
+      'BSc Governance and Leadership',
+      'Certified Management Consultant (SA)',
     ],
   },
   {
-    id: 'teddy-chikondo',
-    name: 'Teddy Tatenda Chikondo',
-    role: 'Principal Consultant (Training & Strategy)',
-    bio: 'Focus Areas: Strategy, Performance Management, Training, Customer Engagement, Organisational Development, and Coaching.',
-    image: '/images/person/person-f-3.webp',
-    socialLinks: { linkedin: '#' },
-    yearsConsulting: 15,
-    overallExperience: 17,
+    id: 'fungai-chikwete',
+    name: 'Fungai Chikwete',
+    role: 'Data Analytics & Research Lead',
+    bio: 'Focus Areas: Data Analytics, Research, Benchmarking, Market Intelligence, and Evidence-Led Decision Making.',
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/fungai-chikwete-profile' },
+    yearsConsulting: 11,
+    overallExperience: 13,
     qualifications: [
-      'BSc Tourism and Hospitality Management',
-      'MSc Governance and Leadership',
-      'Certified Management Consultant (SA)',
+      'MSc Data Analytics',
+      'BSc Statistics',
+      'Certified Market Research Analyst',
     ],
   },
   {
@@ -495,8 +458,8 @@ export const teamMembers: TeamMember[] = [
     name: 'Munya Takawira',
     role: 'Senior Consultant (Engagement)',
     bio: 'Focus Areas: Organisational Development, Teambuilding, Implementation, and Coaching.',
-    image: '/images/person/person-m-8.webp',
-    socialLinks: { linkedin: '#' },
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/munya-takawira-profile' },
     yearsConsulting: 6,
     overallExperience: 20,
     qualifications: [
@@ -511,8 +474,8 @@ export const teamMembers: TeamMember[] = [
     name: 'Taurai F Nyatsanza',
     role: 'Senior Consultant (Business Development & Projects)',
     bio: 'Focus Areas: Project Management, Strategy, Performance Management, Implementation, and Coaching.',
-    image: '/images/person/person-f-6.webp',
-    socialLinks: { linkedin: '#' },
+    image: '/images/male-profile.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/taurai-f-nyatsanza-profile' },
     yearsConsulting: 7,
     overallExperience: 20,
     qualifications: ['MBA Banking & Finance Management', 'BComm (Hons) Finance', 'Diploma in Banking'],
@@ -618,7 +581,7 @@ export const caseStudies: CaseStudy[] = [
       'A broad reform agenda required aligned execution, governance discipline, and ministry-level coordination.',
     approach:
       'TEAM delivered implementation coaching, PMO support, and structured monitoring to keep reforms on track.',
-    services: ['Implementation', 'Governance & Policy', 'Strategy & Design'],
+    services: ['Implementation', 'Governance & Policy', 'Strategy'],
   },
   {
     id: 'case-mining-procurement',
@@ -645,12 +608,12 @@ export const caseStudies: CaseStudy[] = [
     id: 'case-microfinance-model',
     slug: 'womens-microfinance-bank-model',
     title: "Women's Microfinance Bank Business Model",
-    category: 'Strategy & Design',
+    category: 'Strategy',
     client: "Women's Microfinance Bank (start-up)",
     duration: 'Licensing phase',
     image: '/images/portfolio/portfolio-5.webp',
     summary: 'Business model design and strategic framework during start-up and licensing.',
-    tags: ['Strategy & Design', 'Financial Services', 'GREATER: Growth & Engagement'],
+    tags: ['Strategy', 'Financial Services', 'GREATER: Growth & Engagement'],
     metrics: [
       { label: 'Business Model', value: 'Licensing-ready' },
       { label: 'Strategic Framework', value: 'Completed' },
@@ -660,7 +623,7 @@ export const caseStudies: CaseStudy[] = [
       'No operational business model, strategic framework, or licensing-ready documentation existed for a government-backed microfinance start-up.',
     approach:
       'TEAM designed a gender-intentional business model and full regulatory documentation enabling launch readiness and strategic clarity.',
-    services: ['Strategy & Design', 'Implementation'],
+    services: ['Strategy', 'Implementation'],
   },
   {
     id: 'case-culture-survey',
@@ -687,7 +650,7 @@ export const caseStudies: CaseStudy[] = [
     id: 'case-ecommerce-boom',
     slug: 'ecommerce-boom-300-sales-growth',
     title: 'E-Commerce Boom: 300% Sales Growth',
-    category: 'Strategy & Design',
+    category: 'Strategy',
     client: 'Traditional Retailer',
     duration: '12 months',
     image: '/images/portfolio/portfolio-1.webp',
@@ -703,13 +666,13 @@ export const caseStudies: CaseStudy[] = [
       'Legacy systems, website crashes, manual order processing, no personalisation, and no inventory integration were preventing the retailer from competing in the digital market.',
     approach:
       'TEAM built a cloud-native platform with click-and-collect, AI personalisation, EcoCash integration, and real-time inventory management, enabling the retailer to handle 10x traffic spikes.',
-    services: ['Strategy & Design', 'Operations'],
+    services: ['Strategy', 'Operations'],
   },
   {
     id: 'case-digital-banking',
     slug: 'digital-banking-revolution-500k-users',
     title: 'Digital Banking Revolution: 500k+ Users',
-    category: 'Strategy & Design',
+    category: 'Strategy',
     client: 'Traditional Bank',
     duration: '18 months',
     image: '/images/portfolio/portfolio-2.webp',
@@ -725,7 +688,7 @@ export const caseStudies: CaseStudy[] = [
       'The bank was losing daily financial relevance to fintechs while retaining custody of large client balances, with no mobile-first offering to compete.',
     approach:
       'TEAM built a secure, intuitive, behaviour-shaping mobile app with automated savings, QR payments, biometric authentication, and real-time transaction insights.',
-    services: ['Strategy & Design', 'Analytics & Research'],
+    services: ['Strategy', 'Analytics & Research'],
   },
   {
     id: 'case-manufacturing',
@@ -747,7 +710,7 @@ export const caseStudies: CaseStudy[] = [
       'Data silos, reactive maintenance, 60% unplanned downtime, low digital literacy, and escalating legacy costs were hindering competitiveness.',
     approach:
       'TEAM deployed IoT sensors, edge computing, AI predictive maintenance, a cloud data lake, and comprehensive digital upskilling programmes.',
-    services: ['Operations', 'Strategy & Design', 'Analytics & Research'],
+    services: ['Operations', 'Strategy', 'Analytics & Research'],
   },
 ]
 
@@ -758,7 +721,7 @@ export const ideasAtWorkArticles = [
     title: 'Unlocking Organisational Significance Through GREATER Outcomes',
     excerpt:
       'Outcomes matter more in business because they measure real-world impact — revenue growth, customer satisfaction, problem-solving — rather than just the effort or inputs invested.',
-    tags: ['Strategy & Design', 'Implementation'],
+    tags: ['Strategy', 'Implementation'],
     downloadUrl: '/downloads/ideas-at-work-value-to-significance.pdf',
     body: [
       {
@@ -784,16 +747,16 @@ export const ideasAtWorkArticles = [
       {
         heading: 'Beyond Outputs: Realising Organisational Significance',
         content:
-          'We help organisations across Africa, from financial services to manufacturing, from government to development agencies, to diagnose where real value is being left on the table and design interventions that stick. TEAM offers four integrated business units: TEAM Consulting, advisory excellence in strategy, governance, and execution. TEAM Insights, evidence-led decisions through research and analytics. TEAM Human Capital, building leadership, culture, and capability. TEAM Wellness, head, heart, and hands at work. The question is not whether your organisation is performing. The question is: what would be possible if you were performing across all seven dimensions of GREATER? Let\'s find out together.',
+          'We help organisations across diverse markets, from financial services to manufacturing, from government to development agencies, to diagnose where real value is being left on the table and design interventions that stick. TEAM offers four integrated business units: TEAM Consulting, advisory excellence in strategy, governance, and execution. TEAM Insights, evidence-led decisions through research and analytics. TEAM Human Capital, building leadership, culture, and capability. TEAM Wellness, head, heart, and hands at work. The question is not whether your organisation is performing. The question is: what would be possible if you were performing across all seven dimensions of GREATER? Let\'s find out together.',
       },
     ],
   },
   {
     id: 'article-2',
     slug: 'building-resilient-organisations-in-volatile-markets',
-    title: "Building Resilience in Volatile Markets: A GREATER Approach to Africa's Dynamic Operating Landscape",
+    title: "Building Resilience in Volatile Markets: A GREATER Approach to Dynamic Operating Landscapes",
     excerpt:
-      "In today's global economy, volatility is no longer an intermittent shock — it is a structural condition. Nowhere is this more evident than in African markets.",
+      "In today's global economy, volatility is no longer an intermittent shock — it is a structural condition. Nowhere is this more evident than in dynamic markets.",
     tags: ['Governance & Policy', 'Operations'],
     downloadUrl: '/downloads/ideas-at-work-resilience.pdf',
     body: [
@@ -810,7 +773,7 @@ export const ideasAtWorkArticles = [
       {
         heading: 'Climate Change: Agricultural Volatility Intensifies',
         content:
-          'In Q2 2024, cocoa prices rose 183% year-on-year after climate shocks in West Africa. Coffee prices jumped 88% following droughts in Brazil and Vietnam in early 2025.',
+          'In Q2 2024, cocoa prices rose 183% year-on-year after climate shocks in key producing regions. Coffee prices jumped 88% following droughts in Brazil and Vietnam in early 2025.',
       },
       {
         heading: 'Technology and Energy: The AI Revolution Drives Demand',
@@ -825,7 +788,7 @@ export const ideasAtWorkArticles = [
       {
         heading: 'Want to Go Deeper? TEAM Can Help',
         content:
-          'TEAM Consulting, from redesigning your operating model to embedding resilience into governance structures, we work alongside your leadership to make volatility a competitive advantage. TEAM Insights, understand your exposure to geopolitical, climate, and supply chain risks before they materialise, with African market-specific intelligence. TEAM Human Capital, resilience requires resilient people. We help you build the mindsets and skills to navigate uncertainty at every level. TEAM Wellness, our wellness programmes ensure that your people remain focused, supported, and effective, even in turbulent times.',
+          'TEAM Consulting, from redesigning your operating model to embedding resilience into governance structures, we work alongside your leadership to make volatility a competitive advantage. TEAM Insights, understand your exposure to geopolitical, climate, and supply chain risks before they materialise, with market-specific intelligence. TEAM Human Capital, resilience requires resilient people. We help you build the mindsets and skills to navigate uncertainty at every level. TEAM Wellness, our wellness programmes ensure that your people remain focused, supported, and effective, even in turbulent times.',
       },
     ],
   },
@@ -881,7 +844,7 @@ export const ideasAtWorkArticles = [
       {
         heading: 'Want to Go Deeper?',
         content:
-          'TEAM Consulting, from designing wellness-aligned operating models to embedding wellbeing into governance structures. TEAM Insights, measure engagement, identify burnout risks, and track wellness ROI with African market-specific intelligence. TEAM Human Capital, we help you build the mindsets, behaviours, and frameworks to sustain wellbeing at every level. TEAM Wellness, from Employee Assistance Programmes to resilience coaching and leadership wellbeing, our hands-on support ensures your people thrive, not just survive.',
+          'TEAM Consulting, from designing wellness-aligned operating models to embedding wellbeing into governance structures. TEAM Insights, measure engagement, identify burnout risks, and track wellness ROI with market-specific intelligence. TEAM Human Capital, we help you build the mindsets, behaviours, and frameworks to sustain wellbeing at every level. TEAM Wellness, from Employee Assistance Programmes to resilience coaching and leadership wellbeing, our hands-on support ensures your people thrive, not just survive.',
       },
     ],
   },
@@ -938,8 +901,8 @@ export const faqBotQuestions: FAQ[] = [
     id: 'faq-3',
     question: 'Do you work outside Zimbabwe?',
     answer:
-      'Yes. TEAM has worked across Sub-Saharan Africa including Zambia, Namibia, Botswana, Mozambique, Uganda, Tanzania, Malawi, South Africa, and Lesotho.',
-    keywords: ['countries', 'outside zimbabwe', 'zambia', 'africa'],
+      'Yes. TEAM has worked across regional markets including Zambia, Namibia, Botswana, Mozambique, Uganda, Tanzania, Malawi, South Africa, and Lesotho.',
+    keywords: ['countries', 'outside zimbabwe', 'zambia', 'international'],
   },
 ]
 

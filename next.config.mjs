@@ -46,7 +46,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // unsafe-eval required by Next.js dev mode; tighten in prod if possible
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com",
+              "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: blob: https://cdn.sanity.io https://cdn.dribbble.com https://flagcdn.com",
               "connect-src 'self'",
               "frame-ancestors 'none'",

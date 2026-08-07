@@ -24,7 +24,10 @@ export default async function WhoWeArePage() {
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">{profile.name}</h1>
             <p className="text-2xl font-semibold text-primary-light">{profile.tagline}</p>
-            <p className="text-xl text-slate-200 mt-6 leading-relaxed">{profile.overview[0]}</p>
+            <p className="text-xl text-slate-200 mt-6 leading-relaxed">
+              We help organisations move from intention to impact through practical transformation,
+              stewardship, and people-centred execution.
+            </p>
           </div>
         </div>
       </section>
@@ -33,7 +36,7 @@ export default async function WhoWeArePage() {
       <div className="relative h-64 md:h-80 overflow-hidden">
         <Image
           src="/images/corporate/corp-2.webp"
-          alt="African professionals at work"
+          alt="Professionals at work"
           fill
           priority
           className="object-cover object-center"
@@ -42,10 +45,10 @@ export default async function WhoWeArePage() {
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-4">
             <p className="text-white/70 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Pan-African Expertise
+              Consulting with local depth
             </p>
             <p className="text-white text-2xl md:text-3xl font-bold font-heading max-w-md leading-snug">
-              Where African organisations come to grow.
+              Where organisations come to strengthen performance and purpose.
             </p>
           </div>
         </div>
@@ -55,7 +58,7 @@ export default async function WhoWeArePage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="About TEAM"
-            subtitle="Founded in Zimbabwe in 2004 and serving clients across Sub-Saharan Africa"
+            subtitle="Founded in Harare, Zimbabwe in 2004 and built around a flexible associate model"
             centered
           />
 
@@ -167,19 +170,19 @@ export default async function WhoWeArePage() {
                 Why Choose TEAM
               </p>
               <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary-deeper mb-6 leading-tight">
-                Consulting that Transfers, <span className="text-primary">Not Just Advises</span>
+                Consulting that builds capacity, <span className="text-primary">not just advice</span>
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                TEAM practices vulnerability-based consulting: naming difficult issues candidly,
-                asking the questions others avoid, and transferring methods so clients sustain
-                results independently.
+                TEAM works with candour and care: surfacing the issues that matter, asking the
+                difficult questions early, and transferring methods so clients can sustain results
+                independently.
               </p>
               <ul className="space-y-4">
                 {[
                   'Candid diagnostics that surface what others miss',
-                  'Methodology transfer — your team owns the outcome',
-                  'Senior consultants from first brief to final delivery',
-                  'Deep cultural roots across Sub-Saharan markets',
+                  'Methodology transfer so your team owns the outcome',
+                  'Senior advisors involved from first brief to final delivery',
+                  'Deep local insight across diverse international markets',
                 ].map((point) => (
                   <li key={point} className="flex items-start gap-3 text-slate-600">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
@@ -196,7 +199,7 @@ export default async function WhoWeArePage() {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Our Geographical Presence"
-            subtitle="Serving clients across Sub-Saharan Africa and beyond"
+            subtitle="Working with clients across diverse markets and beyond"
             centered
           />
           <div className="mt-12">

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Twitter, Instagram, Linkedin } from 'lucide-react'
 import type { TeamMember } from '@/types'
 
 interface TeamCardProps {
@@ -21,6 +21,8 @@ export function TeamCard({ member }: TeamCardProps) {
           {member.socialLinks.twitter && (
             <a
               href={member.socialLinks.twitter}
+              target="_blank"
+              rel="noreferrer"
               className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Twitter"
             >
@@ -30,19 +32,23 @@ export function TeamCard({ member }: TeamCardProps) {
           {member.socialLinks.linkedin && (
             <a
               href={member.socialLinks.linkedin}
+              target="_blank"
+              rel="noreferrer"
               className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin className="w-2.5 h-2.5" />
             </a>
           )}
           {member.socialLinks.instagram && (
             <a
               href={member.socialLinks.instagram}
+              target="_blank"
+              rel="noreferrer"
               className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Instagram"
             >
-              <Instagram className="w-4 h-4" />
+              <Instagram className="w-2.5 h-2.5" />
             </a>
           )}
         </div>

@@ -6,7 +6,7 @@ export const faqItems: FAQ[] = [
     category: 'General',
     question: 'What is TEAM Consulting?',
     answer:
-      'TEAM Consulting is a management consulting and advisory firm based in Harare, Zimbabwe. Founded in 2004, the firm helps organisations unlock value across people, processes, and strategy to drive measurable and sustainable transformation.',
+      'TEAM Consulting is a boutique advisory practice headquartered in Harare, Zimbabwe. Founded in 2004, the firm helps organisations unlock value across people, processes, governance, and performance.',
     keywords: ['team consulting', 'what is team consulting', 'company overview', 'harare', 'management consulting'],
   },
   {
@@ -14,7 +14,7 @@ export const faqItems: FAQ[] = [
     category: 'General',
     question: 'What industries does TEAM Consulting serve?',
     answer:
-      'The firm works across financial services, construction, health, agriculture, entertainment, and international development, adapting its approach to each sector’s unique challenges.',
+      'The firm works across financial services, manufacturing, health, education, public sector, and development-related contexts, adapting its approach to each sector’s unique challenges.',
     keywords: ['industries', 'sectors', 'financial services', 'construction', 'health', 'international development'],
   },
   {
@@ -22,7 +22,7 @@ export const faqItems: FAQ[] = [
     category: 'General',
     question: 'What makes TEAM Consulting different from other consulting firms?',
     answer:
-      'TEAM Consulting delivers integrated solutions rather than isolated services. It combines strategy, execution, culture, and technology into one cohesive transformation approach.',
+      'TEAM Consulting delivers integrated solutions rather than isolated services. It combines strategy, execution, culture, and governance into one cohesive transformation approach.',
     keywords: ['different', 'why team', 'integrated solutions', 'transformation approach', 'consulting firm'],
   },
   {
@@ -30,7 +30,7 @@ export const faqItems: FAQ[] = [
     category: 'Approach',
     question: 'What does “We Are Greater Than Me” mean?',
     answer:
-      'It reflects a philosophy of collective success over individual gain, emphasizing collaboration, shared purpose, and organisational significance.',
+      'It reflects a philosophy of collective success over individual gain, emphasizing collaboration, shared purpose, and organizational significance.',
     keywords: ['greater than me', 'philosophy', 'collective success', 'collaboration', 'shared purpose'],
   },
   {
@@ -54,7 +54,7 @@ export const faqItems: FAQ[] = [
     category: 'Services',
     question: 'What services does TEAM Consulting offer?',
     answer:
-      'Services span strategy, organisational development, governance, process improvement, automation, culture transformation, and talent advisory.',
+      'Services span strategy, governance, operations, research, culture transformation, and leadership support.',
     keywords: ['services', 'strategy', 'governance', 'automation', 'culture transformation', 'talent advisory'],
   },
   {
@@ -184,22 +184,6 @@ export const faqItems: FAQ[] = [
     answer:
       'It ensures that transformation initiatives are adopted effectively through structured communication, leadership alignment, and employee engagement.',
     keywords: ['change management', 'transformation initiatives', 'structured communication', 'employee engagement'],
-  },
-  {
-    id: 'faq-24',
-    category: 'Impact',
-    question: 'Who are some of TEAM Consulting’s clients?',
-    answer:
-      'Clients include major organisations such as ZB Financial Holdings, Masimba Holdings, and CBZ Holdings.',
-    keywords: ['clients', 'zb financial holdings', 'masimba holdings', 'cbz holdings'],
-  },
-  {
-    id: 'faq-25',
-    category: 'Impact',
-    question: 'Does TEAM Consulting work with international organisations?',
-    answer:
-      'Yes. The firm has worked with institutions aligned with the World Bank, IFC, and UN system.',
-    keywords: ['international organisations', 'world bank', 'ifc', 'un system'],
   },
   {
     id: 'faq-26',

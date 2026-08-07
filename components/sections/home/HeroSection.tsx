@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 
-const TEAM_LABELS = ['TEAM Consulting', 'TEAM Wellness', 'TEAM Insights', 'TEAM RPA']
+const TEAM_LABELS = ['Strategy', 'Governance', 'People', 'Performance']
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -64,9 +64,8 @@ export function HeroSection() {
             className="text-lg md:text-xl text-white/75 leading-relaxed mb-10 max-w-2xl"
             {...fadeUp(0.28)}
           >
-            TEAM Consulting is a dynamic professional services and management advisory group
-            focused on helping organisations unlock full value in people, processes, and products
-            to realise organisational significance.
+            We partner with leaders who need practical transformation, stronger stewardship, and
+            better outcomes in the moments that matter most.
           </motion.p>
           <motion.div className="flex flex-wrap items-center gap-4" {...fadeUp(0.4)}>
             <Link

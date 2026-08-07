@@ -31,34 +31,37 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: '%s | TEAM Consulting',
-    default: 'TEAM Consulting - Transforming Ideas Into Strategic Business Solutions',
+    default: 'TEAM Consulting | Advisory for growth, governance and performance',
   },
   description:
-    'TEAM Consulting is a premier business consultancy and digital solutions firm. We partner with organisations to design, build, and scale digital experiences that drive measurable impact.',
+    'TEAM Consulting is a boutique advisory practice helping organisations strengthen governance, performance, and people-centred execution.',
   keywords: [
     'business consulting',
-    'digital solutions',
+    'governance',
     'strategy',
-    'web development',
-    'Africa',
+    'performance',
+    'international advisory',
     'Zimbabwe',
   ],
   authors: [{ name: 'TEAM Consulting' }],
   creator: 'TEAM Consulting',
+  icons: {
+    icon: '/images/favicon.png',
+  },
   openGraph: {
     type: 'website',
     url: siteUrl,
     locale: 'en_ZW',
     siteName: 'TEAM Consulting',
-    title: 'TEAM Consulting - Transforming Ideas Into Strategic Business Solutions',
+    title: 'TEAM Consulting | Advisory for growth, governance and performance',
     description:
-      'Premier business consultancy and digital solutions firm serving clients across Africa and beyond.',
+      'Boutique advisory practice serving clients across international markets with practical, people-centred support.',
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@teamadvisory',
     title: 'TEAM Consulting',
-    description: 'Transforming Ideas Into Strategic Business Solutions',
+    description: 'Advisory for growth, governance and performance',
   },
   robots: { index: true, follow: true },
 }
@@ -72,7 +75,7 @@ const organizationSchema = {
   logo: `${siteUrl}/images/logo.png`,
   foundingDate: '2004',
   description:
-    'TEAM Consulting is a premier business consultancy and digital solutions firm serving clients across Sub-Saharan Africa.',
+    'TEAM Consulting is a boutique advisory practice supporting organisations across international markets with practical, people-centred expertise.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Harare',
@@ -95,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`${montserrat.variable} ${roboto.variable} ${openSans.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <script
