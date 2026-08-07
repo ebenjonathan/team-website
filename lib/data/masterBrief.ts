@@ -393,7 +393,7 @@ export const businessUnits: BusinessUnit[] = [
 export const teamMembers: TeamMember[] = [
   {
     id: 'eric-zinyengere',
-    name: 'Eric D Zinyengere',
+    name: 'Dr. Eric D Zinyengere',
     role: 'Managing Consultant',
     bio: 'Focus Areas: Strategy, Business Design, Processes, Coaching, Implementation, and Analytics. Sectors: Public Sector, Mining, Development, Financial Services, Professional Services, Manufacturing, Oil & Gas.',
     image: '/images/male-profile.png',
@@ -868,7 +868,7 @@ export const events: Event[] = [
       { time: '10:55', title: 'Live diagnostic walkthrough' },
       { time: '11:20', title: 'Q&A' },
     ],
-    speakers: [{ name: 'Eric D Zinyengere', title: 'Managing Consultant', company: 'TEAM Consulting' }],
+    speakers: [{ name: 'Dr. Eric D Zinyengere', title: 'Managing Consultant', company: 'TEAM Consulting' }],
   },
   {
     id: 'event-2',
