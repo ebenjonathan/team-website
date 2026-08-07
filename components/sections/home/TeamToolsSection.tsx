@@ -7,7 +7,8 @@ const tools = [
     name: 'TEAM Culture Storybook',
     description:
       "Capture and share your organisation's culture narrative — values, rituals, and the stories that define who you are.",
-    status: 'coming-soon' as const,
+    status: 'live' as const,
+    url: 'https://team-storybook.vercel.app/',
   },
   {
     icon: ClipboardList,
@@ -70,7 +71,18 @@ export function TeamToolsSection() {
                       isPlaceholder ? 'text-primary-deeper/50' : 'text-primary-deeper'
                     }`}
                   >
-                    {tool.name}
+                    {tool.url ? (
+                      <a
+                        href={tool.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:text-primary transition-colors"
+                      >
+                        {tool.name}
+                      </a>
+                    ) : (
+                      tool.name
+                    )}
                   </h3>
                   <p className={`text-sm leading-relaxed ${isPlaceholder ? 'text-body/40' : 'text-body'}`}>
                     {tool.description}
