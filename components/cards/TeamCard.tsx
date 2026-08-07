@@ -5,17 +5,24 @@ interface TeamCardProps {
   member: TeamMember
 }
 
+const isPlaceholderImage = (image?: string) =>
+  image?.endsWith('/male-profile.png') || image?.endsWith('/female-profile.png')
+
 export function TeamCard({ member }: TeamCardProps) {
+  const hideImage = isPlaceholderImage(member.image)
+
   return (
     <div className="overflow-hidden rounded-xl bg-white border border-gray-100 hover:shadow-xl transition-all duration-300">
-      <div className="relative h-72 overflow-hidden">
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-      </div>
+      {!hideImage && (
+        <div className="relative h-72 overflow-hidden">
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover transition-transform duration-500"
+          />
+        </div>
+      )}
       <div className="p-5 text-center">
         <h3 className="font-bold font-heading text-primary-deeper text-lg">
           {member.socialLinks?.linkedin ? (
