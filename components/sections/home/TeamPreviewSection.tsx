@@ -9,11 +9,11 @@ export function TeamPreviewSection() {
     <section className="py-20 bg-primary-light">
       <div className="container mx-auto">
         <SectionHeader
-          eyebrow="Our People"
-          title="The Minds Behind the Work"
-          subtitle="A multidisciplinary team of strategists, designers, engineers, and marketers united by a passion for impact."
+          eyebrow="TEAM Leadership"
+          title="Coaches, Catalysts & Principal Consultants"
+          subtitle="The Principal Consultants who lead TEAM Consulting's advisory engagements."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {featuredTeam.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
@@ -23,7 +23,7 @@ export function TeamPreviewSection() {
             href="/why-team/our-team"
             className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
           >
-            Meet the full team <ArrowRight className="w-4 h-4" />
+            Meet TEAM Leadership <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

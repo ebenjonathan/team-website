@@ -2,30 +2,29 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { Phone, Clock3 } from 'lucide-react'
 import { ContactForm } from '@/components/forms/ContactForm'
-import { FaqBot, SectionHeader } from '@/components/ui'
-import { contacts, downloads } from '@/lib/data'
+import { SectionHeader } from '@/components/ui'
+import { FAQAccordion } from '@/components/faq/FAQAccordion'
+import { downloads } from '@/lib/data'
 import { faqItems as fallbackFaqItems } from '@/lib/data/faqs'
-import { getCountryContacts, getDownloadResources, getFaqItems } from '@/lib/sanity/content'
+import { getDownloadResources, getFaqItems } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Contact TEAM Consulting in Zimbabwe or Zambia, submit inquiries, and access FAQ support.',
+  description: 'Contact TEAM Consulting in Zimbabwe, submit inquiries, and access FAQ support.',
+  alternates: { canonical: '/contact-us' },
+  openGraph: {
+    title: 'Contact Us | TEAM Consulting',
+    description: 'Contact TEAM Consulting in Zimbabwe, submit inquiries, and access FAQ support.',
+    url: '/contact-us',
+  },
 }
 
 export default async function ContactUsPage() {
-  const [countryContacts, downloadResources, faqItems] = await Promise.all([
-    getCountryContacts(),
+  const [downloadResources, faqItems] = await Promise.all([
     getDownloadResources(),
     getFaqItems(),
   ])
   const faqList = faqItems.length ? faqItems : fallbackFaqItems
-
-  const zw = Array.isArray(countryContacts)
-    ? countryContacts.find((item: any) => item.country === 'Zimbabwe')
-    : null
-  const zm = Array.isArray(countryContacts)
-    ? countryContacts.find((item: any) => item.country === 'Zambia')
-    : null
 
   return (
     <div className="min-h-screen">
@@ -76,23 +75,6 @@ export default async function ContactUsPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Image
-                    src="https://flagcdn.com/w20/zm.png"
-                    alt="Zambia flag"
-                    width={20}
-                    height={14}
-                    className="mt-1 rounded-sm"
-                    unoptimized
-                  />
-                  <div>
-                    <p className="font-medium text-slate-900">Lusaka, Zambia</p>
-                    <a href="mailto:ZM@teamadvisoryservices.com" className="block text-sm hover:text-primary transition-colors">
-                      ZM@teamadvisoryservices.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
                   <Clock3 className="mt-0.5 h-4 w-4 text-primary" />
                   <div>
                     <p className="font-medium text-slate-900">Business Hours</p>
@@ -109,13 +91,20 @@ export default async function ContactUsPage() {
 
               <h4 className="font-bold text-slate-900 mb-2">Connect With Us</h4>
               <div className="flex gap-4">
-                <a href="https://www.linkedin.com" className="text-slate-600 hover:text-primary">
+                <a
+                  href="https://zw.linkedin.com/company/teamadvisory"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-600 hover:text-primary"
+                >
                   LinkedIn
                 </a>
-                <a href="https://x.com" className="text-slate-600 hover:text-primary">
-                  Twitter
-                </a>
-                <a href="https://www.facebook.com" className="text-slate-600 hover:text-primary">
+                <a
+                  href="https://www.facebook.com/TEAMConsult/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-600 hover:text-primary"
+                >
                   Facebook
                 </a>
               </div>
@@ -145,36 +134,29 @@ export default async function ContactUsPage() {
           {/* Divider */}
           <div className="border-t border-slate-200 my-12"></div>
 
-          {/* Contact Form */}
-          <div id="get-in-touch" className="max-w-2xl">
-            <SectionHeader
-              title="Send Us a Message"
-              subtitle="Tell us about your project"
-            />
+          {/* Contact Form + FAQ, side by side on desktop */}
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+            <div id="get-in-touch">
+              <SectionHeader
+                title="Send Us a Message"
+                subtitle="Tell us about your project"
+              />
 
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
-            <FaqBot items={faqList} />
-
-            <div className="space-y-4">
-              {faqList.map((item) => (
-                <article key={item.id} className="rounded-lg bg-white p-6">
-                  <h3 className="font-bold text-slate-900">{item.question}</h3>
-                  <p className="mt-2 text-slate-600">{item.answer}</p>
-                </article>
-              ))}
+              <div className="mt-8">
+                <ContactForm />
+              </div>
             </div>
+
+            <FAQAccordion
+              items={faqList.slice(0, 5)}
+              eyebrow="FAQ"
+              title="Frequently Asked Questions"
+              subtitle="Quick answers before you reach out."
+              showSearch={false}
+              showCategoryFilter={false}
+              footerHref="/faq"
+              footerLabel="View All FAQs"
+            />
           </div>
         </div>
       </section>

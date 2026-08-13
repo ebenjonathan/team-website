@@ -7,7 +7,7 @@ export const companyProfile = {
   foundedIn: 'Zimbabwe',
   overview: [
     'TEAM Consulting is a dynamic professional services and management advisory group focused on helping organisations unlock full value in people, processes, and products to realise organisational significance.',
-    'What began as TEAM Consulting has evolved into TEAM Consulting Services with registered offices in Zimbabwe and Zambia and partner-based arrangements across other international markets.',
+    'What began as TEAM Consulting has evolved into TEAM Consulting Services with a registered office in Zimbabwe and partner-based arrangements extending into Nigeria and other international markets.',
     'The firm runs a cost-effective associate model that combines specialist depth with the responsiveness of a focused boutique practice.',
   ],
   stats: [
@@ -103,6 +103,25 @@ export const serviceAreas: Service[] = [
     ],
     downloadableProfile: '/downloads/service-profile-strategy-design.pdf',
     businessUnit: 'TEAM Consulting',
+    deliveryFramework: [
+      {
+        title: 'Strategic Response',
+        delivery: {
+          toolkits: ['Corporate Strategy', 'Managing by Values', 'Operational Strategy'],
+          training: ['Strategy Execution', 'Value Gaps', 'Organisational Alignment'],
+          evaluation: ['Corporate Strategy', 'Managing by Values', 'Operational Strategy', 'Org Restructuring'],
+        },
+      },
+      {
+        title: 'Strategy Focused Organisation',
+        delivery: {
+          toolkits: ['Developing Balanced Scorecards (BSC)', 'Using the BSC'],
+          training: ['Assessing Organisational Focus on Strategy'],
+          evaluation: ['Implementing BSCs for Strategy Execution and/or Performance Management'],
+          advisory: ['Administering the BSC'],
+        },
+      },
+    ],
   },
   {
     id: 'governance-policy',
@@ -141,6 +160,42 @@ export const serviceAreas: Service[] = [
     ],
     downloadableProfile: '/downloads/service-profile-operations.pdf',
     businessUnit: 'TEAM Consulting',
+    deliveryFramework: [
+      {
+        title: 'Supply Chain Management',
+        delivery: {
+          toolkits: ['Procurement', 'World Class Manufacturing', 'Asset Care'],
+          training: ['Overall Supply Chain', 'Procurement', 'Manufacturing', 'Asset Care', 'Inventory Management'],
+          evaluation: [
+            'Overall Supply Chain',
+            'Procurement',
+            'Manufacturing',
+            'Asset Care',
+            'Inventory Management',
+            'Logistics Management',
+          ],
+          advisory: ['Overall Supply Chain', 'Procurement', 'Asset Care', 'Logistics Management'],
+        },
+      },
+      {
+        title: 'Business Process Management',
+        delivery: {
+          toolkits: ['Business Process Analysis', 'Business Process Improvement', 'Total Quality'],
+          training: ['Business Process Alignment', 'Best Practice Comparison', 'Quality Improvement'],
+          evaluation: ['Business Process Alignment', 'Business Process Reengineering', 'Total Quality'],
+        },
+      },
+      {
+        title: 'Information Technology Management',
+        note: 'IT sub-section',
+        delivery: {
+          toolkits: ['IT Alignment to Business Needs', 'Best Practice Use of IT'],
+          training: ['Knowledge Management Process', 'IT Alignment to Business Needs'],
+          evaluation: ['Knowledge Management Strategy', 'IT Strategy', 'IT Sourcing & Selection'],
+          advisory: ['Knowledge Management', 'IT Implementation'],
+        },
+      },
+    ],
   },
   {
     id: 'implementation',
@@ -193,6 +248,24 @@ export const serviceAreas: Service[] = [
     ],
     downloadableProfile: '/downloads/service-profile-organisation-culture.pdf',
     businessUnit: 'TEAM Human Capital',
+    deliveryFramework: [
+      {
+        title: 'Team Dynamics',
+        delivery: {
+          toolkits: ['Understanding and Overcoming the Dysfunctions of a Team'],
+          training: ['How Dysfunctional Is Your Team'],
+          evaluation: ['Facing, Overcoming and Managing Team Dysfunctions'],
+        },
+      },
+      {
+        title: 'Market and Customer Management',
+        delivery: {
+          toolkits: ['Customer Care', 'Account Relationship Management'],
+          training: ['Customer Care', 'Customer Relationship Management'],
+          evaluation: ['Customer Relationship Management', 'Marketing Activities'],
+        },
+      },
+    ],
   },
   {
     id: 'wellness-coaching',
@@ -224,7 +297,7 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Management consulting support across business insights, human capital, and operations to deliver GREATER outcomes.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Consulting').map((s) => s.title),
-    head: 'Eric D Zinyengere',
+    head: 'Dr Eric Dumisani Zinyengere',
     narrative: [
       'Most organisations know what they want to achieve. The challenge is closing the gap between a compelling strategy and disciplined, day-to-day execution. TEAM Consulting exists precisely for that gap. We work alongside leadership teams to identify where value is being left on the table — whether through weak governance structures, misaligned strategy, inefficient operations, or disconnected sales and delivery functions.',
       'Our approach is built on radical transparency. Before we recommend a single intervention, we invest time in understanding your real situation — not the version that looks good in reports, but the one your teams live every day. We call this "entering the danger": asking the questions others avoid, surfacing the friction no-one wants to name, and working with you to quantify the size of the prize if things were running as they should.',
@@ -251,7 +324,7 @@ export const businessUnits: BusinessUnit[] = [
       },
       {
         heading: 'The Unit Lead Who Has Done It Before',
-        body: "A unit is only as good as its principal. Eric D Zinyengere leads this charge — not as a career academic, but as a management practitioner who understands that implementation is where theory goes to die. Under Eric's direction, TEAM Consulting does not chase vanity metrics. We chase transformation. We ask the uncomfortable questions about your operating model, your human capital alignment, and why your last three initiatives stalled. Eric's mandate is simple: ensure that every diagnostic ends in a practical, fundable, executable roadmap. When you discuss a potential engagement with him, you aren't talking to a salesperson — you are talking to the person who will personally ensure your ROI is visible.",
+        body: "A unit is only as good as its principal. Dr Eric Dumisani Zinyengere leads this charge — not as a career academic, but as a management practitioner who understands that implementation is where theory goes to die. Under Eric's direction, TEAM Consulting does not chase vanity metrics. We chase transformation. We ask the uncomfortable questions about your operating model, your human capital alignment, and why your last three initiatives stalled. Eric's mandate is simple: ensure that every diagnostic ends in a practical, fundable, executable roadmap. When you discuss a potential engagement with him, you aren't talking to a salesperson — you are talking to the person who will personally ensure your ROI is visible.",
       },
       {
         heading: "The Invitation: Let's Discuss the How",
@@ -267,7 +340,6 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Benchmarking, surveys, diagnostics, and data-led insight to improve organisational and market performance.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Insights').map((s) => s.title),
-    head: 'Fungai Chikwete',
     narrative: [
       'The most dangerous decisions in business are made on assumptions dressed up as data. Leaders act on outdated benchmarks, incomplete surveys, or anecdotal evidence — and wonder why their interventions miss the mark. TEAM Insights exists to replace guesswork with evidence, giving organisations across international markets the reliable, contextualised intelligence they need to act with confidence.',
       'We design and deploy large-scale surveys, culture and engagement diagnostics, benchmarking studies, and market research that go beyond surface-level metrics. Our methodology is built to surface the real story — what employees actually experience, how your organisation compares to peers, where market opportunities are underserved, and which interventions are most likely to move the needle. We have run enterprise-wide diagnostics for mining operations, benchmarking studies for the education sector, and community engagement surveys for development agencies.',
@@ -293,8 +365,8 @@ export const businessUnits: BusinessUnit[] = [
         body: "Generic research frameworks produce generic insights. The dynamics of an organisation operating in Harare, Lusaka, or Nairobi are not the same as one operating in London or New York — and yet most research tools are built on assumptions that do not travel. TEAM Insights brings market intelligence combined with world-class research rigour. We understand the cultural dynamics that skew survey responses. We know which benchmarks are locally meaningful and which are borrowed vanity metrics. We design instruments that produce data your leadership team can actually use — and we interpret that data with the contextual depth that offshore providers simply cannot match.",
       },
       {
-        heading: 'The Unit Lead Driving Evidence-Led Change',
-        body: "Teddy Tatenda Chikondo leads TEAM Insights with a rare combination of research discipline and strategic instinct. Teddy understands that the purpose of analytics is not to describe the past — it is to illuminate the path forward. Under her leadership, every research engagement is designed with one question at its centre: what decision does this data need to support? That orientation changes everything about how surveys are designed, how findings are presented, and how recommendations are prioritised. When you commission research through TEAM Insights, you are not buying a report — you are buying clarity.",
+        heading: 'Research Discipline Paired With Strategic Instinct',
+        body: "TEAM Insights is led by a rare combination of research discipline and strategic instinct. The practice understands that the purpose of analytics is not to describe the past — it is to illuminate the path forward. Every research engagement is designed with one question at its centre: what decision does this data need to support? That orientation changes everything about how surveys are designed, how findings are presented, and how recommendations are prioritised. When you commission research through TEAM Insights, you are not buying a report — you are buying clarity.",
       },
       {
         heading: "The Invitation: Let's Map Your Blind Spots",
@@ -310,7 +382,7 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Leadership development, culture transformation, change management, and digital capability support.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Human Capital').map((s) => s.title),
-    head: 'Abigail C Zinyengere',
+    head: 'Abigail Mapamba-Zinyengere',
     narrative: [
       'Strategy is only as strong as the people executing it. When organisations invest in rigorous planning but neglect the human architecture — the culture, leadership capability, and change readiness of their teams — even the best strategies stall. TEAM Human Capital works at the intersection of people and performance, helping organisations build the leadership depth, cultural coherence, and digital capability required to operate at their full potential.',
       'Culture transformation is one of the most misunderstood disciplines in management consulting. Too often it is reduced to a values poster and an annual survey. Our work goes deeper. We use evidence-based diagnostics to map the current culture, identify the specific behaviours and structures driving dysfunction, and co-design a transformation roadmap with your leadership team. Change management is not a communication plan — it is an organisational design challenge, and we treat it as such.',
@@ -337,7 +409,7 @@ export const businessUnits: BusinessUnit[] = [
       },
       {
         heading: 'The Unit Lead Who Built It From the Inside',
-        body: "Abigail C Zinyengere leads TEAM Human Capital with 19 years of consulting experience and the practical depth of someone who has sat in the room when difficult decisions were made. Abigail's approach is direct: she will tell you what your culture is actually doing to your performance, not what you want to hear about it. Her background spans organisational development, process re-engineering, performance management, and coaching — which means she understands that human capital challenges are almost always entangled with structural and process failures. She will not let you fix one without addressing the other.",
+        body: "Abigail Mapamba-Zinyengere leads TEAM Human Capital with 19 years of consulting experience and the practical depth of someone who has sat in the room when difficult decisions were made. Abigail's approach is direct: she will tell you what your culture is actually doing to your performance, not what you want to hear about it. Her background spans organisational development, team effectiveness, performance management, and coaching — which means she understands that human capital challenges are almost always entangled with structural and process failures. She will not let you fix one without addressing the other.",
       },
       {
         heading: "The Invitation: Let's Diagnose Your Human Architecture",
@@ -353,7 +425,6 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Workplace wellness interventions, counselling services, and coaching across life, leadership, and implementation.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Wellness').map((s) => s.title),
-    head: 'Abigail C Zinyengere',
     narrative: [
       'For years, workplace wellness was treated as a nice-to-have — a benefit programme bolted onto a performance culture that never changed. The evidence is now unambiguous: organisations that invest in the holistic wellbeing of their people outperform those that do not, across every measurable dimension. TEAM Wellness was built on this conviction. We help organisations move from reactive, compliance-driven wellness policies to proactive, culture-embedded wellbeing strategies that improve performance, reduce attrition, and build organisational resilience.',
       'Our team brings together clinical expertise, coaching depth, and organisational understanding that very few wellness providers in the region can match. We understand that wellness challenges in diverse workplaces are specific — they involve financial stress, family system pressures, grief, loss, organisational restructuring trauma, and cultural dynamics that generic wellness programmes overlook entirely. We design interventions that are contextually appropriate, clinically sound, and practically sustainable.',
@@ -379,8 +450,8 @@ export const businessUnits: BusinessUnit[] = [
         body: "Most organisations think about wellness reactively: something breaks, someone reaches a crisis point, and then support is scrambled. This model is both expensive and ineffective. The organisations that build genuine resilience are those that treat wellbeing as a strategic priority — embedded in leadership behaviour, governance policy, and daily operating norms — not as an HR afterthought. TEAM Wellness works at three levels simultaneously: individual counselling and coaching for those in acute need; team-level interventions that build psychological safety and relational health; and organisational-level policy and governance frameworks that make wellbeing structurally impossible to ignore.",
       },
       {
-        heading: 'The Unit Lead Bringing Clinical Depth to the Boardroom',
-        body: "Dr Leonard Makoni leads TEAM Wellness with 28 years of experience spanning veterinary medicine, counselling, grief support, and organisational change. That breadth is not incidental — it reflects a practitioner who has learned to sit with complexity, ambiguity, and human pain in contexts far more demanding than a corporate boardroom. Dr Makoni understands that workplace wellness is not a soft topic. It is a leadership imperative, a governance requirement, and an ESG obligation. He brings that conviction — along with clinical precision and organisational acuity — to every engagement TEAM Wellness takes on.",
+        heading: 'Clinical Depth Brought to the Boardroom',
+        body: "TEAM Wellness is built on the conviction that workplace wellness is not a soft topic. It is a leadership imperative, a governance requirement, and an ESG obligation. The practice brings clinical precision and organisational acuity — spanning counselling, grief support, and organisational change — to every engagement, treating complexity, ambiguity, and human pain with the same rigour it applies in the boardroom.",
       },
       {
         heading: "The Invitation: Let's Talk About Your People",
@@ -393,92 +464,34 @@ export const businessUnits: BusinessUnit[] = [
 export const teamMembers: TeamMember[] = [
   {
     id: 'eric-zinyengere',
-    name: 'Dr. Eric D Zinyengere',
-    role: 'Managing Consultant',
-    bio: 'Focus Areas: Strategy, Business Design, Processes, Coaching, Implementation, and Analytics. Sectors: Public Sector, Mining, Development, Financial Services, Professional Services, Manufacturing, Oil & Gas.',
-    image: '/images/male-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/eric-d-zinyengere-profile' },
+    name: 'Dr Eric Dumisani Zinyengere',
+    role: 'Coach, Catalyst & Principal Consultant',
+    bio: 'Dr Eric Dumisani Zinyengere is a Coach, Catalyst and Principal Consultant at TEAM Consulting, committed to helping people and organisations unlock their full potential and translate ambition into meaningful, sustainable results. A Certified Management Consultant (CMC) and experienced management consultant and trainer, Eric brings extensive experience in strategy, organisational performance, leadership, governance and transformation. He has worked across the public and private sectors, including five years as National Country Coach supporting Government of Zimbabwe reforms focused on improving the business environment. His consulting philosophy is grounded in understanding before prescribing, practical execution, and building organisational capability that lasts beyond the engagement. His work spans strategic planning, organisational alignment, performance management, leadership development, governance and institutional transformation. Beyond consulting, Eric has contributed to professional associations, boards and Christian ministry organisations, and has lectured in Leadership and Management at diploma and master’s levels. He is particularly passionate about stewardship, leadership development, purposeful organisations and developing people who can create lasting significance.',
+    image: '/images/eric.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/zinyengere/' },
     yearsConsulting: 23,
     overallExperience: 25,
     qualifications: [
-      'PhD in Business Management',
+      'PhD of Organizational Leadership',
+      'MA Leadership & Management',
       'MSc Strategic Management',
       'BSc (Hons) Applied Mathematics',
-      'Certified Management Consultant (SA)',
-      'Certified KPI Professional (UAE)',
+      'Certified Management Consultant (CMC)',
     ],
   },
   {
     id: 'abigail-zinyengere',
-    name: 'Abigail C Zinyengere',
-    role: 'Wellness & Coaching Lead',
-    bio: 'Focus Areas: Wellness, Coaching, Organisational Development, Change Management, and Culture. Sectors: Public Sector, Manufacturing, Health & Insurance.',
-    image: '/images/female-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/abigail-c-zinyengere-profile' },
+    name: 'Abigail Mapamba-Zinyengere',
+    role: 'Coach & Principal Consultant',
+    bio: 'Abigail Mapamba-Zinyengere is a Coach and Principal Consultant at TEAM Consulting, with a strong focus on people, leadership, team effectiveness and organisational culture. She brings experience in business planning, coaching, balanced scorecard implementation, team building and organisational development. Her approach centres on helping leaders and teams understand how their behaviours, relationships and ways of working influence organisational performance. At TEAM Consulting, Abigail contributes to interventions focused on leadership development, team dynamics, organisational culture, team building and facilitation. Her work is grounded in creating environments where people can collaborate effectively, navigate challenges constructively and contribute meaningfully to organisational goals.',
+    image: '/images/abigail.png',
+    socialLinks: { linkedin: 'https://www.linkedin.com/in/abigail-mapamba-zinyengere-11130559/' },
     yearsConsulting: 19,
     overallExperience: 24,
     qualifications: [
-      'MSc Strategic Management',
+      'MSc Strategic Management (University of Derby)',
       'BCom (Hons) Management',
-      'Associate Certified Coach (ICF)',
-      'Certified End of Life Coach',
     ],
-  },
-  {
-    id: 'tatenda-chikondo',
-    name: 'Tatenda Chikondo',
-    role: 'Senior Consultant',
-    bio: 'Focus Areas: Strategy, Training, Customer Engagement, Organisational Development, and Coaching.',
-    image: '/images/female-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/tatenda-chikondo-profile' },
-    yearsConsulting: 8,
-    overallExperience: 10,
-    qualifications: [
-      'BSc Governance and Leadership',
-      'Certified Management Consultant (SA)',
-    ],
-  },
-  {
-    id: 'fungai-chikwete',
-    name: 'Fungai Chikwete',
-    role: 'Data Analytics & Research Lead',
-    bio: 'Focus Areas: Data Analytics, Research, Benchmarking, Market Intelligence, and Evidence-Led Decision Making.',
-    image: '/images/male-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/fungai-chikwete-profile' },
-    yearsConsulting: 11,
-    overallExperience: 13,
-    qualifications: [
-      'MSc Data Analytics',
-      'BSc Statistics',
-      'Certified Market Research Analyst',
-    ],
-  },
-  {
-    id: 'munya-takawira',
-    name: 'Munya Takawira',
-    role: 'Senior Consultant (Engagement)',
-    bio: 'Focus Areas: Organisational Development, Teambuilding, Implementation, and Coaching.',
-    image: '/images/male-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/munya-takawira-profile' },
-    yearsConsulting: 6,
-    overallExperience: 20,
-    qualifications: [
-      'BSc Development Studies',
-      'Diploma in Systemic Therapy',
-      'Certified Life Coach',
-      'Certified Counsellor',
-    ],
-  },
-  {
-    id: 'taurai-nyatsanza',
-    name: 'Taurai F Nyatsanza',
-    role: 'Senior Consultant (Business Development & Projects)',
-    bio: 'Focus Areas: Project Management, Strategy, Performance Management, Implementation, and Coaching.',
-    image: '/images/male-profile.png',
-    socialLinks: { linkedin: 'https://www.linkedin.com/in/taurai-f-nyatsanza-profile' },
-    yearsConsulting: 7,
-    overallExperience: 20,
-    qualifications: ['MBA Banking & Finance Management', 'BComm (Hons) Finance', 'Diploma in Banking'],
   },
 ]
 
@@ -521,6 +534,7 @@ export const sectors = [
 
 export const footprintCountries = [
   'Zimbabwe',
+  'Nigeria',
   'Zambia',
   'Namibia',
   'Botswana',
@@ -868,7 +882,7 @@ export const events: Event[] = [
       { time: '10:55', title: 'Live diagnostic walkthrough' },
       { time: '11:20', title: 'Q&A' },
     ],
-    speakers: [{ name: 'Dr. Eric D Zinyengere', title: 'Managing Consultant', company: 'TEAM Consulting' }],
+    speakers: [{ name: 'Dr Eric Dumisani Zinyengere', title: 'Coach, Catalyst & Principal Consultant', company: 'TEAM Consulting' }],
   },
   {
     id: 'event-2',
@@ -908,9 +922,6 @@ export const faqBotQuestions: FAQ[] = [
 
 export const downloads = [
   { id: 'company-profile', label: 'Company Profile (Full)', href: '/downloads/company-profile.pdf' },
-  { id: 'training-overview', label: 'Training Programme Overview', href: '/downloads/training-programme-overview.pdf' },
-  { id: 'service-profiles', label: 'Service Area Profiles (Bundle)', href: '/downloads/service-area-profiles.pdf' },
-  { id: 'diagnostic-form', label: 'Online Diagnostic Questionnaire', href: '/downloads/greater-diagnostic-questionnaire.pdf' },
 ]
 
 export const contacts = {
@@ -918,6 +929,5 @@ export const contacts = {
   phone: '+263 77 220 2290',
   generalEmail: 'info@team.co.zw',
   zimbabweEmail: 'ZW@teamadvisoryservices.com',
-  zambiaEmail: 'ZM@teamadvisoryservices.com',
 }
 

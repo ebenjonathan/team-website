@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://team.co.zw'
+import { SITE_URL as BASE_URL } from './site'
 
 export function buildMetadata(override: Partial<Metadata>): Metadata {
   return {

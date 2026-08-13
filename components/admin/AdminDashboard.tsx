@@ -248,7 +248,7 @@ export default function AdminDashboard() {
         {/*  Header  */}
         <header className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="TEAM Consulting" width={36} height={36} className="rounded-lg" />
+            <Image src="/images/TEAM-logo.png" alt="TEAM Consulting" width={365} height={406} className="h-9 w-auto" />
             <div>
               <p className="text-xs uppercase tracking-widest text-primary">TEAM Control Room</p>
               <h1 className="text-xl font-bold">Admin Dashboard</h1>

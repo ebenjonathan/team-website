@@ -44,12 +44,16 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // unsafe-eval required by Next.js dev mode; tighten in prod if possible
+              // 'unsafe-eval' is only needed for Next.js dev-mode HMR; production builds don't need it.
+              `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'production' ? '' : " 'unsafe-eval'"}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
-              "img-src 'self' data: blob: https://cdn.sanity.io https://cdn.dribbble.com https://flagcdn.com",
-              "connect-src 'self'",
+              "img-src 'self' data: blob: https://cdn.sanity.io https://flagcdn.com",
+              "connect-src 'self' https://cdn.sanity.io",
               "frame-ancestors 'none'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
             ].join('; '),
           },
         ],

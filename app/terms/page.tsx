@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Read the terms governing use of the TEAM Consulting website and related services.',
+  alternates: { canonical: '/terms' },
 }
 
 export default function TermsPage() {

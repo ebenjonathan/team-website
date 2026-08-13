@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Phone, Menu, Twitter, Facebook, Instagram, Linkedin } from 'lucide-react'
+import { Mail, Phone, Menu, Facebook, Linkedin, MapPin } from 'lucide-react'
 import { Navigation } from './Navigation'
 import { MobileMenu } from './MobileMenu'
 import { cn } from '@/lib/utils'
@@ -38,11 +38,33 @@ export function Header() {
             </a>
           </div>
           <div className="flex items-center gap-3">
-            {[Twitter, Facebook, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="hover:text-primary transition-colors" aria-label="Social">
-                <Icon className="w-3.5 h-3.5" />
-              </a>
-            ))}
+            <a
+              href="https://www.facebook.com/TEAMConsult/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              aria-label="TEAM Consulting on Facebook"
+            >
+              <Facebook className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://zw.linkedin.com/company/teamadvisory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              aria-label="TEAM Consulting on LinkedIn"
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://share.google/xTt7ttQ2LtjxGdMqB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              aria-label="Find TEAM Consulting on Google"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </div>
@@ -57,15 +79,13 @@ export function Header() {
         <div className="container mx-auto h-16 flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
             <Image
-              src="/images/logo.png"
+              src="/images/TEAM-logo.png"
               alt="TEAM Consulting"
-              width={40}
-              height={40}
-              className="w-10 h-10"
+              width={365}
+              height={406}
+              className="h-14 w-auto"
+              priority
             />
-            <span className="font-bold font-heading text-primary-deeper text-lg hidden sm:block">
-              TEAM Consulting
-            </span>
           </Link>
 
           <Navigation />

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Linkedin } from 'lucide-react'
 import type { TeamMember } from '@/types'
 
 interface TeamCardProps {
@@ -24,21 +25,18 @@ export function TeamCard({ member }: TeamCardProps) {
         </div>
       )}
       <div className="p-5 text-center">
-        <h3 className="font-bold font-heading text-primary-deeper text-lg">
-          {member.socialLinks?.linkedin ? (
-            <a
-              href={member.socialLinks.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-primary transition-colors"
-            >
-              {member.name}
-            </a>
-          ) : (
-            member.name
-          )}
-        </h3>
+        <h3 className="font-bold font-heading text-primary-deeper text-lg">{member.name}</h3>
         <p className="text-primary text-sm font-medium mt-1">{member.role}</p>
+        {member.socialLinks?.linkedin && (
+          <a
+            href={member.socialLinks.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-deeper hover:text-primary transition-colors"
+          >
+            <Linkedin className="w-4 h-4" /> Connect on LinkedIn
+          </a>
+        )}
       </div>
     </div>
   )

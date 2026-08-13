@@ -75,7 +75,7 @@ export function TeamToolsSection() {
                       <a
                         href={tool.url}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="hover:text-primary transition-colors"
                       >
                         {tool.name}
@@ -89,7 +89,18 @@ export function TeamToolsSection() {
                   </p>
                 </div>
 
-                {!isPlaceholder && (
+                {tool.status === 'live' && tool.url && (
+                  <a
+                    href={tool.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors self-start"
+                  >
+                    Explore {tool.name} →
+                  </a>
+                )}
+
+                {tool.status === 'coming-soon' && (
                   <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary bg-primary-muted px-3 py-1 rounded-full self-start">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                     Coming Soon

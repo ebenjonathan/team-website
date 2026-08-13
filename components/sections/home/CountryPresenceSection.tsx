@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 const countries = [
   { name: 'Zimbabwe', code: 'zw' },
+  { name: 'Nigeria', code: 'ng' },
   { name: 'Zambia', code: 'zm' },
   { name: 'Namibia', code: 'na' },
   { name: 'Botswana', code: 'bw' },

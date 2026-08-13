@@ -4,7 +4,8 @@ import { getCaseStudies } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
   title: 'Success Stories',
-  description: 'Inspiring transformation stories from our successful engagements.',
+  description: 'Transformation stories from TEAM Consulting engagements.',
+  alternates: { canonical: '/why-team/our-success-stories' },
 }
 
 export default async function SuccessStoriesPage() {

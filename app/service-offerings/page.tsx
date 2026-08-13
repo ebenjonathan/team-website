@@ -2,21 +2,24 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { ServiceCard } from '@/components/cards/ServiceCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { getBusinessUnits, getServiceOfferings } from '@/lib/sanity/content'
+import { getServiceOfferings } from '@/lib/sanity/content'
+import { SITE_URL as siteUrl } from '@/lib/seo/site'
 
 export const metadata: Metadata = {
   title: 'Service Offerings',
   description:
     'Integrated advisory support spanning strategy, governance, people, performance, and implementation.',
+  alternates: { canonical: '/service-offerings' },
+  openGraph: {
+    title: 'Service Offerings | TEAM Consulting',
+    description:
+      'Integrated advisory support spanning strategy, governance, people, performance, and implementation.',
+    url: '/service-offerings',
+  },
 }
 
 export default async function ServiceOfferingsPage() {
-  const [businessUnits, services] = await Promise.all([
-    getBusinessUnits(),
-    getServiceOfferings(),
-  ])
-
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
+  const services = await getServiceOfferings()
   const servicesSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',

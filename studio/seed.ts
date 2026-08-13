@@ -80,16 +80,6 @@ async function seed() {
     order: 1,
   })
 
-  await client.createOrReplace({
-    _id: 'contact-zm',
-    _type: 'countryContact',
-    country: 'Zambia',
-    email: contacts.zambiaEmail,
-    phone: contacts.phone,
-    address: 'Lusaka, Zambia',
-    order: 2,
-  })
-
   for (const item of ideasAtWorkArticles) {
     await client.createOrReplace({
       _id: `blog-${item.id}`,

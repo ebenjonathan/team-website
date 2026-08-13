@@ -15,8 +15,8 @@ export const navItems: NavItem[] = [
     label: 'Why Team?',
     href: '/why-team',
     children: [
-      { label: 'Our Team', href: '/why-team/our-team' },
-      { label: 'Our Partners', href: '/why-team/our-partners' },
+      { label: 'TEAM Leadership', href: '/why-team/our-team' },
+      { label: 'TEAM Partners', href: '/why-team/our-partners' },
     ],
   },
   { label: 'Free Diagnostic', href: '/free-diagnostic' },

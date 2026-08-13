@@ -3,8 +3,7 @@ import { Montserrat, Roboto, Open_Sans } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import '../styles/globals.css'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
+import { SITE_URL as siteUrl } from '@/lib/seo/site'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -45,9 +44,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'TEAM Consulting' }],
   creator: 'TEAM Consulting',
-  icons: {
-    icon: '/images/favicon.png',
-  },
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: siteUrl,
@@ -56,12 +53,13 @@ export const metadata: Metadata = {
     title: 'TEAM Consulting | Advisory for growth, governance and performance',
     description:
       'Boutique advisory practice serving clients across international markets with practical, people-centred support.',
+    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'TEAM Consulting' }],
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@teamadvisory',
     title: 'TEAM Consulting',
     description: 'Advisory for growth, governance and performance',
+    images: ['/images/og-image.png'],
   },
   robots: { index: true, follow: true },
 }
@@ -72,7 +70,7 @@ const organizationSchema = {
   name: 'TEAM Consulting',
   alternateName: 'TEAM Consulting',
   url: siteUrl,
-  logo: `${siteUrl}/images/logo.png`,
+  logo: `${siteUrl}/images/TEAM-logo.png`,
   foundingDate: '2004',
   description:
     'TEAM Consulting is a boutique advisory practice supporting organisations across international markets with practical, people-centred expertise.',
@@ -88,8 +86,8 @@ const organizationSchema = {
     email: 'info@team.co.zw',
   },
   sameAs: [
-    'https://www.linkedin.com/company/team-advisory',
-    'https://twitter.com/teamadvisory',
+    'https://zw.linkedin.com/company/teamadvisory',
+    'https://www.facebook.com/TEAMConsult/',
   ],
 }
 

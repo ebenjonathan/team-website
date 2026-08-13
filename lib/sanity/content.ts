@@ -35,7 +35,7 @@ export async function getServiceOfferings(): Promise<Service[]> {
     .map((item) => ({
       id: item._id ?? item.id,
       slug: item.slug,
-      title: item.slug === 'strategy-design' ? 'Strategy' : item.title,
+      title: item.title,
       description: item.description,
       icon: item.icon ?? 'Briefcase',
       features: item.features ?? [],
@@ -46,6 +46,7 @@ export async function getServiceOfferings(): Promise<Service[]> {
       benefits: item.benefits,
       deliverables: item.deliverables,
       image: item.image,
+      deliveryFramework: item.deliveryFramework,
     }))
 }
 

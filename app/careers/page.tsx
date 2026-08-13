@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Careers',
   description: 'Join TEAM Consulting Services and build a meaningful consulting career across dynamic international markets.',
+  alternates: { canonical: '/careers' },
 }
 
 export default function CareersPage() {

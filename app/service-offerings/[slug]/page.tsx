@@ -20,7 +20,23 @@ export async function generateMetadata(
   return {
     title: service?.title,
     description: service?.description,
+    alternates: { canonical: `/service-offerings/${resolvedParams.slug}` },
+    openGraph: service
+      ? {
+          title: `${service.title} | TEAM Consulting`,
+          description: service.description,
+          url: `/service-offerings/${resolvedParams.slug}`,
+        }
+      : undefined,
   }
+}
+
+const DELIVERY_TYPE_LABELS: Record<string, string> = {
+  toolkits: 'Toolkits',
+  training: 'Training',
+  evaluation: 'Evaluation',
+  advisory: 'Advisory',
+  management: 'Management',
 }
 
 export async function generateStaticParams() {
@@ -109,6 +125,45 @@ export default async function ServiceDetailPage(
           </div>
         </div>
       </section>
+
+      {!!service.deliveryFramework?.length && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Delivery Framework</h2>
+            <p className="text-lg text-slate-600 mb-12 max-w-3xl">
+              How {service.title} is delivered across TEAM Consulting&apos;s service architecture.
+            </p>
+            <div className="grid gap-8 md:grid-cols-2">
+              {service.deliveryFramework.map((subArea) => (
+                <article key={subArea.title} className="rounded-xl border border-slate-200 p-6">
+                  <h3 className="text-xl font-bold text-slate-900">{subArea.title}</h3>
+                  {subArea.note && (
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                      {subArea.note}
+                    </p>
+                  )}
+                  <div className="mt-4 space-y-4">
+                    {(Object.keys(DELIVERY_TYPE_LABELS) as Array<keyof typeof DELIVERY_TYPE_LABELS>)
+                      .filter((key) => subArea.delivery[key as keyof typeof subArea.delivery]?.length)
+                      .map((key) => (
+                        <div key={key}>
+                          <p className="text-sm font-bold text-slate-900">{DELIVERY_TYPE_LABELS[key]}</p>
+                          <ul className="mt-1 space-y-1">
+                            {subArea.delivery[key as keyof typeof subArea.delivery]!.map((entry) => (
+                              <li key={entry} className="text-sm text-slate-600">
+                                {entry}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {!!service.notableAssignments?.length && (
         <section className="py-20 bg-white">
