@@ -2,13 +2,14 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { CaseStudyCard } from '@/components/cards/CaseStudyCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { ideasAtWorkArticles } from '@/lib/data'
+import { companyProfile, ideasAtWorkArticles } from '@/lib/data'
 import { getCaseStudies, getBlogPosts } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
   title: 'Practice Notes',
   description:
     'Explore our case stories, thought leadership, and practical insights from advisory engagements.',
+  alternates: { canonical: '/ideas-at-work' },
 }
 
 export default async function IdeasAtWorkPage() {
@@ -51,22 +52,12 @@ export default async function IdeasAtWorkPage() {
           </h2>
 
           <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">200+</p>
-              <p className="text-slate-600">Successful Projects</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">500+</p>
-              <p className="text-slate-600">Happy Clients</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">$500M+</p>
-              <p className="text-slate-600">Client Business Value</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-primary mb-2">1000+</p>
-              <p className="text-slate-600">Team Members</p>
-            </div>
+            {companyProfile.stats.map((stat) => (
+              <div key={stat.id} className="text-center">
+                <p className="text-4xl font-bold text-primary mb-2">{stat.display}</p>
+                <p className="text-slate-600">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

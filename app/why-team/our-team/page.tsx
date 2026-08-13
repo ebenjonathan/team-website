@@ -4,8 +4,14 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { getTeamMembers } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
-  title: 'Our Team',
-  description: 'Meet the talented team who drive innovation at TEAM Consulting.',
+  title: 'TEAM Leadership',
+  description: 'Meet the Principal Consultants who lead TEAM Consulting.',
+  alternates: { canonical: '/why-team/our-team' },
+  openGraph: {
+    title: 'TEAM Leadership | TEAM Consulting',
+    description: 'Meet the Principal Consultants who lead TEAM Consulting.',
+    url: '/why-team/our-team',
+  },
 }
 
 export default async function OurTeamPage() {
@@ -16,19 +22,19 @@ export default async function OurTeamPage() {
       {/* Hero */}
       <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Team</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">TEAM Leadership</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
-            Talented individuals passionate about digital transformation and driving business impact.
+            The Principal Consultants who lead TEAM Consulting&apos;s advisory practice.
           </p>
         </div>
       </section>
 
-      {/* Team Grid */}
+      {/* Leadership Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Meet Our Team"
-            subtitle="The talented people behind TEAM Consulting"
+            title="TEAM Leadership"
+            subtitle="Coaches, catalysts, and principal consultants driving TEAM Consulting's engagements"
             centered
           />
 
@@ -41,10 +47,6 @@ export default async function OurTeamPage() {
                     <h3 className="text-2xl font-bold text-slate-900">{member.name}</h3>
                     <p className="text-primary font-semibold mt-1">{member.role}</p>
                     <p className="mt-3 text-slate-700">{member.bio}</p>
-                    <div className="mt-4 text-sm text-slate-600">
-                      <p>Years Consulting: {member.yearsConsulting ?? 'N/A'}</p>
-                      <p>Overall Experience: {member.overallExperience ?? 'N/A'}</p>
-                    </div>
                     {!!member.qualifications?.length && (
                       <ul className="mt-4 list-disc pl-5 text-sm text-slate-600">
                         {member.qualifications.map((qualification) => (

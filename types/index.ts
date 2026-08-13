@@ -1,3 +1,17 @@
+export interface ServiceDeliveryTypes {
+  toolkits?: string[]
+  training?: string[]
+  evaluation?: string[]
+  advisory?: string[]
+  management?: string[]
+}
+
+export interface ServiceSubArea {
+  title: string
+  note?: string
+  delivery: ServiceDeliveryTypes
+}
+
 export interface Service {
   id: string
   slug: string
@@ -13,6 +27,7 @@ export interface Service {
   notableAssignments?: string[]
   downloadableProfile?: string
   businessUnit?: string
+  deliveryFramework?: ServiceSubArea[]
 }
 
 export interface TeamMember {

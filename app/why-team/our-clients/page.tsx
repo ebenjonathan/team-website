@@ -5,7 +5,7 @@ import {
   Wheat, Trophy, Briefcase,
 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { sectors } from '@/lib/data'
+import { companyProfile, sectors } from '@/lib/data'
 import { getClientLogoGroups } from '@/lib/images'
 import { ClientLogoGrid } from '@/components/ui/ClientLogoGrid'
 
@@ -29,7 +29,8 @@ const sectorIcons: Record<string, React.ComponentType<{ className?: string }>> =
 
 export const metadata: Metadata = {
   title: 'Our Clients',
-  description: 'Organizations that trust TEAM Consulting for their digital transformation.',
+  description: 'Organisations that trust TEAM Consulting for advisory and transformation support.',
+  alternates: { canonical: '/why-team/our-clients' },
 }
 
 export default async function OurClientsPage() {
@@ -51,22 +52,12 @@ export default async function OurClientsPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-4xl font-bold text-primary mb-2">500+</p>
-              <p className="text-slate-600 text-lg">Satisfied Clients</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold text-primary mb-2">200+</p>
-              <p className="text-slate-600 text-lg">Successful Projects</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold text-primary mb-2">$500M+</p>
-              <p className="text-slate-600 text-lg">Business Value Created</p>
-            </div>
-            <div>
-              <p className="text-4xl font-bold text-primary mb-2">15+</p>
-              <p className="text-slate-600 text-lg">Industries Served</p>
-            </div>
+            {companyProfile.stats.map((stat) => (
+              <div key={stat.id}>
+                <p className="text-4xl font-bold text-primary mb-2">{stat.display}</p>
+                <p className="text-slate-600 text-lg">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

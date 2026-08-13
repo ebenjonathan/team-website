@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Free Diagnostic',
   description:
     'Run a high-level organisational diagnostic aligned to the GREATER framework and receive a downloadable summary report.',
+  alternates: { canonical: '/free-diagnostic' },
 }
 
 export default function FreeDiagnosticPage() {

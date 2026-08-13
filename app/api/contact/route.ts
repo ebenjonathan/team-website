@@ -6,12 +6,12 @@ import { checkRateLimit } from '@/lib/server/rateLimit'
 
 // Form validation schema
 const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  organisation: z.string().min(2),
-  country: z.string().min(2),
-  requestType: z.string().min(2),
-  message: z.string().min(10),
+  name: z.string().min(2).max(200),
+  email: z.string().email().max(320),
+  organisation: z.string().min(2).max(200),
+  country: z.string().min(2).max(100),
+  requestType: z.string().min(2).max(100),
+  message: z.string().min(10).max(5000),
 })
 
 export async function POST(request: NextRequest) {

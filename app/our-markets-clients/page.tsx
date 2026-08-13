@@ -5,6 +5,7 @@ import { getClients } from '@/lib/sanity/content'
 
 const countryFlagCodes: Record<string, string> = {
   Zimbabwe: 'zw',
+  Nigeria: 'ng',
   Zambia: 'zm',
   Namibia: 'na',
   Botswana: 'bw',
@@ -20,6 +21,13 @@ export const metadata: Metadata = {
   title: 'Markets & Clients',
   description:
     'Sectors served, geographic footprint, and client experience across international markets and beyond.',
+  alternates: { canonical: '/our-markets-clients' },
+  openGraph: {
+    title: 'Markets & Clients | TEAM Consulting',
+    description:
+      'Sectors served, geographic footprint, and client experience across international markets and beyond.',
+    url: '/our-markets-clients',
+  },
 }
 
 export default async function OurMarketsClientsPage() {

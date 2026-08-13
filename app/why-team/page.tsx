@@ -6,6 +6,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 export const metadata: Metadata = {
   title: 'Why TEAM Consulting',
   description: 'Discover what makes TEAM Consulting a trusted advisory partner for growth, governance and performance.',
+  alternates: { canonical: '/why-team' },
 }
 
 export default function WhyTeamPage() {
@@ -96,10 +97,10 @@ export default function WhyTeamPage() {
             >
               <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Briefcase className="w-7 h-7" /></span>
               <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                Our Team
+                TEAM Leadership
               </span>
               <span className="block text-slate-600">
-                Meet the talented individuals driving innovation and transformation at TEAM Consulting.
+                Meet the Principal Consultants who lead TEAM Consulting&apos;s advisory practice.
               </span>
               <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
                 Explore →
@@ -112,7 +113,7 @@ export default function WhyTeamPage() {
             >
               <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Handshake className="w-7 h-7" /></span>
               <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                Our Partners
+                TEAM Partners
               </span>
               <span className="block text-slate-600">
                 Strategic partnerships with leading technology providers and consulting firms.

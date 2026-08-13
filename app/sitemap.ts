@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { businessUnits, caseStudies, services } from '@/lib/data'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
+import { SITE_URL as siteUrl } from '@/lib/seo/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()

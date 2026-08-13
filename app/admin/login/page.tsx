@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center gap-3">
-          <Image src="/images/logo.png" alt="TEAM Consulting" width={56} height={56} className="rounded-xl" />
+          <Image src="/images/TEAM-logo.png" alt="TEAM Consulting" width={365} height={406} className="h-14 w-auto" />
           <p className="font-heading text-xl font-bold text-white">TEAM Consulting</p>
           <p className="text-sm text-white/50">Admin Control Room</p>
         </div>

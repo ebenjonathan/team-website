@@ -5,8 +5,9 @@ import { PartnerLogoGrid } from '@/components/ui/PartnerLogoGrid'
 import { PartnerLogoImg } from '@/components/ui/PartnerLogoImg'
 
 export const metadata: Metadata = {
-  title: 'Our Partners',
-  description: 'Strategic partner profiles from the TEAM Consulting master brief.',
+  title: 'TEAM Partners',
+  description: 'Strategic partner profiles for TEAM Consulting.',
+  alternates: { canonical: '/why-team/our-partners' },
 }
 
 export default async function OurPartnersPage() {
@@ -17,7 +18,7 @@ export default async function OurPartnersPage() {
       {/* Hero */}
       <section className="bg-primary-deeper text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Partners</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">TEAM Partners</h1>
           <p className="text-xl text-slate-200 max-w-2xl">
             Strategic partnerships with leading technology and consulting firms.
           </p>

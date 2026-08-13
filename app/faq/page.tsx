@@ -7,6 +7,7 @@ import { getFaqItems } from '@/lib/sanity/content'
 export const metadata: Metadata = {
   title: 'FAQ',
   description: 'Frequently asked questions about TEAM services, markets, and delivery model.',
+  alternates: { canonical: '/faq' },
 }
 
 export default async function FaqPage() {

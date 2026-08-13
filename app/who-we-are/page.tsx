@@ -3,12 +3,18 @@ import { Metadata } from 'next'
 import { companyProfile, downloads } from '@/lib/data'
 import { SectionHeader } from '@/components/ui'
 import { getDownloadResources, getGlobalSettings } from '@/lib/sanity/content'
-import { PresenceMap } from '@/components/ui/PresenceMap'
 
 export const metadata: Metadata = {
   title: 'Who We Are',
   description:
     'TEAM Consulting profile, philosophy, Four Strands foundation, GREATER framework, and Find-Get-Keep approach.',
+  alternates: { canonical: '/who-we-are' },
+  openGraph: {
+    title: 'Who We Are | TEAM Consulting',
+    description:
+      'TEAM Consulting profile, philosophy, Four Strands foundation, GREATER framework, and Find-Get-Keep approach.',
+    url: '/who-we-are',
+  },
 }
 
 export default async function WhoWeArePage() {
@@ -195,18 +201,6 @@ export default async function WhoWeArePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Our Geographical Presence"
-            subtitle="Working with clients across diverse markets and beyond"
-            centered
-          />
-          <div className="mt-12">
-            <PresenceMap />
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
