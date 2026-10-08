@@ -12,6 +12,7 @@ import {
   partners,
   serviceAreas,
   teamMembers,
+  unpublishedCaseStudyIds,
 } from '@/lib/data'
 import {
   BUSINESS_UNITS_QUERY,
@@ -66,6 +67,9 @@ export async function getBusinessUnits(): Promise<BusinessUnit[]> {
     services: item.services ?? [],
     head: item.head,
     image: item.image,
+    narrative: item.narrative,
+    salesNarrative: item.salesNarrative,
+    valueLifecycle: item.valueLifecycle,
   }))
 }
 
@@ -75,7 +79,9 @@ export async function getBusinessUnitBySlug(slug: string): Promise<BusinessUnit 
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
-  const data = await fetchWithFallback<any[]>(CASE_STUDIES_QUERY, caseStudies)
+  const data = (await fetchWithFallback<any[]>(CASE_STUDIES_QUERY, caseStudies)).filter(
+    (item) => !unpublishedCaseStudyIds.includes(item._id ?? item.id),
+  )
   return data.map((item) => ({
     id: item._id ?? item.id,
     slug: item.slug,

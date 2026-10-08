@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { PageHero, Section, SectionIntro, ArrowLink } from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -8,73 +9,45 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <p className="text-primary-light text-sm font-semibold uppercase tracking-widest mb-4">Careers</p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Join Our Team</h1>
-          <p className="text-xl text-slate-200 max-w-3xl">
-            We&apos;re always looking for talented individuals passionate about consultancy.
+    <>
+      <PageHero
+        eyebrow="Careers"
+        title="Build a consulting career that makes a visible difference."
+        lead="Our people are our key asset. As we grow our regional footprint, we offer challenging, rewarding work alongside colleagues with diverse skills."
+      />
+
+      <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-7 space-y-5 text-lg text-body leading-relaxed">
+          <p>
+            We look for people who are ambitious, want to develop their careers and want to contribute to TEAM’s
+            long-term, sustainable growth.
+          </p>
+          <p>
+            <strong className="text-primary-deeper">For graduates</strong>, our structured Graduate Trainee Programme
+            nurtures talent from day one.{' '}
+            <strong className="text-primary-deeper">For experienced professionals</strong>, we offer a fulfilling career
+            where you can clearly see your work shaping our clients’ success, and grow with the group.
           </p>
         </div>
-      </section>
 
-      {/* Intro */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <p className="text-slate-700 leading-relaxed mb-6">
-            We truly believe that our employees are our key assets, and as a seasoned consultancy firm, while we continue
-            to expand our regional footprint, we offer challenging and rewarding career opportunities, encouraging our
-            employees to progress and develop alongside teams with diverse skills, in a fast-paced and exciting
-            environment. Our employees are one of our core competitive advantages and talent management is thus one of
-            our key priorities.
+        <aside className="lg:col-span-5 bg-primary-light p-8 rounded-sm">
+          <SectionIntro title="How to apply" />
+          <p className="mt-4 text-body">
+            Email the following to{' '}
+            <a href="mailto:hr@team.co.zw" className="font-semibold text-primary-deeper underline">hr@team.co.zw</a>:
           </p>
-          <p className="text-slate-700 leading-relaxed">
-            We look for people who are ambitious and want to develop their career while making a strong contribution to
-            TEAM&apos;s long-term, sustainable growth. For young graduates who join us we nurture their talent through a
-            well-structured Graduate Trainee Programme. For experienced professionals we offer a fulfilling career where they
-            can clearly see their efforts culminating in our team&apos;s success and grow with the group. If you are looking for an
-            exciting career with a grounded advisory practice operating across international markets, come and speak with us.
-          </p>
-        </div>
-      </section>
-
-      {/* How To Apply */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="rounded-2xl bg-primary-deeper text-white p-10">
-            <h2 className="text-3xl font-bold mb-6 uppercase tracking-wide">How To Apply</h2>
-            <div className="space-y-4 text-slate-100">
-              <p>
-                <span className="font-semibold">Please submit the following to </span>
-                <a href="mailto:hr@team.co.zw" className="underline hover:text-primary-light">
-                  hr@team.co.zw
-                </a>
-                <span className="font-semibold">:</span>
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Application letter stating the nature of the position applied for</li>
-                <li>Copy of your detailed curriculum vitae</li>
-                <li>A link to your LinkedIn profile</li>
-              </ul>
-              <p className="text-slate-200">
-                If not on LinkedIn, please join{' '}
-                <a
-                  href="https://www.linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-primary-light"
-                >
-                  here
-                </a>{' '}
-                and complete your profile.
-              </p>
-            </div>
+          <ul className="mt-4 divide-y divide-gray-300 border-y border-gray-300">
+            <li className="py-3 text-body">A letter stating the position you are applying for</li>
+            <li className="py-3 text-body">Your detailed CV</li>
+            <li className="py-3 text-body">A link to your LinkedIn profile</li>
+          </ul>
+          <div className="mt-6">
+            <ArrowLink href="mailto:hr@team.co.zw?subject=Application" external>
+              Email your application
+            </ArrowLink>
           </div>
-        </div>
-      </section>
-    </div>
+        </aside>
+      </Section>
+    </>
   )
 }
-

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Target, Users, Zap, Handshake, Lightbulb, TrendingUp, Briefcase, Building2, Trophy } from 'lucide-react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
+import { PageHero, Section, SectionIntro, EnquiryBand } from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Why TEAM Consulting',
@@ -9,155 +8,57 @@ export const metadata: Metadata = {
   alternates: { canonical: '/why-team' },
 }
 
+const reasons = [
+  { title: 'Focused on results', body: 'We scope work against measurable outcomes and stay for the follow-through, so change lasts beyond the engagement.' },
+  { title: 'Senior people on your work', body: 'Principal consultants with decades of experience across leadership, operations, governance and people development.' },
+  { title: 'Steady execution', body: 'We balance pace with discipline, so change is implemented thoughtfully and with clear accountability.' },
+  { title: 'A partner, not a vendor', body: 'We work closely with leadership teams and stay engaged through the moments that matter most.' },
+  { title: 'Practical insight', body: 'A fresh perspective on complex issues, without losing sight of what is workable in your context.' },
+  { title: 'A long track record', body: 'Two decades of engagements, with more than 80% of our work coming from repeat and referral clients.' },
+]
+
+const more = [
+  { href: '/why-team/our-team', title: 'Our leadership', body: 'Meet the principal consultants who lead every engagement.' },
+  { href: '/why-team/our-clients', title: 'Our clients', body: 'The banks, insurers, ministries and development partners we have worked with.' },
+  { href: '/why-team/our-success-stories', title: 'Case stories', body: 'What we did, and what changed, in recent engagements.' },
+  { href: '/why-team/our-partners', title: 'Our partners', body: 'Specialist firms we work alongside to extend what we offer.' },
+]
+
 export default function WhyTeamPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Why TEAM Consulting</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Discover what makes us a trusted partner for organisations navigating change with purpose and discipline.
-          </p>
+    <>
+      <PageHero
+        eyebrow="Why TEAM"
+        title="Why organisations choose to work with us, and keep coming back."
+        lead="Organisations across twelve countries trust us with their strategy, governance and people. Here is what they tell us makes the difference."
+      />
+
+      <Section>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 border-t border-gray-300">
+          {reasons.map((r) => (
+            <article key={r.title} className="py-8 border-b border-gray-300">
+              <h2 className="font-heading font-bold text-xl text-primary-deeper">{r.title}</h2>
+              <p className="mt-3 text-body leading-relaxed">{r.body}</p>
+            </article>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Benefits Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="What Clients Say About Us"
-            subtitle="Why organizations choose TEAM Consulting"
-            centered
-          />
-
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Target className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Results-Focused</h3>
-              <p className="text-slate-600">
-                We focus on measurable outcomes and business impact, with practical follow-through that lasts beyond the engagement.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Users className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Experienced Team</h3>
-              <p className="text-slate-600">
-                Senior advisors with deep experience across leadership, operations, governance, and people development.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Zap className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Steady Execution</h3>
-              <p className="text-slate-600">
-                Our approach balances pace with discipline so change is implemented thoughtfully and with accountability.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Handshake className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Trusted Partnership</h3>
-              <p className="text-slate-600">
-                We work closely with leadership teams, staying engaged through the moments that matter most.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><Lightbulb className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Practical Insight</h3>
-              <p className="text-slate-600">
-                We bring fresh perspective to complex issues without losing sight of what is workable and sustainable.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary"><TrendingUp className="w-6 h-6" /></div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Proven Track Record</h3>
-              <p className="text-slate-600">
-                Two decades of engagements with repeat clients and a strong record of long-term partnerships.
-              </p>
-            </div>
-          </div>
+      <Section tone="tint">
+        <SectionIntro eyebrow="Learn more" title="See the people and the work behind the practice." />
+        <div className="mt-12 grid md:grid-cols-2 gap-x-12">
+          {more.map((m) => (
+            <Link key={m.href} href={m.href} className="group border-t-2 border-primary-deeper py-6">
+              <h3 className="font-heading font-bold text-2xl text-primary-deeper group-hover:text-primary">
+                {m.title} <span aria-hidden className="text-primary">→</span>
+              </h3>
+              <p className="mt-2 text-body">{m.body}</p>
+            </Link>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Explore More */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
-            Learn More About Us
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <Link
-              href="/why-team/our-team"
-              className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
-            >
-              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Briefcase className="w-7 h-7" /></span>
-              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                TEAM Leadership
-              </span>
-              <span className="block text-slate-600">
-                Meet the Principal Consultants who lead TEAM Consulting&apos;s advisory practice.
-              </span>
-              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
-                Explore →
-              </span>
-            </Link>
-
-            <Link
-              href="/why-team/our-partners"
-              className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
-            >
-              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Handshake className="w-7 h-7" /></span>
-              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                TEAM Partners
-              </span>
-              <span className="block text-slate-600">
-                Strategic partnerships with leading technology providers and consulting firms.
-              </span>
-              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
-                Learn More →
-              </span>
-            </Link>
-
-            <Link
-              href="/why-team/our-clients"
-              className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
-            >
-              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Building2 className="w-7 h-7" /></span>
-              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                Our Clients
-              </span>
-              <span className="block text-slate-600">
-                Trusted by Fortune 500 companies and ambitious startups across international markets and beyond.
-              </span>
-              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
-                See Portfolio →
-              </span>
-            </Link>
-
-            <Link
-              href="/why-team/our-success-stories"
-              className="group bg-white p-8 rounded-lg hover:shadow-lg transition-shadow hover:border-primary border-2 border-transparent"
-            >
-              <span className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform"><Trophy className="w-7 h-7" /></span>
-              <span className="block text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
-                Success Stories
-              </span>
-              <span className="block text-slate-600">
-                Measurable outcomes and real impact stories from our transformational engagements.
-              </span>
-              <span className="block mt-6 text-primary font-bold group-hover:translate-x-2 transition-transform">
-                Discover →
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <EnquiryBand />
+    </>
   )
 }
-

@@ -538,13 +538,13 @@ export function BusinessDiagnosticTool() {
 
               <div className="flex flex-wrap gap-3 border-t border-slate-200 pt-5">
                 <Link
-                  href="/contact-us"
+                  href="/contact-us?topic=diagnostic#enquiry"
                   className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:bg-primary-dark"
                 >
                   Book Strategy Call
                 </Link>
                 <a
-                  href={`mailto:${profile.email}?subject=TEAM%20Diagnostic%20Report%20Request&body=${encodeURIComponent(`Please send my full diagnostic report.\n\nOrganisation: ${profile.organisation}\nFinal Score: ${results.score}%\nCategory: ${results.category}\nTop Priority: ${weakestFinding?.title ?? 'N/A'}`)}`}
+                  href={`mailto:info@team.co.zw?subject=TEAM%20Diagnostic%20Report%20Request&body=${encodeURIComponent(`Please send my full diagnostic report.\n\nOrganisation: ${profile.organisation}\nFinal Score: ${results.score}%\nCategory: ${results.category}\nTop Priority: ${weakestFinding?.title ?? 'N/A'}`)}`}
                   className="inline-flex items-center justify-center rounded-lg border-2 border-primary px-6 py-3 text-base font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-white"
                 >
                   Email Full Report

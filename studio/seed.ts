@@ -12,6 +12,7 @@ import {
   partners,
   serviceAreas,
   teamMembers,
+  unpublishedCaseStudyIds,
 } from '../lib/data/masterBrief'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -43,7 +44,7 @@ async function seed() {
   }
 
   for (const [index, item] of teamMembers.entries()) {
-    await client.createOrReplace({ _id: `team-${item.id}`, _type: 'teamMember', order: index + 1, ...item })
+    await client.createOrReplace({ _id: `team-${item.id}`, _type: 'teamMember', memberType: 'principal', published: true, order: index + 1, ...item })
   }
 
   for (const [index, item] of partners.entries()) {
@@ -54,7 +55,8 @@ async function seed() {
     await client.createOrReplace({ _id: `client-${item.id}`, _type: 'client', order: index + 1, ...item })
   }
 
-  for (const item of caseStudies) {
+  // Case stories marked as unpublished on the website are not copied into Sanity.
+  for (const item of caseStudies.filter((c) => !unpublishedCaseStudyIds.includes(c.id))) {
     await client.createOrReplace({ _id: `case-${item.id}`, _type: 'caseStudy', publishedAt: new Date().toISOString(), ...item })
   }
 
@@ -74,7 +76,7 @@ async function seed() {
     _id: 'contact-zw',
     _type: 'countryContact',
     country: 'Zimbabwe',
-    email: contacts.zimbabweEmail,
+    email: contacts.generalEmail,
     phone: contacts.phone,
     address: contacts.headquarters,
     order: 1,

@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Phone, Menu, Facebook, Linkedin, MapPin } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { Navigation } from './Navigation'
 import { MobileMenu } from './MobileMenu'
+import { navCta } from './navData'
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -14,70 +15,42 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <>
-      {/* Topbar */}
-      <div className="bg-primary-deeper text-white text-xs py-2 hidden md:block">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a
-              href="mailto:info@team.co.zw"
-              className="flex items-center gap-1.5 hover:text-primary-muted transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5" /> info@team.co.zw
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to content
+      </a>
+
+      {/* Utility bar */}
+      <div className="bg-primary-deeper text-white/80 text-xs hidden md:block">
+        <div className="container mx-auto flex items-center justify-end h-9">
+          <div className="flex items-center gap-5">
+            <a href="tel:+263772202290" className="hover:text-white">
+              +263 77 220 2290
             </a>
-            <a
-              href="tel:+263772202290"
-              className="flex items-center gap-1.5 hover:text-primary-muted transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" /> +263 77 220 2290
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="https://www.facebook.com/TEAMConsult/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-              aria-label="TEAM Consulting on Facebook"
-            >
-              <Facebook className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href="https://zw.linkedin.com/company/teamadvisory"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-              aria-label="TEAM Consulting on LinkedIn"
-            >
-              <Linkedin className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href="https://share.google/xTt7ttQ2LtjxGdMqB"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors"
-              aria-label="Find TEAM Consulting on Google"
-            >
-              <MapPin className="w-3.5 h-3.5" />
+            <a href="mailto:info@team.co.zw" className="hover:text-white">
+              info@team.co.zw
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main header */}
       <header
         className={cn(
-          'sticky top-0 z-40 bg-white transition-all duration-300',
-          scrolled ? 'shadow-md' : 'border-b border-gray-100'
+          'sticky top-0 z-40 bg-white transition-shadow duration-300 border-b border-gray-200',
+          scrolled && 'shadow-[0_8px_24px_-16px_rgba(23,38,36,0.4)]'
         )}
       >
-        <div className="container mx-auto h-16 flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+        <div className="container mx-auto h-[72px] flex items-stretch justify-between gap-6">
+          <Link href="/" className="flex items-center flex-shrink-0" aria-label="TEAM Consulting home">
             <Image
               src="/images/TEAM-logo.png"
               alt="TEAM Consulting"
@@ -92,17 +65,17 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/contact-us"
-              className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+              href={navCta.href}
+              className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-md hover:bg-primary-dark transition-colors"
             >
-              Get in Touch
+              {navCta.label}
             </Link>
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
-              <Menu className="w-5 h-5 text-primary-deeper" />
+              <Menu className="w-6 h-6 text-primary-deeper" />
             </button>
           </div>
         </div>
@@ -112,4 +85,3 @@ export function Header() {
     </>
   )
 }
-

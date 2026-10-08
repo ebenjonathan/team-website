@@ -5,14 +5,13 @@ import Link from 'next/link'
 import type { FAQ, FAQCategory } from '@/types'
 import { faqCategories } from '@/lib/data/faqs'
 import { cn } from '@/lib/utils'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FAQItem } from './FAQItem'
 import { FAQSearchBar } from './FAQSearchBar'
 
 interface FAQAccordionProps {
   items: FAQ[]
   eyebrow?: string
-  title: string
+  title?: string
   subtitle?: string
   showSearch?: boolean
   showCategoryFilter?: boolean
@@ -32,7 +31,7 @@ export function FAQAccordion({
   showSearch = true,
   showCategoryFilter = true,
   initialOpenId,
-  emptyCtaHref = '/contact-us',
+  emptyCtaHref = '/contact-us#enquiry',
   emptyCtaLabel = 'Contact Us',
   footerHref,
   footerLabel,
@@ -78,7 +77,13 @@ export function FAQAccordion({
 
   return (
     <div className={cn('space-y-8', className)}>
-      <SectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} />
+      {title && (
+        <div className="max-w-3xl">
+          {eyebrow && <p className="text-sm font-semibold text-primary mb-4">— {eyebrow}</p>}
+          <h2 className="font-heading font-bold text-3xl md:text-[2.5rem] leading-[1.12] text-primary-deeper">{title}</h2>
+          {subtitle && <p className="mt-4 text-lg text-body leading-relaxed">{subtitle}</p>}
+        </div>
+      )}
 
       {showSearch && (
         <FAQSearchBar
@@ -92,7 +97,7 @@ export function FAQAccordion({
       )}
 
       {filteredItems.length > 0 ? (
-        <div className="space-y-4">
+        <div className="border-t border-gray-300">
           {filteredItems.map((item, index) => (
             <FAQItem
               key={item.id}
@@ -104,14 +109,14 @@ export function FAQAccordion({
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-10 text-center">
-          <h3 className="text-lg font-bold text-slate-900">No matching FAQ found</h3>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            Try a different keyword or speak with the TEAM Consulting team directly.
+        <div className="border-t border-gray-300 py-10">
+          <h3 className="font-heading text-xl font-bold text-primary-deeper">No questions match that search.</h3>
+          <p className="mt-2 text-body leading-relaxed">
+            Try a shorter word, choose another category, or ask us directly.
           </p>
           <Link
             href={emptyCtaHref}
-            className="mt-5 inline-flex rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
+            className="mt-5 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
           >
             {emptyCtaLabel}
           </Link>
@@ -119,12 +124,12 @@ export function FAQAccordion({
       )}
 
       {footerHref && footerLabel && (
-        <div className="text-center">
+        <div>
           <Link
             href={footerHref}
-            className="inline-flex rounded-full border border-primary px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
+            className="inline-flex items-baseline gap-1 font-semibold text-primary-deeper underline-offset-4 decoration-2 hover:underline hover:text-primary"
           >
-            {footerLabel}
+            {footerLabel} <span aria-hidden className="text-primary">→</span>
           </Link>
         </div>
       )}

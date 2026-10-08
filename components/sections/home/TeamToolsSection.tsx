@@ -1,36 +1,31 @@
 import { BookOpen, ClipboardList, Stethoscope, Plus } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { teamTools, type ToolCategory } from '@/lib/data/tools'
+
+// Tools come from lib/data/tools.ts, so adding a tool there shows it here too.
+const categoryIcon: Record<ToolCategory, typeof BookOpen> = {
+  culture: BookOpen,
+  engagement: ClipboardList,
+  diagnostic: Stethoscope,
+}
 
 const tools = [
-  {
-    icon: BookOpen,
-    name: 'TEAM Culture Storybook',
-    description:
-      "Capture and share your organisation's culture narrative — values, rituals, and the stories that define who you are.",
-    status: 'live' as const,
-    url: 'https://team-storybook.vercel.app/',
-  },
-  {
-    icon: ClipboardList,
-    name: 'TEAM Surveys',
-    description:
-      'Pulse checks and diagnostic surveys designed to surface real insights on engagement, alignment, and team health.',
-    status: 'coming-soon' as const,
-  },
-  {
-    icon: Stethoscope,
-    name: 'TEAM Greater Diagnosis Tool',
-    description:
-      'A comprehensive organisational health assessment that pinpoints gaps and charts a clear path to high performance.',
-    status: 'coming-soon' as const,
-  },
-  {
+  ...teamTools.map((t) => ({
+    icon: categoryIcon[t.category],
+    name: t.name,
+    description: t.description,
+    status: (t.status === 'live' ? 'live' : 'coming-soon') as 'live' | 'coming-soon' | 'placeholder',
+    url: t.status === 'live' ? t.href : undefined,
+  })),
+  // The "more coming" card only fills a gap while there are fewer than four tools.
+  ...(teamTools.length < 4 ? [{
     icon: Plus,
     name: 'More Tools Coming',
     description:
       "We are continuously building new tools to support your team's growth, culture, and performance journey.",
     status: 'placeholder' as const,
-  },
+    url: undefined as string | undefined,
+  }] : []),
 ]
 
 export function TeamToolsSection() {

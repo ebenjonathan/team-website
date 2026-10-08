@@ -11,32 +11,27 @@ export function ClientLogoGrid({ groups }: ClientLogoGridProps) {
   if (groups.length === 0) return null
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       {groups.map((group) => (
-        <div key={group.sector}>
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            {group.sector}
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-            {group.logos.map((logo, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center bg-white rounded-lg border border-slate-100 p-4 h-20"
-              >
+        <div key={group.sector} className="grid md:grid-cols-12 gap-6 border-t border-gray-300 pt-6">
+          <h3 className="md:col-span-3 font-heading font-bold text-lg text-primary-deeper">{group.sector}</h3>
+          <ul className="md:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6">
+            {group.logos.map((logo) => (
+              <li key={logo.src} className="flex items-center h-16">
                 <Image
-                  src={logo.src}
+                  src={encodeURI(logo.src)}
                   alt={logo.alt}
                   width={160}
-                  height={48}
+                  height={56}
                   loading="lazy"
-                  className="h-12 w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  className="h-12 w-full object-contain object-left grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition"
                   onError={(e) => {
                     ;(e.currentTarget as HTMLImageElement).style.display = 'none'
                   }}
                 />
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       ))}
     </div>

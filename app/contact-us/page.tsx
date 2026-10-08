@@ -1,165 +1,108 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
-import { Phone, Clock3 } from 'lucide-react'
 import { ContactForm } from '@/components/forms/ContactForm'
-import { SectionHeader } from '@/components/ui'
 import { FAQAccordion } from '@/components/faq/FAQAccordion'
+import { PageHero, Section, SectionIntro } from '@/components/editorial'
 import { downloads } from '@/lib/data'
 import { faqItems as fallbackFaqItems } from '@/lib/data/faqs'
+import { isEnquiryTopic } from '@/lib/data/enquiry'
 import { getDownloadResources, getFaqItems } from '@/lib/sanity/content'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Contact TEAM Consulting in Zimbabwe, submit inquiries, and access FAQ support.',
+  description: 'Make an enquiry with TEAM Consulting in Harare, Zimbabwe. We reply within two business days.',
   alternates: { canonical: '/contact-us' },
   openGraph: {
     title: 'Contact Us | TEAM Consulting',
-    description: 'Contact TEAM Consulting in Zimbabwe, submit inquiries, and access FAQ support.',
+    description: 'Make an enquiry with TEAM Consulting in Harare, Zimbabwe.',
     url: '/contact-us',
   },
 }
 
-export default async function ContactUsPage() {
-  const [downloadResources, faqItems] = await Promise.all([
-    getDownloadResources(),
-    getFaqItems(),
-  ])
+export default async function ContactUsPage({
+  searchParams,
+}: {
+  searchParams?: { topic?: string }
+}) {
+  const [downloadResources, faqItems] = await Promise.all([getDownloadResources(), getFaqItems()])
   const faqList = faqItems.length ? faqItems : fallbackFaqItems
+  const topic = isEnquiryTopic(searchParams?.topic) ? searchParams.topic : 'general'
+  const files = downloadResources.length ? downloadResources : downloads
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Ready to transform your business? Let&apos;s start a conversation.
-          </p>
+    <>
+      <PageHero
+        eyebrow="Contact"
+        title="Tell us what you are working on."
+        lead="Whether you have a clear brief or just a problem you want to talk through, start here. A principal consultant reads every enquiry and replies within two business days."
+      />
+
+      <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div id="enquiry" className="lg:col-span-7 scroll-mt-28">
+          <h2 className="font-heading font-bold text-2xl md:text-3xl text-primary-deeper mb-8">
+            Make an enquiry
+          </h2>
+          <ContactForm defaultTopic={topic} />
         </div>
-      </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12 mb-20">
-            {/* Contact Info */}
-            <article className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h2 className="text-xl font-bold text-slate-900 mb-5">Contact Information</h2>
-
-              <div className="space-y-4 text-slate-700">
-                <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <a href="tel:+263772202290" className="font-medium hover:text-primary transition-colors">
-                    +263 77 220 2290
-                  </a>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Image
-                    src="https://flagcdn.com/w20/zw.png"
-                    alt="Zimbabwe flag"
-                    width={20}
-                    height={14}
-                    className="mt-1 rounded-sm"
-                    unoptimized
-                  />
-                  <div>
-                    <p className="font-medium text-slate-900">Harare, Zimbabwe</p>
-                    <a href="mailto:ZW@teamadvisoryservices.com" className="block text-sm hover:text-primary transition-colors">
-                      ZW@teamadvisoryservices.com
-                    </a>
-                    <a href="mailto:info@team.co.zw" className="block text-sm hover:text-primary transition-colors">
-                      info@team.co.zw
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Clock3 className="mt-0.5 h-4 w-4 text-primary" />
-                  <div>
-                    <p className="font-medium text-slate-900">Business Hours</p>
-                    <p className="text-sm">Monday to Friday, 08:00 - 16:30 CAT</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Business Hours</h3>
-              <p className="text-slate-600 mb-2">Monday – Friday</p>
-              <p className="text-slate-600 mb-6">08:00 – 16:30 CAT</p>
-
-              <h4 className="font-bold text-slate-900 mb-2">Connect With Us</h4>
-              <div className="flex gap-4">
-                <a
-                  href="https://zw.linkedin.com/company/teamadvisory"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-600 hover:text-primary"
-                >
-                  LinkedIn
+        <aside className="lg:col-span-5 lg:border-l lg:border-gray-200 lg:pl-12 space-y-10">
+          <div>
+            <h2 className="font-semibold text-primary-deeper mb-3">Talk to us directly</h2>
+            <address className="not-italic space-y-2 text-body">
+              <p>
+                <a href="tel:+263772202290" className="font-semibold text-primary-deeper hover:text-primary">
+                  +263 77 220 2290
                 </a>
-                <a
-                  href="https://www.facebook.com/TEAMConsult/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-600 hover:text-primary"
-                >
-                  Facebook
-                </a>
-              </div>
-            </article>
-
-            <article>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Downloads</h3>
-              <p className="text-slate-600 mb-6">
-                Access company and service assets from the master brief.
               </p>
-              <ul className="space-y-3">
-                {(downloadResources.length ? downloadResources : downloads).map((asset) => (
+              <p>
+                <a href="mailto:info@team.co.zw" className="hover:text-primary">info@team.co.zw</a>
+              </p>
+              <p>Harare, Zimbabwe</p>
+              <p>Monday to Friday, 08:00 to 16:30 CAT</p>
+            </address>
+          </div>
+
+          <div>
+            <h2 className="font-semibold text-primary-deeper mb-3">What happens next</h2>
+            <ol className="space-y-3 text-body">
+              <li><strong className="text-primary-deeper">1. We read it.</strong> A principal consultant reviews your enquiry.</li>
+              <li><strong className="text-primary-deeper">2. We reply.</strong> Within two business days, with questions or a time to talk.</li>
+              <li><strong className="text-primary-deeper">3. We scope it together.</strong> No proposal until we both understand the problem.</li>
+            </ol>
+          </div>
+
+          {!!files.length && (
+            <div>
+              <h2 className="font-semibold text-primary-deeper mb-3">Downloads</h2>
+              <ul className="space-y-2">
+                {files.map((asset) => (
                   <li key={asset.id}>
-                    <a
-                      href={asset.href}
-                      download
-                      className="text-primary hover:text-primary-dark text-sm font-medium"
-                    >
+                    <a href={asset.href} download className="font-semibold text-primary-deeper underline underline-offset-4 hover:text-primary">
                       {asset.label}
                     </a>
                   </li>
                 ))}
               </ul>
-            </article>
-          </div>
-
-          {/* Divider */}
-          <div className="border-t border-slate-200 my-12"></div>
-
-          {/* Contact Form + FAQ, side by side on desktop */}
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div id="get-in-touch">
-              <SectionHeader
-                title="Send Us a Message"
-                subtitle="Tell us about your project"
-              />
-
-              <div className="mt-8">
-                <ContactForm />
-              </div>
             </div>
+          )}
+        </aside>
+      </Section>
 
+      <Section tone="tint">
+        <div className="grid lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-4">
+            <SectionIntro eyebrow="Before you write" title="Questions people often ask first." />
+          </div>
+          <div className="lg:col-span-8">
             <FAQAccordion
               items={faqList.slice(0, 5)}
-              eyebrow="FAQ"
-              title="Frequently Asked Questions"
-              subtitle="Quick answers before you reach out."
               showSearch={false}
               showCategoryFilter={false}
               footerHref="/faq"
-              footerLabel="View All FAQs"
+              footerLabel="See all questions"
             />
           </div>
         </div>
-      </section>
-    </div>
+      </Section>
+    </>
   )
 }
