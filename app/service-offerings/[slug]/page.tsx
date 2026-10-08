@@ -1,32 +1,27 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { CheckCircle } from 'lucide-react'
 import { ideasAtWorkArticles } from '@/lib/data'
-import { getBlogPosts, getServiceBySlug, getServiceOfferings } from '@/lib/sanity/content'
+import { serviceTopic, enquiryHref } from '@/lib/data/enquiry'
+import { programmes } from '@/lib/data/programmes'
+import { getBlogPosts, getCaseStudies, getServiceBySlug, getServiceOfferings } from '@/lib/sanity/content'
+import { publicFileExists } from '@/lib/server/publicFile'
+import { PageHero, Section, SectionIntro, EnquiryBand, ButtonLink, ArrowLink } from '@/components/editorial'
 
 interface ServiceDetailPageProps {
-  params: Promise<{
-    slug: string
-  }>
+  params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata(
-  { params }: ServiceDetailPageProps,
-): Promise<Metadata> {
-  const resolvedParams = await params
-  const service = await getServiceBySlug(resolvedParams.slug)
-
+export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const service = await getServiceBySlug(slug)
   return {
     title: service?.title,
     description: service?.description,
-    alternates: { canonical: `/service-offerings/${resolvedParams.slug}` },
+    alternates: { canonical: `/service-offerings/${slug}` },
     openGraph: service
-      ? {
-          title: `${service.title} | TEAM Consulting`,
-          description: service.description,
-          url: `/service-offerings/${resolvedParams.slug}`,
-        }
+      ? { title: `${service.title} | TEAM Consulting`, description: service.description, url: `/service-offerings/${slug}` }
       : undefined,
   }
 }
@@ -41,196 +36,175 @@ const DELIVERY_TYPE_LABELS: Record<string, string> = {
 
 export async function generateStaticParams() {
   const services = await getServiceOfferings()
-
-  return services.map((service) => ({
-    slug: service.slug,
-  }))
+  return services.map((service) => ({ slug: service.slug }))
 }
 
-export default async function ServiceDetailPage(
-  { params }: ServiceDetailPageProps,
-) {
-  const resolvedParams = await params
-  const [service, blogPosts] = await Promise.all([
-    getServiceBySlug(resolvedParams.slug),
+export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
+  const { slug } = await params
+  const [service, blogPosts, caseStudies, allServices] = await Promise.all([
+    getServiceBySlug(slug),
     getBlogPosts(),
+    getCaseStudies(),
+    getServiceOfferings(),
   ])
-
   if (!service) notFound()
 
+  const topic = serviceTopic[service.slug] ?? 'general'
+  const articles = (Array.isArray(blogPosts) && blogPosts.length ? blogPosts : ideasAtWorkArticles)
+    .filter((a: { tags?: string[] }) => a.tags?.includes(service.title))
+    .slice(0, 2)
+  const stories = caseStudies.filter((c) => c.services?.includes(service.title)).slice(0, 2)
+  const others = allServices.filter((s) => s.slug !== service.slug)
+
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-6">{service.title}</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">{service.description}</p>
+    <>
+      <PageHero
+        eyebrow="Services"
+        title={service.title}
+        lead={service.fullDescription ?? service.description}
+      >
+        <ButtonLink href={enquiryHref(topic)}>Enquire about {service.title.toLowerCase()}</ButtonLink>
+        {publicFileExists(service.downloadableProfile) && (
+          <ArrowLink href={service.downloadableProfile} external>
+            Download the service profile (PDF)
+          </ArrowLink>
+        )}
+      </PageHero>
+
+      <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-6">
+          <h2 className="font-heading font-bold text-2xl text-primary-deeper mb-6">What we help with</h2>
+          <ul className="divide-y divide-gray-200 border-y border-gray-200">
+            {service.features.map((f) => (
+              <li key={f} className="py-4 text-lg text-body">{f}</li>
+            ))}
+          </ul>
         </div>
-      </section>
-
-      {/* Overview */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-slate-900 mb-8">Overview</h2>
-          <p className="text-lg text-slate-600 leading-relaxed mb-12">
-            {service.fullDescription ?? service.description}
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-16">
-            {/* Benefits */}
+        <div className="lg:col-span-6 grid sm:grid-cols-2 gap-10">
+          {!!service.benefits?.length && (
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Key Benefits</h3>
+              <h2 className="font-heading font-bold text-2xl text-primary-deeper mb-6">What changes</h2>
               <ul className="space-y-4">
-                {(service.benefits ?? service.features).map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-primary font-bold mr-4">✓</span>
-                    <span className="text-slate-600 text-lg">{benefit}</span>
-                  </li>
+                {service.benefits.map((b) => (
+                  <li key={b} className="border-l-2 border-primary pl-4 text-body leading-relaxed">{b}</li>
                 ))}
               </ul>
             </div>
-
-            {/* Deliverables */}
+          )}
+          {!!service.deliverables?.length && (
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Deliverables</h3>
+              <h2 className="font-heading font-bold text-2xl text-primary-deeper mb-6">What you receive</h2>
               <ul className="space-y-4">
-                {(service.deliverables ?? service.features).map((deliverable, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-primary shrink-0 mr-3 mt-0.5" />
-                    <span className="text-slate-600 text-lg">{deliverable}</span>
-                  </li>
+                {service.deliverables.map((d) => (
+                  <li key={d} className="border-l-2 border-primary-deeper pl-4 text-body leading-relaxed">{d}</li>
                 ))}
               </ul>
             </div>
-          </div>
+          )}
         </div>
-      </section>
+      </Section>
 
-      {/* Features */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
-            What&apos;s Included
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {service.features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                <h4 className="font-bold text-slate-900 text-lg">{feature}</h4>
-              </div>
+      {service.slug === 'organisation-culture' && (
+        <Section bordered>
+          <SectionIntro eyebrow="Programmes" title="Develop your people with a structured programme." />
+          <div className="mt-10 grid md:grid-cols-3 gap-10">
+            {programmes.map((p) => (
+              <Link key={p.slug} href={`/programmes/${p.slug}`} className="group border-t-2 border-primary-deeper pt-5">
+                <h3 className="font-heading font-bold text-xl text-primary-deeper group-hover:text-primary">{p.name}</h3>
+                <p className="mt-2 text-body leading-relaxed">{p.summary}</p>
+                <p className="mt-4 font-semibold text-primary-deeper group-hover:text-primary">Explore <span aria-hidden className="text-primary">→</span></p>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </Section>
+      )}
 
       {!!service.deliveryFramework?.length && (
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Delivery Framework</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-3xl">
-              How {service.title} is delivered across TEAM Consulting&apos;s service architecture.
-            </p>
-            <div className="grid gap-8 md:grid-cols-2">
-              {service.deliveryFramework.map((subArea) => (
-                <article key={subArea.title} className="rounded-xl border border-slate-200 p-6">
-                  <h3 className="text-xl font-bold text-slate-900">{subArea.title}</h3>
-                  {subArea.note && (
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-primary">
-                      {subArea.note}
-                    </p>
-                  )}
-                  <div className="mt-4 space-y-4">
-                    {(Object.keys(DELIVERY_TYPE_LABELS) as Array<keyof typeof DELIVERY_TYPE_LABELS>)
-                      .filter((key) => subArea.delivery[key as keyof typeof subArea.delivery]?.length)
-                      .map((key) => (
-                        <div key={key}>
-                          <p className="text-sm font-bold text-slate-900">{DELIVERY_TYPE_LABELS[key]}</p>
-                          <ul className="mt-1 space-y-1">
-                            {subArea.delivery[key as keyof typeof subArea.delivery]!.map((entry) => (
-                              <li key={entry} className="text-sm text-slate-600">
-                                {entry}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                  </div>
-                </article>
-              ))}
-            </div>
+        <Section tone="tint">
+          <SectionIntro
+            eyebrow="Delivery framework"
+            title={`How we deliver ${service.title.toLowerCase()} work.`}
+            lead="Depending on what you need, we bring toolkits, training, evaluation or hands-on advisory support."
+          />
+          <div className="mt-12 grid md:grid-cols-2 gap-10">
+            {service.deliveryFramework.map((sub) => (
+              <article key={sub.title} className="border-t-2 border-primary-deeper pt-6">
+                <h3 className="font-heading font-bold text-xl text-primary-deeper">{sub.title}</h3>
+                {sub.note && <p className="mt-1 text-sm text-primary font-semibold">{sub.note}</p>}
+                <dl className="mt-5 space-y-4">
+                  {Object.keys(DELIVERY_TYPE_LABELS)
+                    .filter((k) => sub.delivery[k as keyof typeof sub.delivery]?.length)
+                    .map((k) => (
+                      <div key={k} className="grid grid-cols-[110px_1fr] gap-4">
+                        <dt className="text-sm text-body/70">{DELIVERY_TYPE_LABELS[k]}</dt>
+                        <dd className="text-body">{sub.delivery[k as keyof typeof sub.delivery]!.join(', ')}</dd>
+                      </div>
+                    ))}
+                </dl>
+              </article>
+            ))}
           </div>
-        </section>
+        </Section>
       )}
 
-      {!!service.notableAssignments?.length && (
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-slate-900 mb-8">Notable Assignments</h2>
-            <ul className="space-y-4 text-slate-700">
-              {service.notableAssignments.map((assignment) => (
-                <li key={assignment} className="rounded-lg border border-slate-200 p-4">
-                  {assignment}
-                </li>
+      {(!!service.notableAssignments?.length || !!stories.length) && (
+        <Section>
+          <SectionIntro eyebrow="In practice" title="Recent work in this area." />
+          {!!service.notableAssignments?.length && (
+            <ul className="mt-10 divide-y divide-gray-200 border-y border-gray-200 max-w-4xl">
+              {service.notableAssignments.map((a) => (
+                <li key={a} className="py-5 text-lg text-body leading-relaxed">{a}</li>
               ))}
             </ul>
-          </div>
-        </section>
+          )}
+          {!!stories.length && (
+            <div className="mt-12 grid md:grid-cols-2 gap-10">
+              {stories.map((s) => (
+                <Link key={s.id} href={`/ideas-at-work/${s.slug}`} className="group grid grid-cols-[140px_1fr] gap-5">
+                  <div className="relative aspect-square overflow-hidden rounded-sm">
+                    <Image src={s.image} alt="" fill sizes="140px" className="object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-body/70">Case story · {s.client}</p>
+                    <h3 className="mt-1 font-heading font-bold text-lg text-primary-deeper group-hover:text-primary leading-snug">{s.title}</h3>
+                    <p className="mt-2 text-sm text-body">{s.summary}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </Section>
       )}
 
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900">Service Profile</h2>
-              <p className="mt-2 text-slate-600">Download the service profile for this intervention area.</p>
-              <a
-                href={service.downloadableProfile}
-                download
-                className="mt-4 inline-block rounded-md bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-dark"
-              >
-                Download Profile
-              </a>
-            </div>
+      {!!articles.length && (
+        <Section tone="tint" className="py-12 md:py-16">
+          <h2 className="font-heading font-bold text-xl text-primary-deeper mb-6">Related practice notes</h2>
+          <ul className="space-y-3">
+            {articles.map((a: { id: string; slug: string; title: string }) => (
+              <li key={a.id}>
+                <ArrowLink href={`/ideas-at-work/articles/${a.slug}`}>{a.title}</ArrowLink>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900">Related Ideas @ Work</h2>
-              <ul className="mt-4 space-y-3">
-                {(Array.isArray(blogPosts) && blogPosts.length ? blogPosts : ideasAtWorkArticles)
-                  .filter((article) => article.tags.includes(service.title))
-                  .slice(0, 2)
-                  .map((article) => (
-                    <li key={article.id} className="rounded-lg border border-slate-200 bg-white p-4">
-                      <p className="font-semibold text-slate-900">{article.title}</p>
-                      <p className="mt-1 text-sm text-slate-600">{article.excerpt}</p>
-                      <a href={article.downloadUrl} download className="mt-2 inline-block text-sm font-semibold text-primary">
-                        Download Article
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EnquiryBand
+        title={`Talk to us about ${service.title.toLowerCase()}.`}
+        topic={topic}
+        buttonLabel={`Enquire about ${service.title.toLowerCase()}`}
+      />
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary-dark text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how {service.title} can drive value for your organization.
-          </p>
-          <Link
-            href="/contact-us"
-            className="inline-block bg-white text-primary hover:bg-slate-100 font-bold py-3 px-8 rounded-lg transition-colors"
-          >
-            Schedule a Consultation
-          </Link>
-        </div>
-      </section>
-    </div>
+      <Section className="py-12 md:py-14">
+        <p className="text-sm font-semibold text-body/70 mb-4">Other services</p>
+        <ul className="flex flex-wrap gap-x-8 gap-y-3">
+          {others.map((s) => (
+            <li key={s.slug}>
+              <ArrowLink href={`/service-offerings/${s.slug}`}>{s.title}</ArrowLink>
+            </li>
+          ))}
+        </ul>
+      </Section>
+    </>
   )
 }

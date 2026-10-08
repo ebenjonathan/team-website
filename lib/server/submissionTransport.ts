@@ -1,6 +1,9 @@
 import type { SubmissionChannel } from './localSubmissionLog'
+import { enquiryTopicLabel } from '@/lib/data/enquiry'
 import {
   sendEmail,
+  sendEmailStrict,
+  configuredEmailProvider,
   contactEmailTemplate,
   contactConfirmationTemplate,
   eventRegistrationTemplate,
@@ -17,20 +20,17 @@ interface DeliveryRequest {
 
 function resolveMode(channel: SubmissionChannel): DeliveryMode {
   const provider = process.env.SUBMISSION_PROVIDER?.toLowerCase().trim()
-
   if (channel === 'newsletter' && provider === 'mailchimp') return 'mailchimp'
-  if (provider === 'resend' && process.env.RESEND_API_KEY) return 'resend'
-  if (provider === 'sendgrid' && process.env.SENDGRID_API_KEY) return 'sendgrid'
+  return configuredEmailProvider() ?? 'local-fallback'
+}
 
-  // Implicit resend: if no SUBMISSION_PROVIDER is set but RESEND_API_KEY exists, use it
-  if (process.env.RESEND_API_KEY) return 'resend'
-
-  return 'local-fallback'
+export function deliveryMode(channel: SubmissionChannel): DeliveryMode {
+  return resolveMode(channel)
 }
 
 const adminEmail = () =>
   process.env.ADMIN_NOTIFICATION_EMAIL ?? process.env.ADMIN_EMAIL ?? 'info@team.co.zw'
-const siteUrl = () => process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisory.com'
+const siteUrl = () => process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvisoryservices.com'
 
 export async function deliverSubmission(request: DeliveryRequest): Promise<DeliveryMode> {
   const mode = resolveMode(request.channel)
@@ -45,28 +45,30 @@ export async function deliverSubmission(request: DeliveryRequest): Promise<Deliv
       const email = String(p.email ?? '')
       const message = String(p.message ?? '')
 
-      await Promise.allSettled([
-        // Notification to admin
-        sendEmail({
-          to: adminEmail(),
-          subject: `New Contact Inquiry from ${name}`,
-          html: contactEmailTemplate({
-            name,
-            email,
-            organisation: p.organisation as string | undefined,
-            country: p.country as string | undefined,
-            requestType: p.requestType as string | undefined,
-            message,
-          }),
-          replyTo: email,
+      const topic = enquiryTopicLabel(String(p.requestType ?? 'general'))
+
+      // The notification to the office IS the enquiry, so it must succeed.
+      // If it fails this throws and the visitor is told to email us instead.
+      await sendEmailStrict({
+        to: adminEmail(),
+        subject: `New enquiry (${topic}) from ${name}`,
+        html: contactEmailTemplate({
+          name,
+          email,
+          organisation: p.organisation as string | undefined,
+          country: p.country as string | undefined,
+          requestType: topic,
+          message,
         }),
-        // Confirmation to submitter
-        sendEmail({
-          to: email,
-          subject: 'We received your message - TEAM Consulting',
-          html: contactConfirmationTemplate(name),
-        }),
-      ])
+        replyTo: email,
+      })
+
+      // The confirmation to the visitor is a courtesy; a failure is only logged.
+      await sendEmail({
+        to: email,
+        subject: 'We received your message - TEAM Consulting',
+        html: contactConfirmationTemplate(name),
+      })
     }
 
     // Event registration

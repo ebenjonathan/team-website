@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Roboto, Open_Sans } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { HideOnAdmin } from '@/components/layout/HideOnAdmin'
 import '../styles/globals.css'
 import { SITE_URL as siteUrl } from '@/lib/seo/site'
 
@@ -105,9 +106,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col" suppressHydrationWarning>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <HideOnAdmin>
+          <Header />
+        </HideOnAdmin>
+        <main id="content" className="flex-1">{children}</main>
+        <HideOnAdmin>
+          <Footer />
+        </HideOnAdmin>
       </body>
     </html>
   )

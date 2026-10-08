@@ -1,7 +1,7 @@
 'use client'
 
 import type { FAQ } from '@/types'
-import { Minus, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface FAQItemProps {
@@ -11,55 +11,33 @@ interface FAQItemProps {
   onToggle: () => void
 }
 
-export function FAQItem({ item, isOpen, index, onToggle }: FAQItemProps) {
+export function FAQItem({ item, isOpen, onToggle }: FAQItemProps) {
+  const panelId = `faq-panel-${item.id}`
   return (
-    <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left md:px-6"
-      >
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            {item.category && (
-              <span className="rounded-full bg-primary-light px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary-deeper">
-                {item.category}
-              </span>
-            )}
-          </div>
-          <h3 className="mt-3 text-base font-bold leading-snug text-slate-900 md:text-lg">
-            {item.question}
-          </h3>
-        </div>
-
-        <span
-          className={cn(
-            'mt-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border transition-colors',
-            isOpen
-              ? 'border-primary bg-primary text-white'
-              : 'border-slate-200 bg-slate-50 text-slate-500'
-          )}
+    <article className="border-b border-gray-300">
+      <h3>
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          className="flex w-full items-start justify-between gap-6 py-5 text-left group"
         >
-          {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-        </span>
-      </button>
-
+          <span className="font-heading text-lg font-bold leading-snug text-primary-deeper group-hover:text-primary">
+            {item.question}
+          </span>
+          <Plus
+            aria-hidden
+            className={cn('mt-1 h-5 w-5 flex-shrink-0 text-primary transition-transform duration-200', isOpen && 'rotate-45')}
+          />
+        </button>
+      </h3>
       <div
-        className={cn(
-          'grid transition-all duration-300 ease-out',
-          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-        )}
+        id={panelId}
+        className={cn('grid transition-all duration-300 ease-out', isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}
       >
         <div className="overflow-hidden">
-          <div className="border-t border-slate-100 px-5 py-5 md:px-6">
-            <p className="whitespace-pre-line text-sm leading-7 text-slate-600 md:text-base">
-              {item.answer}
-            </p>
-          </div>
+          <p className="whitespace-pre-line pb-6 pr-10 leading-relaxed text-body max-w-[70ch]">{item.answer}</p>
         </div>
       </div>
     </article>

@@ -1,181 +1,110 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getCaseStudies, getCaseStudyBySlug } from '@/lib/sanity/content'
+import { serviceTopic, enquiryHref } from '@/lib/data/enquiry'
+import { serviceAreas } from '@/lib/data'
+import { PageHero, Section, EnquiryBand, ButtonLink } from '@/components/editorial'
 
 interface CaseStudyDetailPageProps {
-  params: Promise<{
-    slug: string
-  }>
+  params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata(
-  { params }: CaseStudyDetailPageProps,
-): Promise<Metadata> {
-  const resolvedParams = await params
-  const study = await getCaseStudyBySlug(resolvedParams.slug)
-
-  return {
-    title: study?.title,
-    description: study?.summary,
-  }
+export async function generateMetadata({ params }: CaseStudyDetailPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const study = await getCaseStudyBySlug(slug)
+  return { title: study?.title, description: study?.summary }
 }
 
 export async function generateStaticParams() {
   const caseStudies = await getCaseStudies()
-
-  return caseStudies.map((study) => ({
-    slug: study.slug,
-  }))
+  return caseStudies.map((study) => ({ slug: study.slug }))
 }
 
-export default async function CaseStudyDetailPage(
-  { params }: CaseStudyDetailPageProps,
-) {
-  const resolvedParams = await params
-  const study = await getCaseStudyBySlug(resolvedParams.slug)
-
-  const caseStudies = await getCaseStudies()
-
+export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPageProps) {
+  const { slug } = await params
+  const [study, caseStudies] = await Promise.all([getCaseStudyBySlug(slug), getCaseStudies()])
   if (!study) notFound()
 
+  const mainService = serviceAreas.find((s) => s.title === study.services?.[0])
+  const topic = (mainService && serviceTopic[mainService.slug]) || 'general'
+  const related = caseStudies.filter((s) => s.slug !== study.slug).slice(0, 2)
+
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <p className="text-primary-light font-semibold mb-2">{study.category}</p>
-          <h1 className="text-5xl font-bold mb-6">{study.title}</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">{study.summary}</p>
-        </div>
-      </section>
+    <>
+      <PageHero eyebrow={`Case story · ${study.category}`} title={study.title} lead={study.summary} />
 
-      {/* Case Study Content */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="md:col-span-2 space-y-12">
-              {/* Challenge */}
+      <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <article className="lg:col-span-8 space-y-12">
+          {study.image && (
+            <div className="relative aspect-[16/9] overflow-hidden rounded-sm">
+              <Image src={study.image} alt="" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
+            </div>
+          )}
+          {study.challenge && (
+            <div>
+              <h2 className="font-heading font-bold text-2xl md:text-3xl text-primary-deeper">The challenge</h2>
+              <p className="mt-4 text-lg text-body leading-relaxed max-w-[68ch]">{study.challenge}</p>
+            </div>
+          )}
+          {study.approach && (
+            <div>
+              <h2 className="font-heading font-bold text-2xl md:text-3xl text-primary-deeper">What we did</h2>
+              <p className="mt-4 text-lg text-body leading-relaxed max-w-[68ch]">{study.approach}</p>
+            </div>
+          )}
+        </article>
+
+        <aside className="lg:col-span-4 lg:border-l lg:border-gray-200 lg:pl-10 space-y-10">
+          <dl className="space-y-4">
+            <div>
+              <dt className="text-sm text-body/70">Client</dt>
+              <dd className="font-semibold text-primary-deeper">{study.client}</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-body/70">Duration</dt>
+              <dd className="font-semibold text-primary-deeper">{study.duration}</dd>
+            </div>
+            {!!study.services?.length && (
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">Challenge</h2>
-                <p className="text-lg text-slate-600 leading-relaxed">{study.challenge}</p>
+                <dt className="text-sm text-body/70">Services</dt>
+                <dd className="font-semibold text-primary-deeper">{study.services.join(', ')}</dd>
               </div>
-
-              {/* Approach */}
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Approach</h2>
-                <p className="text-lg text-slate-600 leading-relaxed mb-6">{study.approach}</p>
-              </div>
-
-              {(study.technologies?.frontend?.length || study.technologies?.backend?.length || study.technologies?.infrastructure?.length) && (
-                <div>
-                  <h2 className="text-3xl font-bold text-slate-900 mb-6">Technologies</h2>
-                  <div className="grid md:grid-cols-3 gap-8">
-                    {study.technologies?.frontend && (
-                      <div>
-                        <h3 className="font-bold text-slate-900 mb-4">Frontend</h3>
-                        <ul className="space-y-2">
-                          {study.technologies.frontend.map((tech, idx) => (
-                            <li key={idx} className="text-slate-600">
-                              • {tech}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {study.technologies?.backend && (
-                      <div>
-                        <h3 className="font-bold text-slate-900 mb-4">Backend</h3>
-                        <ul className="space-y-2">
-                          {study.technologies.backend.map((tech, idx) => (
-                            <li key={idx} className="text-slate-600">
-                              • {tech}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {study.technologies?.infrastructure && (
-                      <div>
-                        <h3 className="font-bold text-slate-900 mb-4">Infrastructure</h3>
-                        <ul className="space-y-2">
-                          {study.technologies.infrastructure.map((tech, idx) => (
-                            <li key={idx} className="text-slate-600">
-                              • {tech}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+            )}
+          </dl>
+          {!!study.metrics?.length && (
+            <div>
+              <h2 className="font-semibold text-primary-deeper mb-3">Results</h2>
+              <dl className="divide-y divide-gray-200 border-y border-gray-200">
+                {study.metrics.map((m) => (
+                  <div key={m.label} className="py-3 flex justify-between gap-4">
+                    <dt className="text-body">{m.label}</dt>
+                    <dd className="font-semibold text-primary-deeper text-right">{m.value}</dd>
                   </div>
-                </div>
-              )}
+                ))}
+              </dl>
             </div>
+          )}
+          <ButtonLink href={enquiryHref(topic)}>Discuss a similar challenge</ButtonLink>
+        </aside>
+      </Section>
 
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Metrics */}
-              <div className="bg-slate-50 p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Results</h3>
-                <div className="space-y-6">
-                  {(study.metrics ?? []).map((metric, idx) => (
-                    <div key={idx}>
-                      <p className="text-3xl font-bold text-primary">{metric.value}</p>
-                      <p className="text-slate-600 mt-1">{metric.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Services */}
-              {study.services && (
-                <div className="bg-primary-light p-8 rounded-lg">
-                  <h3 className="text-lg font-bold text-slate-900 mb-4">Services Used</h3>
-                  <ul className="space-y-2">
-                    {study.services.map((service, idx) => (
-                      <li key={idx} className="text-slate-600">
-                        ✓ {service}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* CTA */}
-              <Link
-                href="/contact-us"
-                className="w-full block text-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition-colors"
-              >
-                Start Your Project
+      {!!related.length && (
+        <Section tone="tint">
+          <h2 className="font-heading font-bold text-2xl text-primary-deeper mb-8">More case stories</h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            {related.map((r) => (
+              <Link key={r.slug} href={`/ideas-at-work/${r.slug}`} className="group border-t-2 border-primary-deeper pt-5">
+                <p className="text-sm text-body/70">{r.category}</p>
+                <h3 className="mt-1 font-heading font-bold text-xl text-primary-deeper group-hover:text-primary">{r.title}</h3>
+                <p className="mt-2 text-body">{r.summary}</p>
               </Link>
-            </div>
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* Related Case Studies */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12">More Success Stories</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {caseStudies
-              .filter((s) => s.slug !== study.slug)
-              .slice(0, 2)
-              .map((relatedStudy) => (
-                <Link
-                  key={relatedStudy.slug}
-                  href={`/ideas-at-work/${relatedStudy.slug}`}
-                  className="bg-white p-8 rounded-lg hover:shadow-lg transition-shadow"
-                >
-                  <span className="block text-primary font-semibold mb-2">{relatedStudy.category}</span>
-                  <span className="block text-xl font-bold text-slate-900 mb-3">{relatedStudy.title}</span>
-                  <span className="block text-slate-600">{relatedStudy.summary}</span>
-                </Link>
-              ))}
-          </div>
-        </div>
-      </section>
-    </div>
+        </Section>
+      )}
+      <EnquiryBand topic={topic} />
+    </>
   )
 }

@@ -37,7 +37,7 @@ export const CASE_STUDIES_QUERY = `
 `
 
 export const TEAM_QUERY = `
-  *[_type == "teamMember"] | order(order asc) {
+  *[_type == "teamMember" && (!defined(memberType) || memberType != "associate")] | order(order asc) {
     _id,
     name,
     role,

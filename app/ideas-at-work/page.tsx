@@ -1,99 +1,70 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { CaseStudyCard } from '@/components/cards/CaseStudyCard'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { companyProfile, ideasAtWorkArticles } from '@/lib/data'
+import { ideasAtWorkArticles } from '@/lib/data'
 import { getCaseStudies, getBlogPosts } from '@/lib/sanity/content'
+import { PageHero, Section, SectionIntro, EnquiryBand, ArrowLink } from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Practice Notes',
-  description:
-    'Explore our case stories, thought leadership, and practical insights from advisory engagements.',
+  description: 'Case stories, thought leadership and practical insight from TEAM Consulting engagements.',
   alternates: { canonical: '/ideas-at-work' },
 }
 
+const articleImages = ['/images/portfolio/portfolio-3.webp', '/images/portfolio/portfolio-8.webp', '/images/portfolio/portfolio-11.webp', '/images/portfolio/portfolio-9.webp', '/images/portfolio/portfolio-10.webp']
+
 export default async function IdeasAtWorkPage() {
   const [caseStudiesData, blogPosts] = await Promise.all([getCaseStudies(), getBlogPosts()])
+  const articles: { id: string; slug: string; title: string; excerpt: string; tags?: string[] }[] =
+    Array.isArray(blogPosts) && blogPosts.length ? blogPosts : ideasAtWorkArticles
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Practice Notes</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Discover how TEAM Consulting turns insight into practical outcomes for organisations facing change.
-          </p>
-        </div>
-      </section>
+    <>
+      <PageHero
+        eyebrow="Practice notes"
+        title="What we are learning from the work."
+        lead="Short, useful reads for leaders, and stories from real engagements. Grounded in what actually happens when organisations try to grow, govern and change."
+      />
 
-      {/* Case Studies */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Selected Case Stories"
-            subtitle="Real projects, real outcomes, and the lessons that stayed with us"
-            centered
-          />
-
-          <div className="grid md:grid-cols-2 gap-8 mt-16">
-            {caseStudiesData.map((study) => (
-              <CaseStudyCard key={study.id} caseStudy={study} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Impact Stats */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
-            Collective Impact
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {companyProfile.stats.map((stat) => (
-              <div key={stat.id} className="text-center">
-                <p className="text-4xl font-bold text-primary mb-2">{stat.display}</p>
-                <p className="text-slate-600">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Articles & Excerpts"
-            subtitle="Downloadable thought leadership from TEAM Ideas @ Work"
-            centered
-          />
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {(Array.isArray(blogPosts) && blogPosts.length ? blogPosts : ideasAtWorkArticles).map((article: any) => (
-              <article key={article.id} className="rounded-xl border border-slate-200 p-6 flex flex-col">
-                <h3 className="text-xl font-bold text-slate-900">{article.title}</h3>
-                <p className="mt-3 text-slate-600 flex-1">{article.excerpt}</p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">
-                  {(article.tags ?? []).join(' * ')}
-                </p>
-                <div className="mt-4 flex items-center gap-4">
-                  <Link href={`/ideas-at-work/articles/${article.slug}`} className="text-sm font-semibold text-primary hover:text-primary-dark">
-                    Read Article →
-                  </Link>
-                  {article.downloadUrl && (
-                    <a href={article.downloadUrl} download className="text-sm font-semibold text-slate-500 hover:text-slate-700">
-                      Download PDF
-                    </a>
-                  )}
+      <Section>
+        <SectionIntro eyebrow="Articles" title="Notes on strategy, governance and people." />
+        <ul className="mt-12 grid md:grid-cols-3 gap-10">
+          {articles.map((a, i) => (
+            <li key={a.id}>
+              <Link href={`/ideas-at-work/articles/${a.slug}`} className="group block">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
+                  <Image src={articleImages[i % articleImages.length]} alt="" fill sizes="(min-width:768px) 30vw, 100vw" className="object-cover" />
                 </div>
-              </article>
-            ))}
-          </div>
+                <p className="mt-4 text-sm text-body/70">{(a.tags ?? []).join(', ')}</p>
+                <h3 className="mt-1 font-heading font-bold text-xl text-primary-deeper group-hover:text-primary leading-snug">{a.title}</h3>
+                <p className="mt-2 text-body leading-relaxed">{a.excerpt}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="tint">
+        <SectionIntro eyebrow="Case stories" title="Selected engagements." />
+        <ul className="mt-10 border-t border-gray-300">
+          {caseStudiesData.map((s) => (
+            <li key={s.id} className="border-b border-gray-300">
+              <Link href={`/ideas-at-work/${s.slug}`} className="group grid md:grid-cols-12 gap-4 py-6 items-baseline">
+                <p className="md:col-span-3 text-sm text-body/70">{s.category} · {s.client}</p>
+                <h3 className="md:col-span-6 font-heading font-bold text-xl text-primary-deeper group-hover:text-primary">{s.title}</h3>
+                <p className="md:col-span-3 md:text-right font-semibold text-primary-deeper group-hover:text-primary">
+                  Read <span aria-hidden className="text-primary">→</span>
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-10">
+          <ArrowLink href="/why-team/our-success-stories">See case stories with results</ArrowLink>
         </div>
-      </section>
-    </div>
+      </Section>
+
+      <EnquiryBand />
+    </>
   )
 }
-

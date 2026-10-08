@@ -382,7 +382,7 @@ export const businessUnits: BusinessUnit[] = [
     description:
       'Leadership development, culture transformation, change management, and digital capability support.',
     services: serviceAreas.filter((s) => s.businessUnit === 'TEAM Human Capital').map((s) => s.title),
-    head: 'Abigail Mapamba-Zinyengere',
+    head: 'Abigail Zinyengere',
     narrative: [
       'Strategy is only as strong as the people executing it. When organisations invest in rigorous planning but neglect the human architecture — the culture, leadership capability, and change readiness of their teams — even the best strategies stall. TEAM Human Capital works at the intersection of people and performance, helping organisations build the leadership depth, cultural coherence, and digital capability required to operate at their full potential.',
       'Culture transformation is one of the most misunderstood disciplines in management consulting. Too often it is reduced to a values poster and an annual survey. Our work goes deeper. We use evidence-based diagnostics to map the current culture, identify the specific behaviours and structures driving dysfunction, and co-design a transformation roadmap with your leadership team. Change management is not a communication plan — it is an organisational design challenge, and we treat it as such.',
@@ -409,7 +409,7 @@ export const businessUnits: BusinessUnit[] = [
       },
       {
         heading: 'The Unit Lead Who Built It From the Inside',
-        body: "Abigail Mapamba-Zinyengere leads TEAM Human Capital with 19 years of consulting experience and the practical depth of someone who has sat in the room when difficult decisions were made. Abigail's approach is direct: she will tell you what your culture is actually doing to your performance, not what you want to hear about it. Her background spans organisational development, team effectiveness, performance management, and coaching — which means she understands that human capital challenges are almost always entangled with structural and process failures. She will not let you fix one without addressing the other.",
+        body: "Abigail Zinyengere leads TEAM Human Capital with 19 years of consulting experience and the practical depth of someone who has sat in the room when difficult decisions were made. Abigail's approach is direct: she will tell you what your culture is actually doing to your performance, not what you want to hear about it. Her background spans organisational development, team effectiveness, performance management, and coaching — which means she understands that human capital challenges are almost always entangled with structural and process failures. She will not let you fix one without addressing the other.",
       },
       {
         heading: "The Invitation: Let's Diagnose Your Human Architecture",
@@ -481,9 +481,9 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 'abigail-zinyengere',
-    name: 'Abigail Mapamba-Zinyengere',
+    name: 'Abigail Zinyengere',
     role: 'Coach & Principal Consultant',
-    bio: 'Abigail Mapamba-Zinyengere is a Coach and Principal Consultant at TEAM Consulting, with a strong focus on people, leadership, team effectiveness and organisational culture. She brings experience in business planning, coaching, balanced scorecard implementation, team building and organisational development. Her approach centres on helping leaders and teams understand how their behaviours, relationships and ways of working influence organisational performance. At TEAM Consulting, Abigail contributes to interventions focused on leadership development, team dynamics, organisational culture, team building and facilitation. Her work is grounded in creating environments where people can collaborate effectively, navigate challenges constructively and contribute meaningfully to organisational goals.',
+    bio: 'Abigail Zinyengere is a Coach and Principal Consultant at TEAM Consulting, with a strong focus on people, leadership, team effectiveness and organisational culture. She brings experience in business planning, coaching, balanced scorecard implementation, team building and organisational development. Her approach centres on helping leaders and teams understand how their behaviours, relationships and ways of working influence organisational performance. At TEAM Consulting, Abigail contributes to interventions focused on leadership development, team dynamics, organisational culture, team building and facilitation. Her work is grounded in creating environments where people can collaborate effectively, navigate challenges constructively and contribute meaningfully to organisational goals.',
     image: '/images/abigail.png',
     socialLinks: { linkedin: 'https://www.linkedin.com/in/abigail-mapamba-zinyengere-11130559/' },
     yearsConsulting: 19,
@@ -646,7 +646,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Analytics & Research',
     client: 'Large Mining Operation',
     duration: 'Quarterly cycles',
-    image: '/images/portfolio/portfolio-6.webp',
+    image: '/images/portfolio/portfolio-7.webp',
     summary: 'Large-scale culture diagnostics used to guide transformation actions.',
     tags: ['Analytics & Research', 'Culture', 'GREATER: Engagement & Thrivability'],
     metrics: [
@@ -726,6 +726,16 @@ export const caseStudies: CaseStudy[] = [
       'TEAM deployed IoT sensors, edge computing, AI predictive maintenance, a cloud data lake, and comprehensive digital upskilling programmes.',
     services: ['Operations', 'Strategy', 'Analytics & Research'],
   },
+]
+
+// These three case studies read like sample/template content (app builds, IoT,
+// specific user numbers) rather than TEAM engagements, so they are hidden from
+// the site. Once you have confirmed a story is real and approved by the client,
+// remove its id from this list to publish it again.
+export const unpublishedCaseStudyIds = [
+  'case-ecommerce-boom',
+  'case-digital-banking',
+  'case-manufacturing',
 ]
 
 export const ideasAtWorkArticles = [
@@ -921,13 +931,12 @@ export const faqBotQuestions: FAQ[] = [
 ]
 
 export const downloads = [
-  { id: 'company-profile', label: 'Company Profile (Full)', href: '/downloads/company-profile.pdf' },
+  { id: 'company-profile', label: 'Company Profile (PDF, 1.1 MB)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
 ]
 
 export const contacts = {
   headquarters: 'Harare, Zimbabwe',
   phone: '+263 77 220 2290',
   generalEmail: 'info@team.co.zw',
-  zimbabweEmail: 'ZW@teamadvisoryservices.com',
 }
 

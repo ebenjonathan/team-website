@@ -3,7 +3,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { BarChart2, Mail, Calendar, Send, FileText, LogOut, Trash2, Plus, User } from 'lucide-react'
+import { BarChart2, Mail, Calendar, Send, FileText, LogOut, Trash2, Plus, User, Users, PenSquare } from 'lucide-react'
+import AssociatesManager from './AssociatesManager'
+import ContentHelp from './ContentHelp'
 
 //  Types 
 
@@ -34,7 +36,7 @@ type ContactSubmission = {
 type BlogPost = { id: string; title: string; excerpt: string; createdAt: string }
 type Subscriber = { id: string; email: string; createdAt: string }
 
-type Tab = 'diagnostics' | 'contacts' | 'events' | 'newsletter' | 'blog'
+type Tab = 'associates' | 'content' | 'diagnostics' | 'contacts' | 'events' | 'newsletter' | 'blog'
 
 //  CSV helper 
 
@@ -99,7 +101,7 @@ export default function AdminDashboard() {
   const [subscribers, setSubscribers] = useState<Subscriber[]>([])
   const [loading, setLoading] = useState(true)
 
-  const [activeTab, setActiveTab] = useState<Tab>('diagnostics')
+  const [activeTab, setActiveTab] = useState<Tab>('associates')
   const [search, setSearch] = useState('')
 
   const [newTitle, setNewTitle] = useState('')
@@ -226,7 +228,9 @@ export default function AdminDashboard() {
   )
 
   //  Tab config 
-  const tabs: { id: Tab; label: string; icon: React.ReactNode; count: number }[] = [
+  const tabs: { id: Tab; label: string; icon: React.ReactNode; count?: number }[] = [
+    { id: 'associates', label: 'Associates', icon: <Users className="w-4 h-4" /> },
+    { id: 'content', label: 'Website content', icon: <PenSquare className="w-4 h-4" /> },
     { id: 'diagnostics', label: 'Diagnostics', icon: <BarChart2 className="w-4 h-4" />, count: diagnostics.length },
     { id: 'contacts', label: 'Contact Forms', icon: <Mail className="w-4 h-4" />, count: contactOnly.length },
     { id: 'events', label: 'Event Registrations', icon: <Calendar className="w-4 h-4" />, count: eventOnly.length },
@@ -283,14 +287,19 @@ export default function AdminDashboard() {
               }`}
             >
               {tab.icon} {tab.label}
-              <span className={`ml-1 rounded-full px-1.5 text-xs ${activeTab === tab.id ? 'bg-white/20' : 'bg-white/10'}`}>
-                {tab.count}
-              </span>
+              {tab.count !== undefined && (
+                <span className={`ml-1 rounded-full px-1.5 text-xs ${activeTab === tab.id ? 'bg-white/20' : 'bg-white/10'}`}>
+                  {tab.count}
+                </span>
+              )}
             </button>
           ))}
         </div>
 
         {/*  Tab panels  */}
+        {activeTab === 'associates' && <AssociatesManager />}
+        {activeTab === 'content' && <ContentHelp />}
+        {activeTab !== 'associates' && activeTab !== 'content' && (
         <section className="rounded-2xl border border-white/10 bg-white/5 p-5">
 
           {/* Search + Export row */}
@@ -561,6 +570,7 @@ export default function AdminDashboard() {
             </div>
           )}
         </section>
+        )}
       </div>
     </main>
   )

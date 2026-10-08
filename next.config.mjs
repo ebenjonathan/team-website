@@ -23,6 +23,17 @@ const nextConfig = {
   compress: true,
 
   // ─── Security & cache headers ───────────────────────────────────────────────
+  // Old links to the previous company profile still work.
+  async redirects() {
+    return [
+      {
+        source: '/downloads/company-profile.pdf',
+        destination: '/downloads/TEAM-Consulting-Company-Profile.pdf',
+        permanent: true,
+      },
+    ]
+  },
+
   async headers() {
     return [
       {

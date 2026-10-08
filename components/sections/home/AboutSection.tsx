@@ -7,7 +7,7 @@ const highlights = [
   'Founded in 2004 and rooted in Harare, Zimbabwe',
   'Associate-led model that brings specialist depth without unnecessary overhead',
   '20+ years of advisory experience and 80%+ repeat client relationships',
-  'Practical delivery from strategy through implementation and culture',
+  'Practical support across leadership, teams, culture, wellbeing and performance',
 ]
 
 export function AboutSection() {
@@ -49,13 +49,13 @@ export function AboutSection() {
               About Us
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary-deeper mb-6 leading-tight">
-              Strategic support for organisations that want to{' '}
-              <span className="text-primary">perform with purpose</span>
+              Helping organisations and their people{' '}
+              <span className="text-primary">grow, together</span>
             </h2>
             <p className="text-body leading-relaxed mb-6">
               TEAM Consulting is a boutique advisory practice headquartered in Harare, Zimbabwe. We
-              help leaders strengthen governance, sharpen performance, and nurture the people and
-              culture needed to sustain change.
+              help leaders develop their people, build healthy teams and cultures, strengthen
+              governance and sharpen performance.
             </p>
             <p className="text-body leading-relaxed mb-8">
               Our work is grounded in collaboration, stewardship, and practical execution. We bring

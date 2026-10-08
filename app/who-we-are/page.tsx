@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { companyProfile, downloads } from '@/lib/data'
-import { SectionHeader } from '@/components/ui'
 import { getDownloadResources, getGlobalSettings } from '@/lib/sanity/content'
+import { publicFileExists } from '@/lib/server/publicFile'
+import { PageHero, Section, SectionIntro, EnquiryBand, ArrowLink, ButtonLink } from '@/components/editorial'
+import { GreaterDial } from '@/components/editorial/GreaterDial'
 
 export const metadata: Metadata = {
   title: 'Who We Are',
@@ -19,188 +21,150 @@ export const metadata: Metadata = {
 
 export default async function WhoWeArePage() {
   const [settings, resources] = await Promise.all([getGlobalSettings(), getDownloadResources()])
-
   const profile = settings ?? companyProfile
   const downloadItems = resources.length ? resources : downloads
+  const profilePdf = downloadItems.find((a) => a.id === 'company-profile')?.href
+  const stats: { id: string; label: string; display: string }[] = profile.stats
 
   return (
-    <div className="min-h-screen">
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">{profile.name}</h1>
-            <p className="text-2xl font-semibold text-primary-light">{profile.tagline}</p>
-            <p className="text-xl text-slate-200 mt-6 leading-relaxed">
-              We help organisations move from intention to impact through practical transformation,
-              stewardship, and people-centred execution.
-            </p>
-          </div>
+    <>
+      <PageHero
+        eyebrow="Our story"
+        title="A boutique advisory practice built on one idea: together, we are greater than me."
+        lead={
+          <p>
+            Founded in Harare in 2004, TEAM Consulting helps organisations{' '}
+            <strong className="text-primary-deeper">unlock full value in their people, processes and products</strong>, and
+            move from intention to impact.
+          </p>
+        }
+      >
+        <ButtonLink href="/contact-us#enquiry">Make an enquiry</ButtonLink>
+        {publicFileExists(profilePdf) && (
+          <ArrowLink href={profilePdf} external>
+            Download our company profile (PDF)
+          </ArrowLink>
+        )}
+      </PageHero>
+
+      <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="lg:col-span-7 space-y-5 text-lg text-body leading-relaxed">
+          {profile.overview.map((paragraph: string) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
-      </section>
+        <dl className="lg:col-span-5 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-gray-200 pt-8">
+          {stats.map((s) => (
+            <div key={s.id} className="flex flex-col-reverse">
+              <dt className="mt-1 text-sm text-body">{s.label}</dt>
+              <dd className="font-heading font-bold text-4xl md:text-5xl text-primary-deeper tracking-tight">{s.display}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
 
-      {/* Full-width photo strip */}
-      <div className="relative h-64 md:h-80 overflow-hidden">
-        <Image
-          src="/images/corporate/corp-2.webp"
-          alt="Professionals at work"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-deeper/60 via-transparent to-primary-deeper/40" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4">
-            <p className="text-white/70 text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              Consulting with local depth
-            </p>
-            <p className="text-white text-2xl md:text-3xl font-bold font-heading max-w-md leading-snug">
-              Where organisations come to strengthen performance and purpose.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="About TEAM"
-            subtitle="Founded in Harare, Zimbabwe in 2004 and built around a flexible associate model"
-            centered
-          />
-
-          <div className="mx-auto mt-14 max-w-4xl space-y-5 text-lg text-slate-600">
-            {profile.overview.map((paragraph: string) => (
-              <p key={paragraph} className="leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-4">
-            {profile.stats.map((stat: any) => (
-              <article key={stat.id} className="rounded-lg border border-slate-200 p-5 text-center">
-                <p className="text-3xl font-bold text-primary">{stat.display}</p>
-                <p className="mt-2 text-sm font-medium text-slate-700">{stat.label}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader title="Our Philosophy" subtitle={profile.philosophy} centered />
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {profile.fourStrands.map((strand: any) => (
-              <article key={strand.title} className="rounded-xl bg-white p-6 shadow-sm">
-                <h3 className="text-2xl font-bold text-slate-900">{strand.title}</h3>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">{strand.subtitle}</p>
-                <p className="mt-3 text-slate-600">{strand.description}</p>
-                {strand.reference && (
-                  <p className="mt-4 text-sm italic text-slate-500">Reference: {strand.reference}</p>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="The GREATER Framework"
-            subtitle="Every engagement is scoped against seven measurable outcomes"
-            centered
-          />
-
-          <div className="mt-12 relative left-1/2 w-screen max-w-none -translate-x-1/2 px-4">
-            <Image
-              src="/images/greater.png"
-              alt="Greater visual"
-              width={2000}
-              height={1200}
-              priority
-              className="w-full h-auto object-contain"
+      <section className="bg-primary-deeper text-white">
+        <div className="container mx-auto py-16 md:py-24 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <SectionIntro
+              light
+              eyebrow="Our philosophy"
+              title="We focus on significance, not just value creation."
+              lead={profile.philosophy}
             />
           </div>
+          <div className="lg:col-span-5 relative aspect-[4/3] overflow-hidden rounded-sm">
+            <Image src="/images/corporate/corp-2.webp" alt="Executives in discussion around a boardroom table" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader title="Find. Get. Keep." subtitle="Our delivery cycle from diagnostics to sustainability" centered />
+      <Section>
+        <SectionIntro
+          eyebrow="The Four Strands"
+          title="The values that shape how we work."
+          lead="Every engagement is held to the same four commitments."
+        />
+        <div className="mt-12 grid md:grid-cols-2 gap-x-12 border-t border-gray-200">
+          {profile.fourStrands.map((strand: { title: string; subtitle: string; description: string; reference?: string }) => (
+            <article key={strand.title} className="py-8 border-b border-gray-200">
+              <h3 className="font-heading font-bold text-2xl text-primary-deeper">{strand.title}</h3>
+              <p className="mt-1 font-semibold text-primary">{strand.subtitle}</p>
+              <p className="mt-3 text-body leading-relaxed max-w-[52ch]">{strand.description}</p>
+              {strand.reference && <p className="mt-3 text-sm text-body/70">{strand.reference}</p>}
+            </article>
+          ))}
+        </div>
+      </Section>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {profile.approach.map((step: any) => (
-              <article key={step.title} className="rounded-xl bg-white p-6">
-                <h3 className="text-2xl font-bold text-slate-900">{step.title}</h3>
-                <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-primary">{step.phase}</p>
-                <p className="mt-3 text-slate-600">{step.description}</p>
-              </article>
+      <Section tone="tint" className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-5 order-2 lg:order-1">
+          <GreaterDial />
+        </div>
+        <div className="lg:col-span-7 order-1 lg:order-2">
+          <SectionIntro
+            eyebrow="The GREATER framework"
+            title="Seven outcomes we scope every engagement against."
+            lead="Growth, resilience, efficiency, agility, thrivability, engagement and results. Together they give leaders a single, measurable picture of organisational health."
+          />
+          <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-4">
+            {profile.greaterFramework.map((g: { key: string; title: string; description: string }, i: number) => (
+              <li key={`${g.title}-${i}`}>
+                <p className="font-semibold text-primary-deeper">{g.title}</p>
+                <p className="text-sm text-body leading-relaxed">{g.description}</p>
+              </li>
             ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <a
-              href={downloadItems.find((asset) => asset.id === 'company-profile')?.href}
-              download
-              className="inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-white transition hover:bg-primary-dark"
-            >
-              Download Company Profile
-            </a>
+          </ul>
+          <div className="mt-8">
+            <ArrowLink href="/free-diagnostic">See where you stand with the free diagnostic</ArrowLink>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-72 md:h-[460px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/corporate/corp-4.webp"
-                alt="TEAM consultants at a client strategy session"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-deeper/60 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-white font-bold text-xl font-heading leading-snug">
-                  80%+ of engagements from repeat &amp; referral clients
-                </p>
-              </div>
-            </div>
+      <Section>
+        <SectionIntro
+          eyebrow="How we work"
+          title="Find the value. Get the value. Keep the value."
+          lead="Our delivery cycle runs from diagnosis through implementation to the governance that makes change last."
+        />
+        <ol className="mt-12 grid md:grid-cols-3 gap-10">
+          {profile.approach.map((step: { title: string; phase: string; description: string }, i: number) => (
+            <li key={step.title} className="border-t-2 border-primary-deeper pt-6">
+              <p className="text-sm text-body/70">Stage {i + 1} · {step.phase}</p>
+              <h3 className="mt-2 font-heading font-bold text-2xl text-primary-deeper">{step.title}</h3>
+              <p className="mt-3 text-body leading-relaxed">{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
-                Why Choose TEAM
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary-deeper mb-6 leading-tight">
-                Consulting that builds capacity, <span className="text-primary">not just advice</span>
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                TEAM works with candour and care: surfacing the issues that matter, asking the
-                difficult questions early, and transferring methods so clients can sustain results
-                independently.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  'Candid diagnostics that surface what others miss',
-                  'Methodology transfer so your team owns the outcome',
-                  'Senior advisors involved from first brief to final delivery',
-                  'Deep local insight across diverse international markets',
-                ].map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-slate-600">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <Section tone="tint" className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-6 relative aspect-[3/2] overflow-hidden rounded-sm">
+          <Image src="/images/corporate/corp-4.webp" alt="A presentation of research findings to a leadership team" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
+        </div>
+        <div className="lg:col-span-6">
+          <SectionIntro
+            eyebrow="Why clients come back"
+            title="Consulting that builds your capability, not your dependence on us."
+            lead="More than 80% of our work comes from repeat and referral clients. We think that is because we:"
+          />
+          <ul className="mt-6 divide-y divide-gray-300 border-y border-gray-300">
+            {[
+              'Say the difficult things early, in a diagnosis that surfaces what others miss.',
+              'Transfer our methods, so your team owns the outcome.',
+              'Keep senior advisors involved from the first brief to final delivery.',
+              'Bring local insight from twelve markets to every recommendation.',
+            ].map((p) => (
+              <li key={p} className="py-3 text-body leading-relaxed">{p}</li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <ArrowLink href="/why-team/our-team">Meet our leadership</ArrowLink>
           </div>
         </div>
-      </section>
+      </Section>
 
-    </div>
+      <EnquiryBand />
+    </>
   )
 }

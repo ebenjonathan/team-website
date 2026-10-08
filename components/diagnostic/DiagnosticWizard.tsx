@@ -393,7 +393,7 @@ export default function DiagnosticWizard() {
                 <h3 className="mt-5 text-lg font-semibold">Automation Opportunities</h3>
                 <p className="mt-2 text-slate-300">Focus first on the lowest-scoring pillar and automate the highest-frequency manual workflow tied to that pillar.</p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <a href="/contact-us" className="rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-500">
+                  <a href="/contact-us?topic=diagnostic#enquiry" className="rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-500">
                     Book Strategy Call
                   </a>
                   <a

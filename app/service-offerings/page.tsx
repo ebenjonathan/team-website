@@ -1,9 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ServiceCard } from '@/components/cards/ServiceCard'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 import { getServiceOfferings } from '@/lib/sanity/content'
 import { SITE_URL as siteUrl } from '@/lib/seo/site'
+import { PageHero, Section, SectionIntro, EnquiryBand, ButtonLink, ArrowLink } from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Service Offerings',
@@ -17,6 +16,21 @@ export const metadata: Metadata = {
     url: '/service-offerings',
   },
 }
+
+const principles = [
+  {
+    title: 'Practical advice',
+    body: 'We focus on the issues that matter most to your leadership team and to the people who must carry the change.',
+  },
+  {
+    title: 'Measured outcomes',
+    body: 'Every engagement is scoped against the GREATER outcomes, so you know what success looks like before we start.',
+  },
+  {
+    title: 'Flexible delivery',
+    body: 'Our associate model brings specialist depth without unnecessary overhead, keeping delivery responsive and cost-conscious.',
+  },
+]
 
 export default async function ServiceOfferingsPage() {
   const services = await getServiceOfferings()
@@ -38,90 +52,58 @@ export default async function ServiceOfferingsPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-      />
-      {/* Hero */}
-      <section className="bg-primary-deeper text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Service Offerings</h1>
-          <p className="text-xl text-slate-200 max-w-2xl">
-            Our integrated practice connects strategy, governance, analytics, human capital, and wellness
-            so clients can engage one advisory partner across the full transformation arc.
-          </p>
-        </div>
-      </section>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+      <PageHero
+        eyebrow="Services"
+        title="One advisory partner, from strategy to the culture that makes it stick."
+        lead="Our practice connects strategy, governance, operations, research, culture and wellbeing, so you can work with one team across the whole arc of change."
+      >
+        <ButtonLink href="/free-diagnostic">Not sure where to start? Take the diagnostic</ButtonLink>
+      </PageHero>
 
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Integrated Practice"
-            subtitle="We connect strategy, governance, performance, and implementation through one trusted partner"
-            centered
-          />
+      <Section>
+        <ul className="border-t border-gray-300">
+          {services.map((service) => (
+            <li key={service.id} className="border-b border-gray-300">
+              <Link
+                href={`/service-offerings/${service.slug}`}
+                className="group grid md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10"
+              >
+                <h2 className="md:col-span-4 font-heading font-bold text-2xl md:text-3xl text-primary-deeper group-hover:text-primary leading-tight">
+                  {service.title}
+                </h2>
+                <div className="md:col-span-6">
+                  <p className="text-lg text-body leading-relaxed">{service.description}</p>
+                  {!!service.features.length && (
+                    <p className="mt-3 text-sm text-body/80 leading-relaxed">{service.features.join('. ')}.</p>
+                  )}
+                </div>
+                <span className="md:col-span-2 md:text-right font-semibold text-primary-deeper group-hover:text-primary self-start">
+                  Explore <span aria-hidden className="text-primary">→</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-            <div className="grid gap-8 md:grid-cols-3">
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Practical advisory</h3>
-                <p className="mt-2 text-slate-600">We focus on the issues that matter most to your leadership team and the people who must carry the change forward.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Measured outcomes</h3>
-                <p className="mt-2 text-slate-600">Every engagement is shaped around clarity, accountability, and the conditions needed for sustainable performance.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Flexible delivery</h3>
-                <p className="mt-2 text-slate-600">Our associate model brings specialist depth without unnecessary overhead, keeping delivery responsive and cost-conscious.</p>
-              </div>
+      <Section tone="tint">
+        <SectionIntro eyebrow="How we engage" title="What you can expect from every engagement." />
+        <div className="mt-12 grid md:grid-cols-3 gap-10">
+          {principles.map((p) => (
+            <div key={p.title} className="border-t-2 border-primary-deeper pt-6">
+              <h3 className="font-heading font-bold text-xl text-primary-deeper">{p.title}</h3>
+              <p className="mt-3 text-body leading-relaxed">{p.body}</p>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="What We Offer"
-            subtitle="End-to-end support for organisations navigating change with confidence"
-            centered
-          />
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-            {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
+        <div className="mt-12">
+          <ArrowLink href="/who-we-are">How we work, in more detail</ArrowLink>
         </div>
-      </section>
+      </Section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Need Help Prioritising?</h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Start with a practical diagnostic to identify quick wins and map the right service pathway.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/free-diagnostic"
-              className="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition-colors"
-            >
-              Start Free Diagnostic
-            </Link>
-            <Link
-              href="/contact-us"
-              className="inline-block border border-slate-300 hover:border-slate-400 text-slate-900 font-bold py-3 px-8 rounded-lg transition-colors"
-            >
-              Speak to a Consultant
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <EnquiryBand title="Need help deciding where to start?" body="Tell us the challenge in a sentence or two. We will suggest the right starting point, even if it is not a paid engagement." />
+    </>
   )
 }
-
