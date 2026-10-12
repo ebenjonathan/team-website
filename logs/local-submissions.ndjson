@@ -11,3 +11,5 @@
 {"timestamp":"2026-06-11T09:01:31.349Z","channel":"newsletter","mode":"local-fallback","payload":{"email":"ratetest1@example.com"}}
 {"timestamp":"2026-06-11T09:01:31.471Z","channel":"newsletter","mode":"local-fallback","payload":{"email":"ratetest2@example.com"}}
 {"timestamp":"2026-06-11T09:01:31.608Z","channel":"newsletter","mode":"local-fallback","payload":{"email":"ratetest3@example.com"}}
+{"timestamp":"2026-10-08T13:33:01.750Z","channel":"contact","mode":"local-fallback","payload":{"name":"Elaine Isabella Nyamayaro","email":"elainen@teamadvisoryservices.com","phone":"+263783361222","organisation":"TEAM Advisory Services","country":"Zimbabwe","requestType":"general","message":"Testing 1234545142541"}}
+{"timestamp":"2026-10-08T13:34:14.731Z","channel":"contact","mode":"local-fallback","payload":{"name":"Elaine Isabella Nyamayaro","email":"isabellanyamayaro@gmail.com","phone":"+27818049722","organisation":"TEAM Consulting","country":"South Africa","requestType":"general","message":"This is a test email. Ignore"}}
