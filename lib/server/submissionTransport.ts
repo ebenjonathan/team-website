@@ -11,6 +11,18 @@ import {
 
 export type DeliveryMode = 'local-fallback' | 'web3forms' | 'resend' | 'sendgrid' | 'mailchimp'
 
+export type SubmissionDeliveryFailureKind = 'rate_limited' | 'timeout' | 'network' | 'rejected'
+
+export class SubmissionDeliveryError extends Error {
+  constructor(
+    readonly kind: SubmissionDeliveryFailureKind,
+    readonly retryAfterSeconds?: number,
+  ) {
+    super(kind)
+    this.name = 'SubmissionDeliveryError'
+  }
+}
+
 interface DeliveryRequest {
   channel: SubmissionChannel
   payload: Record<string, unknown>
@@ -45,28 +57,43 @@ export async function deliverSubmission(request: DeliveryRequest): Promise<Deliv
     const name = String(p.name ?? '')
     const email = String(p.email ?? '')
     const topic = enquiryTopicLabel(String(p.requestType ?? 'general'))
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      signal: AbortSignal.timeout(10000),
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: accessKey,
-        subject: `New enquiry (${topic}) from ${name}`,
-        from_name: 'TEAM Consulting website',
-        name,
-        email,
-        replyto: email,
-        phone: String(p.phone ?? ''),
-        organisation: String(p.organisation ?? ''),
-        country: String(p.country ?? ''),
-        enquiry_type: topic,
-        message: String(p.message ?? ''),
-        botcheck: '',
-      }),
-    })
+    let response: Response
+    try {
+      response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        signal: AbortSignal.timeout(10000),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New enquiry (${topic}) from ${name}`,
+          from_name: 'TEAM Consulting website',
+          name,
+          email,
+          replyto: email,
+          phone: String(p.phone ?? ''),
+          organisation: String(p.organisation ?? ''),
+          country: String(p.country ?? ''),
+          enquiry_type: topic,
+          message: String(p.message ?? ''),
+          botcheck: '',
+        }),
+      })
+    } catch (error) {
+      if (error instanceof Error && error.name === 'TimeoutError') {
+        throw new SubmissionDeliveryError('timeout')
+      }
+      throw new SubmissionDeliveryError('network')
+    }
+
+    if (response.status === 429) {
+      const retryAfter = response.headers.get('retry-after')
+      const retryAfterSeconds = retryAfter && /^\d+$/.test(retryAfter) ? Number(retryAfter) : 60
+      throw new SubmissionDeliveryError('rate_limited', Math.max(1, Math.min(retryAfterSeconds, 3600)))
+    }
+
     const result = await response.json().catch(() => null)
     if (!response.ok || result?.success !== true) {
-      throw new Error(`Web3Forms rejected the enquiry (HTTP ${response.status})`)
+      throw new SubmissionDeliveryError('rejected')
     }
     return 'web3forms'
   }

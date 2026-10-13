@@ -27,7 +27,7 @@ type FormData = z.infer<typeof schema>
 type Status =
   | { kind: 'idle' }
   | { kind: 'sent'; name: string }
-  | { kind: 'failed'; reason: 'rate' | 'delivery' | 'network'; data: FormData }
+  | { kind: 'failed'; reason: 'rate' | 'unavailable' | 'timeout' | 'delivery' | 'network'; data: FormData }
 
 const OFFICE_EMAIL = 'info@team.co.zw'
 
@@ -52,6 +52,7 @@ function mailtoFor(data: FormData) {
 export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: EnquiryTopic }) {
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
   const statusRef = useRef<HTMLDivElement>(null)
+  const submissionInFlight = useRef(false)
 
   const {
     register,
@@ -67,23 +68,36 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
   const focusStatus = () => requestAnimationFrame(() => statusRef.current?.focus())
 
   const onSubmit = async (data: FormData) => {
+    if (submissionInFlight.current) return
+    submissionInFlight.current = true
     setStatus({ kind: 'idle' })
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+        signal: AbortSignal.timeout(15000),
       })
-      if (res.ok) {
+      const result = await res.json().catch(() => null) as { success?: unknown; code?: unknown } | null
+      if (res.ok && result?.success === true) {
         setStatus({ kind: 'sent', name: data.name.split(' ')[0] })
         reset({ requestType: defaultTopic })
       } else {
-        setStatus({ kind: 'failed', reason: res.status === 429 ? 'rate' : 'delivery', data })
+        const reason = res.status === 429
+          ? 'rate'
+          : result?.code === 'rate_limit_unavailable' || result?.code === 'not_configured'
+            ? 'unavailable'
+            : result?.code === 'timeout'
+              ? 'timeout'
+              : 'delivery'
+        setStatus({ kind: 'failed', reason, data })
       }
     } catch {
       setStatus({ kind: 'failed', reason: 'network', data })
+    } finally {
+      submissionInFlight.current = false
+      focusStatus()
     }
-    focusStatus()
   }
 
   if (status.kind === 'sent') {
@@ -132,7 +146,11 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
         >
           <p className="font-semibold">
             {status.reason === 'rate'
-              ? 'You have sent several enquiries in the last minute.'
+              ? 'The enquiry service is receiving too many requests right now.'
+              : status.reason === 'unavailable'
+                ? 'The enquiry service is temporarily unavailable.'
+                : status.reason === 'timeout'
+                  ? 'Sending took too long, so we could not confirm your enquiry.'
               : status.reason === 'network'
                 ? 'We could not reach our server. Check your connection.'
                 : 'Your enquiry could not be delivered.'}

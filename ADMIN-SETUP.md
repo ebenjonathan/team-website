@@ -54,8 +54,16 @@ Invite colleagues from sanity.io/manage → Members; they log in with their own 
 ## 4. Make enquiries reach you (required)
 
 Set `WEB3FORMS_ACCESS_KEY` in your hosting environment and in `.env.local` for local
-development. The key must be linked to `info@team.co.zw`; it is used only by the
-server-side contact API and must not be prefixed with `NEXT_PUBLIC_`.
+development. In Vercel, add it to Production and Preview as needed. The access key
+must be associated with `info@team.co.zw` in Web3Forms; the app does not choose the
+recipient in its request. The key is used only by the server-side contact API and
+must not be prefixed with `NEXT_PUBLIC_`.
+
+The contact route checks the shared rate-limit store before contacting Web3Forms.
+If `UPSTASH_REDIS_REST_URL` or `UPSTASH_REDIS_REST_TOKEN` is missing in Production,
+the route returns HTTP 503 and does not submit the enquiry. A successful API
+response means Web3Forms accepted the submission; verify the notification reached
+the configured inbox when testing a real key.
 
 The contact form keeps its server-side rate limit and honeypot spam checks. Event
 notifications use `SUBMISSION_PROVIDER=resend` with `RESEND_API_KEY` and a verified

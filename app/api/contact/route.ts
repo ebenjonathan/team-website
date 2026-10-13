@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { writeLocalSubmissionLog } from '@/lib/server/localSubmissionLog'
-import { deliverSubmission, deliveryMode } from '@/lib/server/submissionTransport'
+import { deliverSubmission, deliveryMode, SubmissionDeliveryError } from '@/lib/server/submissionTransport'
 import { checkRateLimit } from '@/lib/server/rateLimit'
 import { enquiryTopicValues } from '@/lib/data/enquiry'
+
+const MAX_BODY_BYTES = 16 * 1024
 
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(200),
@@ -19,20 +20,58 @@ const contactSchema = z.object({
 
 const FALLBACK_EMAIL = 'info@team.co.zw'
 
+async function readJsonBody(request: NextRequest): Promise<{ body: unknown } | { error: NextResponse }> {
+  const contentLength = Number(request.headers.get('content-length'))
+  if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
+    return { error: NextResponse.json({ success: false, code: 'payload_too_large' }, { status: 413 }) }
+  }
+
+  const reader = request.body?.getReader()
+  if (!reader) return { error: NextResponse.json({ success: false, code: 'invalid' }, { status: 400 }) }
+
+  const chunks: Uint8Array[] = []
+  let totalBytes = 0
+  try {
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      totalBytes += value.byteLength
+      if (totalBytes > MAX_BODY_BYTES) {
+        await reader.cancel()
+        return { error: NextResponse.json({ success: false, code: 'payload_too_large' }, { status: 413 }) }
+      }
+      chunks.push(value)
+    }
+  } catch {
+    return { error: NextResponse.json({ success: false, code: 'invalid' }, { status: 400 }) }
+  } finally {
+    reader.releaseLock()
+  }
+
+  const bytes = new Uint8Array(totalBytes)
+  let offset = 0
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset)
+    offset += chunk.byteLength
+  }
+
+  try {
+    return { body: JSON.parse(new TextDecoder().decode(bytes)) as unknown }
+  } catch {
+    return { error: NextResponse.json({ success: false, code: 'invalid' }, { status: 400 }) }
+  }
+}
+
 export async function POST(request: NextRequest) {
   const limited = await checkRateLimit(request, { limit: 5, windowSeconds: 60 })
   if (limited) return limited
 
-  let body: unknown
-  try {
-    body = await request.json()
-  } catch {
-    return NextResponse.json({ success: false, code: 'invalid' }, { status: 400 })
-  }
+  const parsedBody = await readJsonBody(request)
+  if ('error' in parsedBody) return parsedBody.error
+  const { body } = parsedBody
 
-  // Bots that fill the hidden field get a normal-looking success and nothing is sent.
   if (body && typeof body === 'object' && 'website' in body && (body as { website?: string }).website) {
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: false, code: 'invalid' }, { status: 400 })
   }
 
   const parsed = contactSchema.safeParse(body)
@@ -48,8 +87,7 @@ export async function POST(request: NextRequest) {
 
   // Contact enquiries must reach Web3Forms; never report success without delivery.
   if (mode === 'local-fallback') {
-    console.error('[Contact] WEB3FORMS_ACCESS_KEY is not configured; enquiry not delivered.')
-    await writeLocalSubmissionLog({ channel: 'contact', mode, payload: data })
+    console.error('[Contact] Web3Forms is not configured; enquiry not delivered.')
     return NextResponse.json(
       { success: false, code: 'not_configured', fallbackEmail: FALLBACK_EMAIL },
       { status: 503 },
@@ -59,14 +97,21 @@ export async function POST(request: NextRequest) {
   try {
     await deliverSubmission({ channel: 'contact', payload: data })
   } catch (error) {
-    console.error('[Contact] Delivery failed:', error)
-    await writeLocalSubmissionLog({ channel: 'contact', mode, payload: { ...data, deliveryFailed: true } })
+    if (error instanceof SubmissionDeliveryError && error.kind === 'rate_limited') {
+      return NextResponse.json(
+        { success: false, code: 'rate_limited' },
+        { status: 429, headers: { 'Retry-After': String(error.retryAfterSeconds ?? 60) } },
+      )
+    }
+    if (error instanceof SubmissionDeliveryError && error.kind === 'timeout') {
+      return NextResponse.json({ success: false, code: 'timeout' }, { status: 504 })
+    }
+
     return NextResponse.json(
       { success: false, code: 'delivery_failed', fallbackEmail: FALLBACK_EMAIL },
       { status: 502 },
     )
   }
 
-  await writeLocalSubmissionLog({ channel: 'contact', mode, payload: data })
-  return NextResponse.json({ success: true, mode })
+  return NextResponse.json({ success: true })
 }

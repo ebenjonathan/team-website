@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { deliverSubmission } from '../lib/server/submissionTransport'
+import { deliverSubmission, SubmissionDeliveryError } from '../lib/server/submissionTransport'
 
 const environmentKeys = [
   'SUBMISSION_PROVIDER',
@@ -116,7 +116,40 @@ test('a mocked Web3Forms 403 is surfaced as a generic delivery failure', async (
 
     await assert.rejects(
       () => deliverSubmission({ channel: 'contact', payload: { name: 'QA', email: 'qa@example.test' } }),
-      /Web3Forms rejected the enquiry \(HTTP 403\)/,
+      (error: unknown) => error instanceof SubmissionDeliveryError && error.kind === 'rejected',
+    )
+  })
+})
+
+test('a mocked Web3Forms 429 is classified without forwarding provider details', async () => {
+  await withEnvironment({ WEB3FORMS_ACCESS_KEY: 'fake-web3forms-key' }, async () => {
+    globalThis.fetch = async () => new Response('private provider detail', { status: 429, headers: { 'Retry-After': '17' } })
+
+    await assert.rejects(
+      () => deliverSubmission({ channel: 'contact', payload: { name: 'QA', email: 'qa@example.test' } }),
+      (error: unknown) => error instanceof SubmissionDeliveryError && error.kind === 'rate_limited' && error.retryAfterSeconds === 17,
+    )
+  })
+})
+
+test('Web3Forms must affirm success in its response body', async () => {
+  await withEnvironment({ WEB3FORMS_ACCESS_KEY: 'fake-web3forms-key' }, async () => {
+    globalThis.fetch = async () => new Response(JSON.stringify({ success: false, message: 'private provider detail' }), { status: 200 })
+
+    await assert.rejects(
+      () => deliverSubmission({ channel: 'contact', payload: { name: 'QA', email: 'qa@example.test' } }),
+      (error: unknown) => error instanceof SubmissionDeliveryError && error.kind === 'rejected',
+    )
+  })
+})
+
+test('Web3Forms timeouts are classified without exposing the underlying error', async () => {
+  await withEnvironment({ WEB3FORMS_ACCESS_KEY: 'fake-web3forms-key' }, async () => {
+    globalThis.fetch = async () => { throw Object.assign(new Error('secret-bearing timeout detail'), { name: 'TimeoutError' }) }
+
+    await assert.rejects(
+      () => deliverSubmission({ channel: 'contact', payload: { name: 'QA', email: 'qa@example.test' } }),
+      (error: unknown) => error instanceof SubmissionDeliveryError && error.kind === 'timeout',
     )
   })
 })
