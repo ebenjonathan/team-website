@@ -53,17 +53,11 @@ Invite colleagues from sanity.io/manage → Members; they log in with their own 
 
 ## 4. Make enquiries reach you (required)
 
-Set `WEB3FORMS_ACCESS_KEY` in your hosting environment and in `.env.local` for local
-development. In Vercel, add it to Production and Preview as needed. The access key
-must be associated with `info@team.co.zw` in Web3Forms; the app does not choose the
-recipient in its request. The key is used only by the server-side contact API and
-must not be prefixed with `NEXT_PUBLIC_`.
-
-The contact route checks the shared rate-limit store before contacting Web3Forms.
-If `UPSTASH_REDIS_REST_URL` or `UPSTASH_REDIS_REST_TOKEN` is missing in Production,
-the route returns HTTP 503 and does not submit the enquiry. A successful API
-response means Web3Forms accepted the submission; verify the notification reached
-the configured inbox when testing a real key.
+The contact form sends submissions to `info@team.co.zw` through FormSubmit's AJAX
+endpoint. On first use, FormSubmit sends an activation email to that inbox. Open it
+and activate the form before expecting enquiries to be delivered. Until activation,
+the site shows an activation error and does not report success. FormSubmit provides
+its own reCAPTCHA and accepts the form's honeypot field.
 
 The contact form keeps its server-side rate limit and honeypot spam checks. Event
 notifications use `SUBMISSION_PROVIDER=resend` with `RESEND_API_KEY` and a verified
@@ -72,7 +66,7 @@ notification recipient is `ADMIN_NOTIFICATION_EMAIL` (which defaults to `ADMIN_E
 
 ## 5. Configure shared rate limiting (required in production)
 
-The contact, event, diagnostic, newsletter and admin-login endpoints share a persistent
+The event, diagnostic, newsletter and admin-login endpoints share a persistent
 Upstash Redis rate-limit store in production. To configure it on Vercel:
 
 1. Create an Upstash Redis database and copy its REST URL and REST token.
@@ -82,8 +76,8 @@ Upstash Redis rate-limit store in production. To configure it on Vercel:
    and sanitized `x-vercel-forwarded-for` client-IP header automatically; do not set or
    trust caller-provided forwarding headers.
 
-Existing limits are preserved: contact and event registration allow 5 requests per
-minute, admin login 5 per 15 minutes, diagnostics 3 per minute (or 3 per 2 minutes for
+Existing limits are preserved: event registration allows 5 requests per minute,
+admin login 5 per 15 minutes, diagnostics 3 per minute (or 3 per 2 minutes for
 the report endpoint), and newsletter subscriptions 3 per minute. Redis uses atomic
 fixed-window operations; the request identity is stored as a SHA-256 hash, not a raw IP.
 
@@ -92,7 +86,8 @@ endpoints fail closed with HTTP 503. They never fall back to process memory in p
 Store requests time out after 2.5 seconds and then fail closed. Local development without
 Upstash uses a development-only in-memory store.
 
-After deployment, send six malformed contact requests from the same client within one
-minute: the first five should fail validation with HTTP 400 and the sixth should return
-HTTP 429 with `Retry-After`. This does not invoke Web3Forms. Repeat one request from a
-second function instance or after a restart and confirm the shared counter still applies.
+After deployment, send six malformed event-registration requests from the same client
+within one minute: the first five should fail validation with HTTP 400 and the sixth
+should return HTTP 429 with `Retry-After`. Malformed requests do not send notifications.
+Repeat one request from a second function instance or after a restart and confirm the
+shared counter still applies.

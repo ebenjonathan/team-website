@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { enquiryTopics, enquiryTopicValues, type EnquiryTopic } from '@/lib/data/enquiry'
 import { cn } from '@/lib/utils'
+import { submitContactWithFormSubmit } from '@/lib/contact/formSubmit'
 
 const schema = z.object({
   name: z.string().trim().min(2, 'Enter your name.'),
@@ -19,7 +20,7 @@ const schema = z.object({
     .trim()
     .min(20, 'Tell us a little more: at least 20 characters helps us reply usefully.')
     .max(5000, 'Keep your message under 5,000 characters.'),
-  website: z.string().optional(),
+  website: z.string().max(0).optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -27,7 +28,7 @@ type FormData = z.infer<typeof schema>
 type Status =
   | { kind: 'idle' }
   | { kind: 'sent'; name: string }
-  | { kind: 'failed'; reason: 'rate' | 'unavailable' | 'timeout' | 'delivery' | 'network'; data: FormData }
+  | { kind: 'failed'; reason: 'rate' | 'activation' | 'delivery' | 'network'; data: FormData }
 
 const OFFICE_EMAIL = 'info@team.co.zw'
 
@@ -72,25 +73,12 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
     submissionInFlight.current = true
     setStatus({ kind: 'idle' })
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-        signal: AbortSignal.timeout(15000),
-      })
-      const result = await res.json().catch(() => null) as { success?: unknown; code?: unknown } | null
-      if (res.ok && result?.success === true) {
+      const result = await submitContactWithFormSubmit(data)
+      if (result.success) {
         setStatus({ kind: 'sent', name: data.name.split(' ')[0] })
         reset({ requestType: defaultTopic })
       } else {
-        const reason = res.status === 429
-          ? 'rate'
-          : result?.code === 'rate_limit_unavailable' || result?.code === 'not_configured'
-            ? 'unavailable'
-            : result?.code === 'timeout'
-              ? 'timeout'
-              : 'delivery'
-        setStatus({ kind: 'failed', reason, data })
+        setStatus({ kind: 'failed', reason: result.reason, data })
       }
     } catch {
       setStatus({ kind: 'failed', reason: 'network', data })
@@ -147,16 +135,18 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
           <p className="font-semibold">
             {status.reason === 'rate'
               ? 'The enquiry service is receiving too many requests right now.'
-              : status.reason === 'unavailable'
-                ? 'The enquiry service is temporarily unavailable.'
-                : status.reason === 'timeout'
-                  ? 'Sending took too long, so we could not confirm your enquiry.'
-              : status.reason === 'network'
-                ? 'We could not reach our server. Check your connection.'
-                : 'Your enquiry could not be delivered.'}
+              : status.reason === 'activation'
+                ? 'This contact form needs email activation before it can send enquiries.'
+                : status.reason === 'network'
+                  ? 'We could not reach the enquiry service. Check your connection.'
+                  : 'Your enquiry could not be delivered.'}
           </p>
           <p className="mt-1">
-            {status.reason === 'rate' ? 'Wait a minute and send it again, or ' : 'Try again, or '}
+            {status.reason === 'activation'
+              ? 'Check the info@team.co.zw inbox for FormSubmit’s activation email, or '
+              : status.reason === 'rate'
+                ? 'Wait a minute and send it again, or '
+                : 'Try again, or '}
             <a href={mailtoFor(status.data)} className="font-semibold underline">
               send the same message by email
             </a>{' '}
@@ -229,7 +219,7 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
       </div>
 
       {/* Honeypot for spam bots, hidden from people and screen readers */}
-      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+      <div aria-hidden="true" className="absolute left-[-9999px] w-px h-px overflow-hidden">
         <label htmlFor="enq-website">Leave this field empty</label>
         <input id="enq-website" tabIndex={-1} autoComplete="off" {...register('website')} />
       </div>

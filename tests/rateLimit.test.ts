@@ -29,7 +29,7 @@ class SharedMockStore implements RateLimitStore {
 }
 
 function request(headers: Record<string, string> = {}) {
-  return new NextRequest('https://example.test/api/contact', { headers })
+  return new NextRequest('https://example.test/api/event-registration', { headers })
 }
 
 function checker(store: RateLimitStore) {

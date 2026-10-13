@@ -1,5 +1,4 @@
 import type { SubmissionChannel } from './localSubmissionLog'
-import { enquiryTopicLabel } from '@/lib/data/enquiry'
 import {
   sendEmail,
   sendEmailStrict,
@@ -9,19 +8,7 @@ import {
   newsletterConfirmationTemplate,
 } from '@/lib/email'
 
-export type DeliveryMode = 'local-fallback' | 'web3forms' | 'resend' | 'sendgrid' | 'mailchimp'
-
-export type SubmissionDeliveryFailureKind = 'rate_limited' | 'timeout' | 'network' | 'rejected'
-
-export class SubmissionDeliveryError extends Error {
-  constructor(
-    readonly kind: SubmissionDeliveryFailureKind,
-    readonly retryAfterSeconds?: number,
-  ) {
-    super(kind)
-    this.name = 'SubmissionDeliveryError'
-  }
-}
+export type DeliveryMode = 'local-fallback' | 'resend' | 'sendgrid' | 'mailchimp'
 
 interface DeliveryRequest {
   channel: SubmissionChannel
@@ -29,10 +16,6 @@ interface DeliveryRequest {
 }
 
 function resolveMode(channel: SubmissionChannel): DeliveryMode {
-  if (channel === 'contact') {
-    return process.env.WEB3FORMS_ACCESS_KEY?.trim() ? 'web3forms' : 'local-fallback'
-  }
-
   const provider = process.env.SUBMISSION_PROVIDER?.toLowerCase().trim()
   if (channel === 'newsletter' && provider === 'mailchimp') return 'mailchimp'
   return configuredEmailProvider() ?? 'local-fallback'
@@ -49,54 +32,6 @@ const siteUrl = () => process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.teamadvis
 export async function deliverSubmission(request: DeliveryRequest): Promise<DeliveryMode> {
   const mode = resolveMode(request.channel)
   const p = request.payload
-
-  if (request.channel === 'contact') {
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY?.trim()
-    if (!accessKey) throw new Error('WEB3FORMS_ACCESS_KEY is not configured')
-
-    const name = String(p.name ?? '')
-    const email = String(p.email ?? '')
-    const topic = enquiryTopicLabel(String(p.requestType ?? 'general'))
-    let response: Response
-    try {
-      response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        signal: AbortSignal.timeout(10000),
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New enquiry (${topic}) from ${name}`,
-          from_name: 'TEAM Consulting website',
-          name,
-          email,
-          replyto: email,
-          phone: String(p.phone ?? ''),
-          organisation: String(p.organisation ?? ''),
-          country: String(p.country ?? ''),
-          enquiry_type: topic,
-          message: String(p.message ?? ''),
-          botcheck: '',
-        }),
-      })
-    } catch (error) {
-      if (error instanceof Error && error.name === 'TimeoutError') {
-        throw new SubmissionDeliveryError('timeout')
-      }
-      throw new SubmissionDeliveryError('network')
-    }
-
-    if (response.status === 429) {
-      const retryAfter = response.headers.get('retry-after')
-      const retryAfterSeconds = retryAfter && /^\d+$/.test(retryAfter) ? Number(retryAfter) : 60
-      throw new SubmissionDeliveryError('rate_limited', Math.max(1, Math.min(retryAfterSeconds, 3600)))
-    }
-
-    const result = await response.json().catch(() => null)
-    if (!response.ok || result?.success !== true) {
-      throw new SubmissionDeliveryError('rejected')
-    }
-    return 'web3forms'
-  }
 
   if (mode === 'local-fallback') return 'local-fallback'
 
