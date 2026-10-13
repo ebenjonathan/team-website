@@ -4,15 +4,16 @@ import { requireAdminAuth } from '@/lib/server/requireAuth'
 import { deleteAssociate, storageStatus, updateAssociate } from '@/lib/server/associatesStore'
 import { associateSchema } from '../schema'
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authError = await requireAdminAuth()
   if (authError) return authError
+  const { id } = await params
   const parsed = associateSchema.safeParse(await request.json().catch(() => null))
   if (!parsed.success) {
     return NextResponse.json({ success: false, errors: parsed.error.flatten().fieldErrors }, { status: 400 })
   }
   try {
-    const associate = await updateAssociate(params.id, parsed.data)
+    const associate = await updateAssociate(id, parsed.data)
     if (!associate) return NextResponse.json({ success: false, message: 'That associate no longer exists.' }, { status: 404 })
     revalidatePath('/why-team/our-team')
     return NextResponse.json({ success: true, associate })
@@ -22,11 +23,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authError = await requireAdminAuth()
   if (authError) return authError
+  const { id } = await params
   try {
-    const ok = await deleteAssociate(params.id)
+    const ok = await deleteAssociate(id)
     if (!ok) return NextResponse.json({ success: false, message: 'That associate no longer exists.' }, { status: 404 })
     revalidatePath('/why-team/our-team')
     return NextResponse.json({ success: true })

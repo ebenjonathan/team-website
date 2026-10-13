@@ -6,7 +6,7 @@ export type SubmissionChannel = 'contact' | 'event-registration' | 'newsletter' 
 interface SubmissionLogEntry {
   channel: SubmissionChannel
   payload: Record<string, unknown>
-  mode: 'local-fallback' | 'resend' | 'sendgrid' | 'mailchimp'
+  mode: 'local-fallback' | 'web3forms' | 'resend' | 'sendgrid' | 'mailchimp'
 }
 
 export async function writeLocalSubmissionLog(entry: SubmissionLogEntry) {

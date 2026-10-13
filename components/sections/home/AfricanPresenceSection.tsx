@@ -84,7 +84,7 @@ export function AfricanPresenceSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
             <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
               <div className="flex items-center gap-2.5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="block w-5 h-[2px] bg-primary flex-shrink-0" />
+                <span className="block w-5 h-[2px] bg-primary shrink-0" />
                 <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] text-white">
                   {tile.label}
                 </span>

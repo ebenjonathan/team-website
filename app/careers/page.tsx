@@ -30,7 +30,7 @@ export default function CareersPage() {
           </p>
         </div>
 
-        <aside className="lg:col-span-5 bg-primary-light p-8 rounded-sm">
+        <aside className="lg:col-span-5 bg-primary-light p-8 rounded-xs">
           <SectionIntro title="How to apply" />
           <p className="mt-4 text-body">
             Email the following to{' '}

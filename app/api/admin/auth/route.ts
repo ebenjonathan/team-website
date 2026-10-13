@@ -5,8 +5,8 @@ import { signToken } from '@/lib/auth/token'
 import { checkRateLimit } from '@/lib/server/rateLimit'
 
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
+  email: z.string().trim().email().max(320),
+  password: z.string().min(1).max(1024),
 })
 
 const COOKIE_NAME = 'admin_token'
@@ -15,11 +15,11 @@ const SESSION_HOURS = 8
 /** POST /api/admin/auth — log in */
 export async function POST(request: NextRequest) {
   // Brute-force protection: 5 attempts per 15 minutes per IP
-  const limited = checkRateLimit(request, { limit: 5, windowSeconds: 900 })
+  const limited = await checkRateLimit(request, { limit: 5, windowSeconds: 900 })
   if (limited) return limited
 
   try {
-    const body = await request.json()
+    const body = await request.json().catch(() => null)
     const { email, password } = loginSchema.parse(body)
 
     const adminEmail = process.env.ADMIN_EMAIL

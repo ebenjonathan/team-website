@@ -60,11 +60,11 @@ const requestSchema = z.object({
 })
 
 export async function POST(request: NextRequest) {
-  const limited = checkRateLimit(request, { limit: 3, windowSeconds: 60 })
+  const limited = await checkRateLimit(request, { limit: 3, windowSeconds: 60 })
   if (limited) return limited
 
   try {
-    const body = await request.json()
+    const body = await request.json().catch(() => null)
     const validated = requestSchema.parse(body)
 
     const mode = await deliverSubmission({

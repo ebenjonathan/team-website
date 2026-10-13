@@ -32,7 +32,7 @@ export default async function IdeasAtWorkPage() {
           {articles.map((a, i) => (
             <li key={a.id}>
               <Link href={`/ideas-at-work/articles/${a.slug}`} className="group block">
-                <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-xs">
                   <Image src={articleImages[i % articleImages.length]} alt="" fill sizes="(min-width:768px) 30vw, 100vw" className="object-cover" />
                 </div>
                 <p className="mt-4 text-sm text-body/70">{(a.tags ?? []).join(', ')}</p>

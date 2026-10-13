@@ -73,7 +73,7 @@ export default async function WhoWeArePage() {
               lead={profile.philosophy}
             />
           </div>
-          <div className="lg:col-span-5 relative aspect-[4/3] overflow-hidden rounded-sm">
+          <div className="lg:col-span-5 relative aspect-[4/3] overflow-hidden rounded-xs">
             <Image src="/images/corporate/corp-2.webp" alt="Executives in discussion around a boardroom table" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
           </div>
         </div>
@@ -139,7 +139,7 @@ export default async function WhoWeArePage() {
       </Section>
 
       <Section tone="tint" className="grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-6 relative aspect-[3/2] overflow-hidden rounded-sm">
+        <div className="lg:col-span-6 relative aspect-[3/2] overflow-hidden rounded-xs">
           <Image src="/images/corporate/corp-4.webp" alt="A presentation of research findings to a leadership team" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
         </div>
         <div className="lg:col-span-6">

@@ -12,11 +12,11 @@ const subscribeSchema = z.object({
 })
 
 export async function POST(request: NextRequest) {
-  const limited = checkRateLimit(request, { limit: 3, windowSeconds: 60 })
+  const limited = await checkRateLimit(request, { limit: 3, windowSeconds: 60 })
   if (limited) return limited
 
   try {
-    const body = await request.json()
+    const body = await request.json().catch(() => null)
 
     // Validate request body
     const validatedData = subscribeSchema.parse(body)

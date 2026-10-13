@@ -33,6 +33,9 @@ const OFFICE_EMAIL = 'info@team.co.zw'
 
 function mailtoFor(data: FormData) {
   const topic = enquiryTopics.find((t) => t.value === data.requestType)?.label ?? 'Enquiry'
+  const subject = topic.toLowerCase().includes('enquiry')
+    ? `${topic} from ${data.name}`
+    : `${topic} enquiry from ${data.name}`
   const body = [
     data.message,
     '',
@@ -43,7 +46,7 @@ function mailtoFor(data: FormData) {
   ]
     .filter(Boolean)
     .join('\n')
-  return `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(`${topic} enquiry from ${data.name}`)}&body=${encodeURIComponent(body)}`
+  return `mailto:${OFFICE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: EnquiryTopic }) {
@@ -95,8 +98,7 @@ export function ContactForm({ defaultTopic = 'general' }: { defaultTopic?: Enqui
           Thank you, {status.name}. Your enquiry is with us.
         </p>
         <p className="mt-3 text-body leading-relaxed max-w-[52ch]">
-          A principal consultant will reply within two business days. We have also sent a copy to
-          your inbox. If it is urgent, call us on{' '}
+          A principal consultant will reply within two business days. If it is urgent, call us on{' '}
           <a href="tel:+263772202290" className="font-semibold text-primary-deeper underline">
             +263 77 220 2290
           </a>

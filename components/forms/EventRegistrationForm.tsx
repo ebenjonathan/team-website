@@ -8,13 +8,13 @@ import { CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 const schema = z.object({
-  firstName: z.string().min(2, 'First name is required'),
-  lastName: z.string().min(2, 'Last name is required'),
-  email: z.string().email('Valid email required'),
-  phone: z.string().min(7, 'Phone number is required'),
-  company: z.string().optional(),
-  jobTitle: z.string().optional(),
-  specialRequests: z.string().optional(),
+  firstName: z.string().trim().min(2, 'First name is required').max(100),
+  lastName: z.string().trim().min(2, 'Last name is required').max(100),
+  email: z.string().trim().email('Valid email required').max(320),
+  phone: z.string().trim().min(7, 'Phone number is required').max(40),
+  company: z.string().trim().max(200).optional(),
+  jobTitle: z.string().trim().max(120).optional(),
+  specialRequests: z.string().trim().max(5000).optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -57,9 +57,9 @@ export function EventRegistrationForm({ eventId, eventTitle }: EventRegistration
     return (
       <div className="text-center py-8">
         <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-        <h3 className="text-lg font-bold text-primary-deeper mb-2">Registration Confirmed!</h3>
+          <h3 className="text-lg font-bold text-primary-deeper mb-2">Registration Received!</h3>
         <p className="text-body text-sm">
-          We&apos;ll send event details and reminders to your email address.
+          Our team will follow up with event details.
         </p>
       </div>
     )

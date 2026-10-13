@@ -33,7 +33,7 @@ export function PortfolioPreviewSection() {
               className={cn(
                 'px-5 py-2 rounded-full text-sm font-semibold transition-all',
                 activeFilter === cat
-                  ? 'bg-primary text-white shadow-sm'
+                  ? 'bg-primary text-white shadow-xs'
                   : 'bg-primary-light text-primary hover:bg-primary hover:text-white'
               )}
             >

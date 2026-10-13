@@ -38,7 +38,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPag
       <Section className="grid lg:grid-cols-12 gap-12 lg:gap-16">
         <article className="lg:col-span-8 space-y-12">
           {study.image && (
-            <div className="relative aspect-[16/9] overflow-hidden rounded-sm">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xs">
               <Image src={study.image} alt="" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
             </div>
           )}

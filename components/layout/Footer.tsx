@@ -36,7 +36,7 @@ export function Footer() {
     <footer className="bg-primary-deeper text-white">
       <div className="container mx-auto py-16 grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-3">
-          <Link href="/" className="inline-block bg-white rounded-sm p-2 mb-6" aria-label="TEAM Consulting home">
+          <Link href="/" className="inline-block bg-white rounded-xs p-2 mb-6" aria-label="TEAM Consulting home">
             <Image src="/images/TEAM-logo.png" alt="TEAM Consulting" width={365} height={406} className="h-14 w-auto" />
           </Link>
           <p className="text-sm text-white/70 leading-relaxed max-w-[32ch]">

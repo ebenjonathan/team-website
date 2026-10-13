@@ -28,7 +28,7 @@ export function FAQItem({ item, isOpen, onToggle }: FAQItemProps) {
           </span>
           <Plus
             aria-hidden
-            className={cn('mt-1 h-5 w-5 flex-shrink-0 text-primary transition-transform duration-200', isOpen && 'rotate-45')}
+            className={cn('mt-1 h-5 w-5 shrink-0 text-primary transition-transform duration-200', isOpen && 'rotate-45')}
           />
         </button>
       </h3>

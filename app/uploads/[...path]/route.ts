@@ -6,8 +6,9 @@ import { uploadsDir } from '@/lib/server/associatesStore'
 const TYPES: Record<string, string> = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' }
 
 // Serves photos uploaded from the admin dashboard (file storage mode).
-export async function GET(_req: NextRequest, { params }: { params: { path: string[] } }) {
-  const target = path.normalize(path.join(uploadsDir, ...params.path))
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
+  const { path: routePath } = await params
+  const target = path.normalize(path.join(uploadsDir, ...routePath))
   const type = TYPES[path.extname(target).toLowerCase()]
   if (!target.startsWith(uploadsDir + path.sep) || !type) {
     return new NextResponse('Not found', { status: 404 })

@@ -25,7 +25,7 @@ export default async function SuccessStoriesPage() {
           {stories.map((s, i) => (
             <li key={s.id}>
               <Link href={`/ideas-at-work/${s.slug}`} className="group grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                <div className={`lg:col-span-5 relative aspect-[3/2] overflow-hidden rounded-sm ${i % 2 ? 'lg:order-2' : ''}`}>
+                <div className={`lg:col-span-5 relative aspect-[3/2] overflow-hidden rounded-xs ${i % 2 ? 'lg:order-2' : ''}`}>
                   <Image src={s.image} alt="" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
                 </div>
                 <div className="lg:col-span-7">

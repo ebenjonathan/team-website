@@ -32,7 +32,7 @@ export default function ToolsPage() {
               .map((tool) => (
                 <li key={tool.slug} id={tool.slug} className="border-t-2 border-primary-deeper pt-6 scroll-mt-28">
                   {tool.image && (
-                    <div className="relative aspect-[3/2] overflow-hidden rounded-sm mb-6">
+                    <div className="relative aspect-[3/2] overflow-hidden rounded-xs mb-6">
                       <Image src={tool.image} alt="" fill sizes="(min-width:768px) 45vw, 100vw" className="object-cover" />
                     </div>
                   )}

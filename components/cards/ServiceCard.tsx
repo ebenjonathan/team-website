@@ -57,7 +57,7 @@ export function ServiceCard({ service, variant = 'full' }: ServiceCardProps) {
       <ul className="space-y-2 mb-6">
         {service.features.map((feature) => (
           <li key={feature} className="flex items-center gap-2 text-sm text-body">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
             {feature}
           </li>
         ))}

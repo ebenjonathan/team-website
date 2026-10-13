@@ -27,8 +27,19 @@ export default function AdminLoginPage() {
       const json = await res.json()
 
       if (res.ok && json.success) {
-        const from = new URLSearchParams(window.location.search).get('from') ?? '/admin'
-        router.push(from)
+        const requestedFrom = new URLSearchParams(window.location.search).get('from')
+        let destination = '/admin'
+        if (requestedFrom) {
+          try {
+            const parsedFrom = new URL(requestedFrom, window.location.origin)
+            if (parsedFrom.origin === window.location.origin) {
+              destination = `${parsedFrom.pathname}${parsedFrom.search}${parsedFrom.hash}`
+            }
+          } catch {
+            // Invalid redirect targets stay on the admin dashboard.
+          }
+        }
+        router.push(destination)
         router.refresh()
       } else {
         setError(json.message ?? 'Invalid credentials. Please try again.')

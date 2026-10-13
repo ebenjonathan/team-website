@@ -7,7 +7,8 @@ import { NextResponse } from 'next/server'
 import { verifyToken } from '@/lib/auth/token'
 
 export async function requireAdminAuth(): Promise<NextResponse | null> {
-  const token = cookies().get('admin_token')?.value
+  const cookieStore = await cookies()
+  const token = cookieStore.get('admin_token')?.value
   if (!token) {
     return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 })
   }

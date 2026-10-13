@@ -20,7 +20,7 @@ const contactSchema = z.object({
 const FALLBACK_EMAIL = 'info@team.co.zw'
 
 export async function POST(request: NextRequest) {
-  const limited = checkRateLimit(request, { limit: 5, windowSeconds: 60 })
+  const limited = await checkRateLimit(request, { limit: 5, windowSeconds: 60 })
   if (limited) return limited
 
   let body: unknown
@@ -46,10 +46,9 @@ export async function POST(request: NextRequest) {
   const { website: _honeypot, ...data } = parsed.data
   const mode = deliveryMode('contact')
 
-  // In production an enquiry with no email provider would vanish, so refuse it
-  // clearly instead of pretending it was sent.
-  if (mode === 'local-fallback' && process.env.NODE_ENV === 'production') {
-    console.error('[Contact] No email provider configured; enquiry not delivered.')
+  // Contact enquiries must reach Web3Forms; never report success without delivery.
+  if (mode === 'local-fallback') {
+    console.error('[Contact] WEB3FORMS_ACCESS_KEY is not configured; enquiry not delivered.')
     await writeLocalSubmissionLog({ channel: 'contact', mode, payload: data })
     return NextResponse.json(
       { success: false, code: 'not_configured', fallbackEmail: FALLBACK_EMAIL },

@@ -17,7 +17,7 @@ const countries = [
 
 function FlagItem({ name, code }: { name: string; code: string }) {
   return (
-    <div className="flex flex-col items-center gap-2 flex-shrink-0 mx-6">
+    <div className="flex flex-col items-center gap-2 shrink-0 mx-6">
       <div className="w-16 h-11 rounded overflow-hidden shadow border border-white/10 relative">
         <Image
           src={`https://flagcdn.com/w80/${code}.png`}

@@ -36,7 +36,7 @@ export default async function OurTeamPage() {
       {team.map((member, i) => (
         <Section key={member.id} tone={i % 2 ? 'tint' : 'white'} className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {!isPlaceholder(member.image) && (
-            <div className="lg:col-span-4 relative aspect-[4/5] overflow-hidden rounded-sm max-w-sm">
+            <div className="lg:col-span-4 relative aspect-[4/5] overflow-hidden rounded-xs max-w-sm">
               <Image src={member.image} alt={member.name} fill sizes="(min-width:1024px) 30vw, 90vw" className="object-cover object-top" />
             </div>
           )}
@@ -100,7 +100,7 @@ export default async function OurTeamPage() {
             {associates.map((a) => (
               <li key={a.id} className="border-t-2 border-primary-deeper pt-6">
                 {a.photo && (
-                  <div className="relative aspect-[4/5] w-32 overflow-hidden rounded-sm mb-5 bg-primary-light">
+                  <div className="relative aspect-[4/5] w-32 overflow-hidden rounded-xs mb-5 bg-primary-light">
                     <Image src={a.photo} alt={a.name} fill sizes="128px" className="object-cover object-top" unoptimized={a.photo.startsWith('/uploads/')} />
                   </div>
                 )}

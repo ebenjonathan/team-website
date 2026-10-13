@@ -25,11 +25,11 @@ const payloadSchema = z.object({
 })
 
 export async function POST(request: NextRequest) {
-  const limited = checkRateLimit(request, { limit: 3, windowSeconds: 120 })
+  const limited = await checkRateLimit(request, { limit: 3, windowSeconds: 120 })
   if (limited) return limited
 
   try {
-    const raw = await request.json()
+    const raw = await request.json().catch(() => null)
     const data = payloadSchema.parse(raw)
 
     const result = computeGreaterDiagnostic(data)

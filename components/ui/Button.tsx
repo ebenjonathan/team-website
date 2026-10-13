@@ -16,10 +16,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
     const variants = {
-      primary: 'bg-primary text-white hover:bg-primary-dark shadow-sm',
+      primary: 'bg-primary text-white hover:bg-primary-dark shadow-xs',
       outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
       ghost: 'text-primary hover:bg-primary-muted',
-      white: 'bg-white text-primary hover:bg-primary-light shadow-sm',
+      white: 'bg-white text-primary hover:bg-primary-light shadow-xs',
     }
 
     const sizes = {

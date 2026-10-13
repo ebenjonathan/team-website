@@ -49,7 +49,7 @@ export function TeamToolsSection() {
                 className={`relative rounded-2xl p-6 flex flex-col gap-4 border transition-shadow ${
                   isPlaceholder
                     ? 'border-dashed border-primary/30 bg-white/50'
-                    : 'border-primary/10 bg-white shadow-sm hover:shadow-md'
+                    : 'border-primary/10 bg-white shadow-xs hover:shadow-md'
                 }`}
               >
                 <div

@@ -167,7 +167,7 @@ export function BusinessDiagnosticTool() {
   const weakestFinding = results.criticalFindings[0]
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
       <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-sm font-semibold text-slate-700">TEAM Business Diagnostic (GREATER)</p>

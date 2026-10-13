@@ -7,38 +7,44 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "tsx --test tests/*.test.ts",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build",
     "studio:seed": "npm --prefix studio run seed"
+  },
+  "overrides": {
+    "postcss": "$postcss",
+    "glob": "10.5.0"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^3.9.0",
     "@sanity/client": "^6.22.0",
+    "@upstash/ratelimit": "^2.2.0",
+    "@upstash/redis": "^1.39.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.0",
     "lucide-react": "^0.447.0",
-    "next": "14.2.29",
-    "nodemailer": "^6.9.15",
+    "next": "^15.5.27",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
-    "swiper": "^11.1.14",
-    "tailwind-merge": "^2.5.4",
+    "swiper": "^12.1.2",
+    "tailwind-merge": "3.7.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20.16.0",
-    "@types/nodemailer": "^6.4.16",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.29",
+    "eslint-config-next": "^14.2.35",
     "pdf-parse": "^2.4.5",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5.6.0"
   }
 }

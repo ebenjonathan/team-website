@@ -21,11 +21,12 @@ export const metadata: Metadata = {
 export default async function ContactUsPage({
   searchParams,
 }: {
-  searchParams?: { topic?: string }
+  searchParams?: Promise<{ topic?: string }>
 }) {
   const [downloadResources, faqItems] = await Promise.all([getDownloadResources(), getFaqItems()])
   const faqList = faqItems.length ? faqItems : fallbackFaqItems
-  const topic = isEnquiryTopic(searchParams?.topic) ? searchParams.topic : 'general'
+  const resolvedSearchParams = await searchParams
+  const topic = isEnquiryTopic(resolvedSearchParams?.topic) ? resolvedSearchParams.topic : 'general'
   const files = downloadResources.length ? downloadResources : downloads
 
   return (

@@ -161,7 +161,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             <div className="mt-12 grid md:grid-cols-2 gap-10">
               {stories.map((s) => (
                 <Link key={s.id} href={`/ideas-at-work/${s.slug}`} className="group grid grid-cols-[140px_1fr] gap-5">
-                  <div className="relative aspect-square overflow-hidden rounded-sm">
+                  <div className="relative aspect-square overflow-hidden rounded-xs">
                     <Image src={s.image} alt="" fill sizes="140px" className="object-cover" />
                   </div>
                   <div>

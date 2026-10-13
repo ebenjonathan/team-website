@@ -15,7 +15,7 @@ export function EventCard({ event }: EventCardProps) {
 
   return (
     <div className="group flex gap-6 p-6 rounded-xl border border-gray-100 bg-white hover:shadow-lg transition-all duration-300">
-      <div className="flex-shrink-0 w-16 text-center">
+      <div className="shrink-0 w-16 text-center">
         <div className="bg-primary rounded-xl p-3">
           <span className="text-2xl font-bold text-white font-heading block leading-none">{day}</span>
           <span className="text-xs text-white/80 uppercase tracking-wide">{month}</span>
@@ -34,7 +34,7 @@ export function EventCard({ event }: EventCardProps) {
             <Clock className="w-3.5 h-3.5" /> {event.time}
           </span>
           <span className="flex items-center gap-1 truncate">
-            <MapPin className="w-3.5 h-3.5 flex-shrink-0" /> {event.location}
+            <MapPin className="w-3.5 h-3.5 shrink-0" /> {event.location}
           </span>
         </div>
         <p className="text-sm text-body line-clamp-2 mb-3">{event.description}</p>

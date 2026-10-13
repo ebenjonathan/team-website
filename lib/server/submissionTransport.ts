@@ -4,14 +4,12 @@ import {
   sendEmail,
   sendEmailStrict,
   configuredEmailProvider,
-  contactEmailTemplate,
-  contactConfirmationTemplate,
   eventRegistrationTemplate,
   eventConfirmationTemplate,
   newsletterConfirmationTemplate,
 } from '@/lib/email'
 
-export type DeliveryMode = 'local-fallback' | 'resend' | 'sendgrid' | 'mailchimp'
+export type DeliveryMode = 'local-fallback' | 'web3forms' | 'resend' | 'sendgrid' | 'mailchimp'
 
 interface DeliveryRequest {
   channel: SubmissionChannel
@@ -19,6 +17,10 @@ interface DeliveryRequest {
 }
 
 function resolveMode(channel: SubmissionChannel): DeliveryMode {
+  if (channel === 'contact') {
+    return process.env.WEB3FORMS_ACCESS_KEY?.trim() ? 'web3forms' : 'local-fallback'
+  }
+
   const provider = process.env.SUBMISSION_PROVIDER?.toLowerCase().trim()
   if (channel === 'newsletter' && provider === 'mailchimp') return 'mailchimp'
   return configuredEmailProvider() ?? 'local-fallback'
@@ -36,41 +38,42 @@ export async function deliverSubmission(request: DeliveryRequest): Promise<Deliv
   const mode = resolveMode(request.channel)
   const p = request.payload
 
+  if (request.channel === 'contact') {
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY?.trim()
+    if (!accessKey) throw new Error('WEB3FORMS_ACCESS_KEY is not configured')
+
+    const name = String(p.name ?? '')
+    const email = String(p.email ?? '')
+    const topic = enquiryTopicLabel(String(p.requestType ?? 'general'))
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      signal: AbortSignal.timeout(10000),
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `New enquiry (${topic}) from ${name}`,
+        from_name: 'TEAM Consulting website',
+        name,
+        email,
+        replyto: email,
+        phone: String(p.phone ?? ''),
+        organisation: String(p.organisation ?? ''),
+        country: String(p.country ?? ''),
+        enquiry_type: topic,
+        message: String(p.message ?? ''),
+        botcheck: '',
+      }),
+    })
+    const result = await response.json().catch(() => null)
+    if (!response.ok || result?.success !== true) {
+      throw new Error(`Web3Forms rejected the enquiry (HTTP ${response.status})`)
+    }
+    return 'web3forms'
+  }
+
   if (mode === 'local-fallback') return 'local-fallback'
 
   if (mode === 'resend' || mode === 'sendgrid') {
-    // Contact form
-    if (request.channel === 'contact') {
-      const name = String(p.name ?? '')
-      const email = String(p.email ?? '')
-      const message = String(p.message ?? '')
-
-      const topic = enquiryTopicLabel(String(p.requestType ?? 'general'))
-
-      // The notification to the office IS the enquiry, so it must succeed.
-      // If it fails this throws and the visitor is told to email us instead.
-      await sendEmailStrict({
-        to: adminEmail(),
-        subject: `New enquiry (${topic}) from ${name}`,
-        html: contactEmailTemplate({
-          name,
-          email,
-          organisation: p.organisation as string | undefined,
-          country: p.country as string | undefined,
-          requestType: topic,
-          message,
-        }),
-        replyTo: email,
-      })
-
-      // The confirmation to the visitor is a courtesy; a failure is only logged.
-      await sendEmail({
-        to: email,
-        subject: 'We received your message - TEAM Consulting',
-        html: contactConfirmationTemplate(name),
-      })
-    }
-
     // Event registration
     if (request.channel === 'event-registration') {
       const firstName = String(p.firstName ?? '')
@@ -78,18 +81,16 @@ export async function deliverSubmission(request: DeliveryRequest): Promise<Deliv
       const email = String(p.email ?? '')
       const eventTitle = String(p.eventTitle ?? 'TEAM Event')
 
-      await Promise.allSettled([
-        sendEmail({
-          to: adminEmail(),
-          subject: `Event Registration: ${eventTitle} - ${firstName} ${lastName}`,
-          html: eventRegistrationTemplate({ firstName, lastName, email, eventTitle }),
-        }),
-        sendEmail({
-          to: email,
-          subject: `Registration Confirmed - ${eventTitle}`,
-          html: eventConfirmationTemplate({ firstName, eventTitle }),
-        }),
-      ])
+      await sendEmailStrict({
+        to: adminEmail(),
+        subject: `Event Registration: ${eventTitle} - ${firstName} ${lastName}`,
+        html: eventRegistrationTemplate({ firstName, lastName, email, eventTitle }),
+      })
+      await sendEmail({
+        to: email,
+        subject: `Registration Confirmed - ${eventTitle}`,
+        html: eventConfirmationTemplate({ firstName, eventTitle }),
+      })
     }
 
     // Newsletter subscription

@@ -17,7 +17,7 @@ export function PricingCard({ plan, billingPeriod }: PricingCardProps) {
         'relative rounded-2xl p-8 transition-all',
         plan.isFeatured
           ? 'bg-primary text-white shadow-2xl scale-105'
-          : 'bg-white border border-gray-100 shadow-sm hover:shadow-md'
+          : 'bg-white border border-gray-100 shadow-xs hover:shadow-md'
       )}
     >
       {plan.isFeatured && (
@@ -70,7 +70,7 @@ export function PricingCard({ plan, billingPeriod }: PricingCardProps) {
           >
             <Check
               className={cn(
-                'w-4 h-4 flex-shrink-0',
+                'w-4 h-4 shrink-0',
                 plan.isFeatured ? 'text-white' : 'text-primary'
               )}
             />

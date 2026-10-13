@@ -8,14 +8,15 @@ const patchSchema = z.object({
   excerpt: z.string().min(5).optional(),
 })
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authError = await requireAdminAuth()
   if (authError) return authError
+  const { id } = await params
 
   try {
     const body = await request.json()
     const patch = patchSchema.parse(body)
-    const updated = await updateBlogPost(params.id, patch)
+    const updated = await updateBlogPost(id, patch)
     if (!updated) {
       return NextResponse.json({ success: false, message: 'Post not found' }, { status: 404 })
     }
@@ -29,12 +30,13 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const authError = await requireAdminAuth()
   if (authError) return authError
+  const { id } = await params
 
   try {
-    const deleted = await deleteBlogPost(params.id)
+    const deleted = await deleteBlogPost(id)
     if (!deleted) {
       return NextResponse.json({ success: false, message: 'Post not found' }, { status: 404 })
     }

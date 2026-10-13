@@ -50,7 +50,7 @@ export function Header() {
         )}
       >
         <div className="container mx-auto h-[72px] flex items-stretch justify-between gap-6">
-          <Link href="/" className="flex items-center flex-shrink-0" aria-label="TEAM Consulting home">
+          <Link href="/" className="flex items-center shrink-0" aria-label="TEAM Consulting home">
             <Image
               src="/images/TEAM-logo.png"
               alt="TEAM Consulting"
