@@ -60,7 +60,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: blob: https://cdn.sanity.io https://flagcdn.com",
-              "connect-src 'self' https://cdn.sanity.io",
+              "connect-src 'self' https://cdn.sanity.io https://formsubmit.co",
               "frame-ancestors 'none'",
               "object-src 'none'",
               "base-uri 'self'",
