@@ -6,15 +6,15 @@ export const companyProfile = {
   founded: 2004,
   foundedIn: 'Zimbabwe',
   overview: [
-    'TEAM Consulting is a dynamic professional services and management advisory group focused on helping organisations unlock full value in people, processes, and products to realise organisational significance.',
-    'What began as TEAM Consulting has evolved into TEAM Consulting Services with a registered office in Zimbabwe and partner-based arrangements extending into Nigeria and other international markets.',
-    'The firm runs a cost-effective associate model that combines specialist depth with the responsiveness of a focused boutique practice.',
+    'Founded in 2004, TEAM Advisory Services, trading as TEAM Consulting, is a management consulting and advisory firm operating as a network across Zimbabwe, Zambia and Namibia, with engagements delivered in more than seventeen industries across Southern, East and West Africa. For over two decades the firm has partnered with organisations from financial services and mining to the public sector and development agencies.',
+    'The practice operates as a network rather than an office. Engagement teams are assembled client by client from associates and specialist partners across strategy, process, culture, governance, technology and wellness, drawn from wherever the right capability sits.',
+    'Clients deal with a single accountable advisory partner while drawing on the depth of a far larger firm, with the responsiveness of a focused boutique.',
   ],
   stats: [
     { id: 'years', label: 'Years in Practice', display: '20+' },
-    { id: 'consultants', label: 'Consultants & Associates', display: '13+' },
+    { id: 'consultants', label: 'Consultants & Associates', display: '25+' },
     { id: 'repeat', label: 'Repeat & Referral Clients', display: '80%+' },
-    { id: 'sectors', label: 'Sectors Served', display: '6+' },
+    { id: 'sectors', label: 'Industries Worked In', display: '17+' },
   ],
   philosophy:
     'Our philosophy is derived from our name TEAM, as we recognise and embrace excellence through collaboration: together, we are greater than me. We focus on significance, not just value creation.',
@@ -81,22 +81,25 @@ export const serviceAreas: Service[] = [
     id: 'strategy-design',
     slug: 'strategy-design',
     title: 'Strategy',
-    description: 'Strategic and operational planning, business model design, and monitoring mechanisms.',
+    description: 'Strategy development and facilitation, business model design, and performance management that keeps the strategy on track.',
     icon: 'Briefcase',
     features: [
-      'Short- and long-term strategic plans',
+      'Strategy development and facilitation (Strategy@Work)',
+      'Short- and long-term strategic and operational plans',
       'Business model design and refresh',
+      'Performance management: balanced scorecards, KPIs and performance contracts',
       'End-of-term strategy evaluations',
       'Strategy monitoring mechanisms',
     ],
     fullDescription:
-      'We help organisations define strategic direction, design practical operating models, and sustain disciplined execution through robust performance mechanisms.',
+      'We facilitate leadership teams to set a clear direction, design practical operating models, and link strategy to the measures, targets and reviews that make execution visible. A strategy engagement does not end with a document: it flows into performance management, organisation design and the culture that sustains it.',
     benefits: [
       'Sharper strategic direction and prioritisation',
       'Faster execution with clearer accountability',
+      'Performance measures that cascade from the board to every team',
       'Measurable strategy outcomes',
     ],
-    deliverables: ['Strategy blueprint', 'Operating model', 'Execution plan', 'Monitoring dashboard'],
+    deliverables: ['Strategy blueprint', 'Operating model', 'Execution plan', 'Balanced scorecard and KPIs', 'Monitoring dashboard'],
     notableAssignments: [
       'Development of Government strategic plans for ministries and local authorities in Zimbabwe and Namibia.',
       'Business model design for a women’s microfinance bank as part of start-up and licensing.',
@@ -121,20 +124,40 @@ export const serviceAreas: Service[] = [
           advisory: ['Administering the BSC'],
         },
       },
+      {
+        title: 'Performance Management',
+        delivery: {
+          toolkits: ['Compass Aligned Performance System (C@PS)', 'KPI Development'],
+          training: ['Performance Management', 'Focusing on Results'],
+          evaluation: ['Strategy Effectiveness', 'Excellence Assessments'],
+          advisory: ['Performance Contracts', 'Cascading Measures and Targets'],
+          management: ['Managing Strategy', 'Administering the Performance System'],
+        },
+      },
     ],
   },
   {
     id: 'governance-policy',
     slug: 'governance-policy',
     title: 'Governance & Policy',
-    description: 'Board effectiveness, governance mechanisms, and policy architecture.',
+    description: 'Governance and board advisory, policy development and public sector reform.',
     icon: 'Shield',
     features: [
+      'Governance and board advisory',
+      'Policy development and reform',
       'Board inductions and governance training',
       'Strategic direction and accountability mechanisms',
-      'Board performance evaluations',
+      'Board performance evaluations and performance contracts',
       'Board-management team building',
     ],
+    fullDescription:
+      'We help boards, ministries and executive teams build governance that protects the organisation without slowing it down: clear roles and delegations, sound policy architecture, and reforms that are designed to be implemented, not just approved.',
+    benefits: [
+      'Clear separation of board and management roles',
+      'Faster, better-documented decisions',
+      'Policies and reforms that survive implementation',
+    ],
+    deliverables: ['Governance framework and board charters', 'Board evaluation report', 'Policy framework', 'Reform roadmap'],
     notableAssignments: [
       'Board inductions for state-owned enterprises and private sector institutions.',
       'Development of board performance contracts for state-owned enterprises.',
@@ -146,14 +169,24 @@ export const serviceAreas: Service[] = [
     id: 'operations',
     slug: 'operations',
     title: 'Operations',
-    description: 'Operational redesign, process re-engineering, and cost transformation.',
+    description: 'Business process reengineering, robotic process automation and technology-enabled transformation, with supply chain and cost improvement.',
     icon: 'Monitor',
     features: [
-      'Supply chain optimisation',
       'Business process management and reengineering',
+      'Robotic process automation (RPA)',
+      'Technology-enabled transformation',
+      'Supply chain and procurement optimisation',
       'Cost transformation initiatives',
-      'Operating policies and procedures',
+      'Operating policies, procedures and process benchmarking',
     ],
+    fullDescription:
+      'We find where work is lost between hand-offs, redesign the process and, where the opportunity warrants it, automate it. Process reengineering flows into robotic process automation and technology deployment, so improvements are built into how the work runs every day.',
+    benefits: [
+      'Faster, simpler processes with fewer hand-offs',
+      'Repetitive work automated, freeing staff for higher-value tasks',
+      'Measurable cost and throughput improvements',
+    ],
+    deliverables: ['Current and future process maps', 'Automation opportunity assessment', 'Procedures manual', 'Implementation roadmap'],
     notableAssignments: [
       'Procurement model redesign for mining operations with USD 4M savings.',
       'Business process re-engineering across manufacturing, IT, education, and financial services.',
@@ -183,11 +216,19 @@ export const serviceAreas: Service[] = [
           toolkits: ['Business Process Analysis', 'Business Process Improvement', 'Total Quality'],
           training: ['Business Process Alignment', 'Best Practice Comparison', 'Quality Improvement'],
           evaluation: ['Business Process Alignment', 'Business Process Reengineering', 'Total Quality'],
+          advisory: ['Business Process Modelling', 'Procedures Development', 'Process Benchmarking'],
         },
       },
       {
-        title: 'Information Technology Management',
-        note: 'IT sub-section',
+        title: 'Process Automation',
+        delivery: {
+          evaluation: ['Automation Opportunity Assessment'],
+          advisory: ['Robotic Process Automation (RPA)', 'Workflow Redesign for Automation'],
+          management: ['Automation Roll-out Support'],
+        },
+      },
+      {
+        title: 'Technology-Enabled Transformation',
         delivery: {
           toolkits: ['IT Alignment to Business Needs', 'Best Practice Use of IT'],
           training: ['Knowledge Management Process', 'IT Alignment to Business Needs'],
@@ -201,13 +242,17 @@ export const serviceAreas: Service[] = [
     id: 'implementation',
     slug: 'implementation',
     title: 'Implementation',
-    description: 'Implementation planning, monitoring, coaching, and project management.',
+    description: 'Implementation planning, project management, monitoring and coaching that turns plans into results.',
     icon: 'Briefcase',
     features: [
       'Implementation planning',
+      'Project management and delivery support',
       'Monitoring and evaluation',
-      'Coaching and project management',
+      'Implementation coaching for leaders and teams',
+      'Management of non-core activities on your behalf',
     ],
+    fullDescription:
+      'Most strategies fail in execution, not design. We stay in the room after the plan is approved, setting up the project discipline, monitoring and coaching that keep delivery on track, and handing over the tools so your team can sustain the work.',
     notableAssignments: [
       'Project management and coaching for implementation reforms across Government of Zimbabwe ministries.',
       'Implementation support for ease-of-doing-business reforms in Zimbabwe.',
@@ -219,11 +264,13 @@ export const serviceAreas: Service[] = [
     id: 'analytics-research',
     slug: 'analytics-research',
     title: 'Analytics & Research',
-    description: 'Surveys, benchmarking, and diagnostics that drive better decisions.',
+    description: 'Surveys, benchmarking, assessments and diagnostics that drive better decisions.',
     icon: 'Monitor',
     features: [
-      'Organisation-wide surveys and culture assessments',
-      'Benchmarking analysis',
+      'GREATER diagnostics and business excellence assessments',
+      'Organisation-wide surveys, culture and employee engagement assessments',
+      'Benchmarking and best-practice comparison',
+      'Training needs assessments',
       'Market and community engagement surveys',
     ],
     notableAssignments: [
@@ -237,15 +284,27 @@ export const serviceAreas: Service[] = [
     id: 'organisation-culture',
     slug: 'organisation-culture',
     title: 'Organisation & Culture',
-    description: 'Leadership development, culture transformation, and change management.',
+    description: 'Culture transformation, engagement, change management, organisation development, training, and recruitment and talent advisory.',
     icon: 'Briefcase',
     features: [
-      'Leadership development and coaching',
       'Culture transformation',
+      'Employee engagement',
       'Change management',
+      'Organisation development and design',
+      'Leadership development and coaching',
       'Team building and facilitation',
-      'Staff development and capacity building',
+      'Training and capacity building',
+      'Recruitment and talent advisory',
     ],
+    fullDescription:
+      'Strategy only works when people carry it. We help organisations shape the culture, structures and capabilities they need: aligning values with behaviour, building engaged teams, developing leaders, and finding and keeping the right talent.',
+    benefits: [
+      'A workforce aligned with purpose, with lower attrition',
+      'Leaders and teams who own the change',
+      'Structures and roles that fit the strategy',
+      'The right people in the right roles',
+    ],
+    deliverables: ['Culture and engagement baseline', 'Change management plan', 'Organisation structure and role profiles', 'Development programme design'],
     downloadableProfile: '/downloads/service-profile-organisation-culture.pdf',
     businessUnit: 'TEAM Human Capital',
     deliveryFramework: [
@@ -265,15 +324,25 @@ export const serviceAreas: Service[] = [
           evaluation: ['Customer Relationship Management', 'Marketing Activities'],
         },
       },
+      {
+        title: 'People Development and Talent',
+        delivery: {
+          training: ['Staff Development Programmes', 'Leadership and Management Skills', 'Team Building'],
+          evaluation: ['Training Needs Assessments', 'Team Dynamics Assessments'],
+          advisory: ['Building Effective Teams', 'Training Delivery Planning', 'Recruitment and Talent Advisory'],
+          management: ['Administering Training Programmes'],
+        },
+      },
     ],
   },
   {
     id: 'wellness-coaching',
     slug: 'wellness-coaching',
     title: 'Wellness & Coaching',
-    description: 'Workplace wellness policy, counselling, and coaching for leaders and teams.',
+    description: 'Workplace wellness, counselling, and executive coaching for leaders and teams.',
     icon: 'Shield',
     features: [
+      'Executive coaching',
       'Staff wellness policy and intervention models',
       'Health culture baseline assessments',
       'Counselling and staff support',
@@ -931,12 +1000,14 @@ export const faqBotQuestions: FAQ[] = [
 ]
 
 export const downloads = [
-  { id: 'company-profile', label: 'Company Profile (PDF, 1.1 MB)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
+  { id: 'company-profile', label: 'Company Profile (PDF, 0.9 MB)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
+  { id: 'training-profile', label: 'Training Profile (PDF, 1.1 MB)', href: '/downloads/TEAM-Consulting-Training-Profile.pdf' },
 ]
 
 export const contacts = {
   headquarters: 'Harare, Zimbabwe',
+  offices: ['Harare', 'Windhoek', 'Lusaka'],
   phone: '+263 77 220 2290',
-  generalEmail: 'info@team.co.zw',
+  generalEmail: 'info@teamadvisoryservices.com',
 }
 

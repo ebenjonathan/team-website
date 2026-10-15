@@ -12,6 +12,7 @@ export const enquiryTopics = [
   { value: 'team-building', label: 'Team building' },
   { value: 'ldp', label: 'Leadership Development Programme' },
   { value: 'mdp', label: 'Management Development Programme' },
+  { value: 'training', label: 'Training courses' },
   { value: 'coaching', label: 'Wellness & coaching' },
   { value: 'diagnostic', label: 'GREATER Diagnostic' },
   { value: 'tools', label: 'TEAM tools' },

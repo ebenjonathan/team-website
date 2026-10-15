@@ -18,6 +18,19 @@ export const metadata: Metadata = {
   },
 }
 
+const officePhones = [
+  { label: '+263 242 308 510', tel: '+263242308510' },
+  { label: '+263 772 202 290', tel: '+263772202290' },
+  { label: '+260 760 135 422', tel: '+260760135422' },
+]
+
+const officeEmails = [
+  { region: 'Global', email: 'info@teamadvisoryservices.com' },
+  { region: 'Zimbabwe', email: 'zw@teamadvisoryservices.com' },
+  { region: 'Namibia', email: 'nm@teamadvisoryservices.com' },
+  { region: 'Zambia', email: 'zm@teamadvisoryservices.com' },
+]
+
 export default async function ContactUsPage({
   searchParams,
 }: {
@@ -49,16 +62,25 @@ export default async function ContactUsPage({
           <div>
             <h2 className="font-semibold text-primary-deeper mb-3">Talk to us directly</h2>
             <address className="not-italic space-y-2 text-body">
-              <p>
-                <a href="tel:+263772202290" className="font-semibold text-primary-deeper hover:text-primary">
-                  +263 77 220 2290
-                </a>
+              <p>Harare · Windhoek · Lusaka</p>
+              <p className="flex flex-wrap gap-x-4 gap-y-1">
+                {officePhones.map((p) => (
+                  <a key={p.tel} href={`tel:${p.tel}`} className="font-semibold text-primary-deeper hover:text-primary">
+                    {p.label}
+                  </a>
+                ))}
               </p>
-              <p>
-                <a href="mailto:info@team.co.zw" className="hover:text-primary">info@team.co.zw</a>
-              </p>
-              <p>Harare, Zimbabwe</p>
-              <p>Monday to Friday, 08:00 to 16:30 CAT</p>
+              <dl className="pt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5">
+                {officeEmails.map((e) => (
+                  <div key={e.email} className="contents">
+                    <dt className="text-body/70">{e.region}</dt>
+                    <dd>
+                      <a href={`mailto:${e.email}`} className="hover:text-primary break-all">{e.email}</a>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="pt-2">Monday to Friday, 08:00 to 16:30 CAT</p>
             </address>
           </div>
 

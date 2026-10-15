@@ -36,8 +36,8 @@ export function Header() {
             <a href="tel:+263772202290" className="hover:text-white">
               +263 77 220 2290
             </a>
-            <a href="mailto:info@team.co.zw" className="hover:text-white">
-              info@team.co.zw
+            <a href="mailto:info@teamadvisoryservices.com" className="hover:text-white">
+              info@teamadvisoryservices.com
             </a>
           </div>
         </div>

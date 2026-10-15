@@ -116,6 +116,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
               </Link>
             ))}
           </div>
+          <div className="mt-10">
+            <ArrowLink href="/training">Browse all training courses</ArrowLink>
+          </div>
         </Section>
       )}
 

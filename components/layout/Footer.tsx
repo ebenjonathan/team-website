@@ -17,10 +17,12 @@ const columns = [
       { label: 'Partners', href: '/why-team/our-partners' },
       { label: 'Markets & clients', href: '/our-markets-clients' },
       { label: 'Practice notes', href: '/ideas-at-work' },
+      { label: 'Training courses', href: '/training' },
       { label: 'TEAM tools', href: '/tools' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQs', href: '/faq' },
       { label: 'Company profile (PDF)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
+      { label: 'Training profile (PDF)', href: '/downloads/TEAM-Consulting-Training-Profile.pdf' },
     ],
   },
 ]
@@ -69,12 +71,12 @@ export function Footer() {
         <div className="lg:col-span-2">
           <p className="font-semibold mb-4">Contact</p>
           <address className="not-italic text-sm text-white/70 space-y-2.5">
-            <p>Harare, Zimbabwe</p>
+            <p>Harare · Windhoek · Lusaka</p>
             <p>
               <a href="tel:+263772202290" className="hover:text-white">+263 77 220 2290</a>
             </p>
             <p>
-              <a href="mailto:info@team.co.zw" className="hover:text-white">info@team.co.zw</a>
+              <a href="mailto:info@teamadvisoryservices.com" className="hover:text-white break-all">info@teamadvisoryservices.com</a>
             </p>
             <p>Mon to Fri, 08:00 to 16:30 CAT</p>
           </address>
