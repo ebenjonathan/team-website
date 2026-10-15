@@ -34,18 +34,18 @@ export const navGroups: NavGroup[] = [
     href: '/service-offerings',
     columns: [
       {
-        heading: 'Set a clear direction',
+        heading: 'Strategy & governance',
         links: [
           { label: 'Strategy', href: '/service-offerings/strategy-design' },
           { label: 'Governance & Policy', href: '/service-offerings/governance-policy' },
-          { label: 'Analytics & Research', href: '/service-offerings/analytics-research' },
+          { label: 'Implementation support', href: '/service-offerings/implementation' },
         ],
       },
       {
-        heading: 'Make it work day to day',
+        heading: 'Process & technology',
         links: [
-          { label: 'Operations', href: '/service-offerings/operations' },
-          { label: 'Implementation', href: '/service-offerings/implementation' },
+          { label: 'Operations & automation', href: '/service-offerings/operations' },
+          { label: 'Analytics & Research', href: '/service-offerings/analytics-research' },
         ],
       },
     ],
