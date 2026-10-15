@@ -114,7 +114,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </Link>
           <div className="text-sm text-body space-y-1">
             <p>+263 77 220 2290</p>
-            <p>info@team.co.zw</p>
+            <p>info@teamadvisoryservices.com</p>
           </div>
         </div>
       </div>

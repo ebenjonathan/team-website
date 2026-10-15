@@ -69,12 +69,12 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'TEAM Consulting',
-  alternateName: 'TEAM Consulting',
+  alternateName: 'TEAM Advisory Services',
   url: siteUrl,
   logo: `${siteUrl}/images/TEAM-logo.png`,
   foundingDate: '2004',
   description:
-    'TEAM Consulting is a boutique advisory practice supporting organisations across international markets with practical, people-centred expertise.',
+    'TEAM Advisory Services, trading as TEAM Consulting, is a management consulting and advisory firm operating as a network across Zimbabwe, Zambia and Namibia, with engagements in more than seventeen industries across Africa.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Harare',
@@ -84,7 +84,7 @@ const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+263-77-220-2290',
     contactType: 'customer service',
-    email: 'info@team.co.zw',
+    email: 'info@teamadvisoryservices.com',
   },
   sameAs: [
     'https://zw.linkedin.com/company/teamadvisory',

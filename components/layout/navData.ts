@@ -65,6 +65,7 @@ export const navGroups: NavGroup[] = [
           { label: 'Team building', href: '/programmes/team-building' },
           { label: 'Leadership Development Programmes', href: '/programmes/leadership-development-programmes' },
           { label: 'Management Development Programmes', href: '/programmes/management-development-programmes' },
+          { label: 'Training courses', href: '/training' },
         ],
       },
       {

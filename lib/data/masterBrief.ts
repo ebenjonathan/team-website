@@ -6,15 +6,15 @@ export const companyProfile = {
   founded: 2004,
   foundedIn: 'Zimbabwe',
   overview: [
-    'TEAM Consulting is a dynamic professional services and management advisory group focused on helping organisations unlock full value in people, processes, and products to realise organisational significance.',
-    'What began as TEAM Consulting has evolved into TEAM Consulting Services with a registered office in Zimbabwe and partner-based arrangements extending into Nigeria and other international markets.',
-    'The firm runs a cost-effective associate model that combines specialist depth with the responsiveness of a focused boutique practice.',
+    'Founded in 2004, TEAM Advisory Services, trading as TEAM Consulting, is a management consulting and advisory firm operating as a network across Zimbabwe, Zambia and Namibia, with engagements delivered in more than seventeen industries across Southern, East and West Africa. For over two decades the firm has partnered with organisations from financial services and mining to the public sector and development agencies.',
+    'The practice operates as a network rather than an office. Engagement teams are assembled client by client from associates and specialist partners across strategy, process, culture, governance, technology and wellness, drawn from wherever the right capability sits.',
+    'Clients deal with a single accountable advisory partner while drawing on the depth of a far larger firm, with the responsiveness of a focused boutique.',
   ],
   stats: [
     { id: 'years', label: 'Years in Practice', display: '20+' },
-    { id: 'consultants', label: 'Consultants & Associates', display: '13+' },
+    { id: 'consultants', label: 'Consultants & Associates', display: '25+' },
     { id: 'repeat', label: 'Repeat & Referral Clients', display: '80%+' },
-    { id: 'sectors', label: 'Sectors Served', display: '6+' },
+    { id: 'sectors', label: 'Industries Worked In', display: '17+' },
   ],
   philosophy:
     'Our philosophy is derived from our name TEAM, as we recognise and embrace excellence through collaboration: together, we are greater than me. We focus on significance, not just value creation.',
@@ -931,12 +931,14 @@ export const faqBotQuestions: FAQ[] = [
 ]
 
 export const downloads = [
-  { id: 'company-profile', label: 'Company Profile (PDF, 1.1 MB)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
+  { id: 'company-profile', label: 'Company Profile (PDF, 0.9 MB)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },
+  { id: 'training-profile', label: 'Training Profile (PDF, 1.1 MB)', href: '/downloads/TEAM-Consulting-Training-Profile.pdf' },
 ]
 
 export const contacts = {
   headquarters: 'Harare, Zimbabwe',
+  offices: ['Harare', 'Windhoek', 'Lusaka'],
   phone: '+263 77 220 2290',
-  generalEmail: 'info@team.co.zw',
+  generalEmail: 'info@teamadvisoryservices.com',
 }
 

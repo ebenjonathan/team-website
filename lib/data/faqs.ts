@@ -174,7 +174,7 @@ export const faqItems: FAQ[] = [
     category: 'Services',
     question: 'Does TEAM Consulting offer training?',
     answer:
-      'Yes. The firm provides training and capacity-building programs tailored to client needs.',
+      'Yes. TEAM runs in-house and open courses, and structured development programmes, in strategy, leadership, team building, operations, finance and personal effectiveness. See the full catalogue on our Training page, or download the training profile.',
     keywords: ['training', 'capacity building', 'programs', 'client needs'],
   },
   {

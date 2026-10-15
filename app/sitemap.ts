@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/why-team/our-partners`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${siteUrl}/why-team/our-clients`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${siteUrl}/why-team/our-success-stories`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${siteUrl}/training`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/careers`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${siteUrl}/free-diagnostic`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
