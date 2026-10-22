@@ -19,6 +19,7 @@ const columns = [
       { label: 'Practice notes', href: '/ideas-at-work' },
       { label: 'Training courses', href: '/training' },
       { label: 'TEAM tools', href: '/tools' },
+      { label: 'Shop', href: '/shop' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQs', href: '/faq' },
       { label: 'Company profile (PDF)', href: '/downloads/TEAM-Consulting-Company-Profile.pdf' },

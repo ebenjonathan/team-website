@@ -7,6 +7,7 @@ import { Menu } from 'lucide-react'
 import { Navigation } from './Navigation'
 import { MobileMenu } from './MobileMenu'
 import { navCta } from './navData'
+import { CartButton } from '@/components/shop/CartDrawer'
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -64,6 +65,7 @@ export function Header() {
           <Navigation />
 
           <div className="flex items-center gap-3">
+            <CartButton />
             <Link
               href={navCta.href}
               className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-md hover:bg-primary-dark transition-colors"

@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { businessUnits, caseStudies, services, unpublishedCaseStudyIds, ideasAtWorkArticles } from '@/lib/data'
 import { SITE_URL as siteUrl } from '@/lib/seo/site'
 import { programmes } from '@/lib/data/programmes'
+import { shopItems } from '@/lib/data/shop'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -20,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/why-team/our-success-stories`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${siteUrl}/training`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${siteUrl}/shop`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${siteUrl}/shop/help`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
+    ...shopItems.map((i) => ({ url: `${siteUrl}/shop/${i.id}`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7 })),
     { url: `${siteUrl}/careers`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
     { url: `${siteUrl}/free-diagnostic`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/contact-us`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },

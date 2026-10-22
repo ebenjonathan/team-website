@@ -37,3 +37,4 @@ next-env.d.ts
 # Saved by the admin dashboard (file storage mode)
 /data/associates.json
 /data/uploads/
+/data/shop.json

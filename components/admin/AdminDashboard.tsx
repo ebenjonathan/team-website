@@ -3,9 +3,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { BarChart2, Mail, Calendar, Send, FileText, LogOut, Trash2, Plus, User, Users, PenSquare } from 'lucide-react'
+import { BarChart2, Mail, Calendar, Send, FileText, LogOut, Trash2, Plus, User, Users, PenSquare, ShoppingBag } from 'lucide-react'
 import AssociatesManager from './AssociatesManager'
 import ContentHelp from './ContentHelp'
+import ShopOrdersManager from './ShopOrdersManager'
 
 //  Types 
 
@@ -36,7 +37,7 @@ type ContactSubmission = {
 type BlogPost = { id: string; title: string; excerpt: string; createdAt: string }
 type Subscriber = { id: string; email: string; createdAt: string }
 
-type Tab = 'associates' | 'content' | 'diagnostics' | 'contacts' | 'events' | 'newsletter' | 'blog'
+type Tab = 'orders' | 'associates' | 'content' | 'diagnostics' | 'contacts' | 'events' | 'newsletter' | 'blog'
 
 //  CSV helper 
 
@@ -229,6 +230,7 @@ export default function AdminDashboard() {
 
   //  Tab config 
   const tabs: { id: Tab; label: string; icon: React.ReactNode; count?: number }[] = [
+    { id: 'orders', label: 'Shop orders', icon: <ShoppingBag className="w-4 h-4" /> },
     { id: 'associates', label: 'Associates', icon: <Users className="w-4 h-4" /> },
     { id: 'content', label: 'Website content', icon: <PenSquare className="w-4 h-4" /> },
     { id: 'diagnostics', label: 'Diagnostics', icon: <BarChart2 className="w-4 h-4" />, count: diagnostics.length },
@@ -299,7 +301,8 @@ export default function AdminDashboard() {
         {/*  Tab panels  */}
         {activeTab === 'associates' && <AssociatesManager />}
         {activeTab === 'content' && <ContentHelp />}
-        {activeTab !== 'associates' && activeTab !== 'content' && (
+        {activeTab === 'orders' && <ShopOrdersManager />}
+        {activeTab !== 'associates' && activeTab !== 'content' && activeTab !== 'orders' && (
         <section className="rounded-2xl border border-white/10 bg-white/5 p-5">
 
           {/* Search + Export row */}

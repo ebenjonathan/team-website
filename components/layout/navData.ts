@@ -122,6 +122,7 @@ export const navGroups: NavGroup[] = [
       },
     ],
   },
+  { label: 'Shop', href: '/shop' },
   { label: 'Contact', href: '/contact-us#enquiry' },
 ]
 
