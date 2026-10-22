@@ -10,6 +10,18 @@ export interface EmailPayload {
   html: string
   replyTo?: string
   cc?: string | string[]
+  attachments?: EmailAttachment[]
+}
+
+export interface EmailAttachment {
+  filename: string
+  /** Raw file bytes. */
+  content: Uint8Array
+  contentType?: string
+}
+
+function toBase64(bytes: Uint8Array): string {
+  return Buffer.from(bytes).toString('base64')
 }
 
 const MAX_RETRIES = 2
@@ -67,6 +79,15 @@ async function sendOnce(provider: EmailProvider, payload: EmailPayload): Promise
         html: payload.html,
         ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
         ...(payload.cc ? { cc: toList(payload.cc) } : {}),
+        ...(payload.attachments?.length
+          ? {
+              attachments: payload.attachments.map((a) => ({
+                filename: a.filename,
+                content: toBase64(a.content),
+                ...(a.contentType ? { content_type: a.contentType } : {}),
+              })),
+            }
+          : {}),
       }),
     })
   }
@@ -92,6 +113,16 @@ async function sendOnce(provider: EmailProvider, payload: EmailPayload): Promise
       ...(payload.replyTo ? { reply_to: { email: payload.replyTo } } : {}),
       subject: payload.subject,
       content: [{ type: 'text/html', value: payload.html }],
+      ...(payload.attachments?.length
+        ? {
+            attachments: payload.attachments.map((a) => ({
+              content: toBase64(a.content),
+              filename: a.filename,
+              type: a.contentType ?? 'application/octet-stream',
+              disposition: 'attachment',
+            })),
+          }
+        : {}),
     }),
   })
 }
